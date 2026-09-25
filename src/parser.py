@@ -62,6 +62,10 @@ def _parse_network(event: dict[str, Any], packet: Packet) -> None:
     if not packet.haslayer(IP):
         return
     ip = packet[IP]
+    if ip.version != 4 or (ip.ihl is not None and ip.ihl < 5):
+        raise ValueError('Header IPv4 khong hop le')
+    if ip.len is not None and ip.len < (ip.ihl or 5) * 4:
+        raise ValueError('Do dai IPv4 nho hon header')
     event["network"] = {
         "version": 4,
         "src_ip": ip.src,
