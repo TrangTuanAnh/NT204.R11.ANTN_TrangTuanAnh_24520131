@@ -111,13 +111,38 @@ def _parse_transport(event: dict[str, Any], packet: Packet) -> None:
 
 
 def _parse_application(event: dict[str, Any], packet: Packet, payload: bytes) -> None:
-    """Phân tích ứng dụng; kiểm tra DNS đủ dữ liệu trước khi lấy các trường."""
+    """Ưu tiên dấu hiệu HTTP/SMTP trên TCP, sau đó xét DNS theo port và dữ liệu."""
     transport = event["transport"] or {}
     ports = {transport.get("src_port"), transport.get("dst_port")}
-    if 53 in ports and payload:
+    is_tcp = transport.get('protocol') == 'TCP'
+    text = decode_payload(payload) if is_tcp else ''
+    if is_tcp and _looks_like_http(text):
+        event["application"] = _parse_http(text)
+        event["status"] = "ok"
+        headers = {k.lower(): v for k, v in event['application']['headers'].items()}
+        separator = b'\r\n\r\n' if b'\r\n\r\n' in payload else b'\n\n'
+        body = payload.partition(separator)[2]
+        incomplete = separator not in payload
+        if 'content-length' in headers:
+            length = int(headers['content-length'])
+            if length < 0:
+                raise ValueError('Content-Length am')
+            incomplete |= len(body) < length
+        if 'transfer-encoding' in headers:
+            incomplete = True
+        if incomplete:
+            event['status'] = 'partial'
+            event['errors'].append('HTTP chua day du hoac chua ho tro transfer encoding')
+    elif is_tcp and _looks_like_smtp(text, ports):
+        event["application"] = _parse_smtp(text)
+        event["status"] = "ok"
+        if not payload.endswith(b'\r\n'):
+            event['status'] = 'partial'
+            event['errors'].append('Dong SMTP chua ket thuc')
+    elif 53 in ports and payload:
         event['application'] = {'protocol': 'DNS'}
         wire = payload
-        if transport.get('protocol') == 'TCP':
+        if is_tcp:
             size = int.from_bytes(wire[:2], 'big')
             if len(wire) < 2 or len(wire) - 2 < size:
                 event['status'] = 'partial'
@@ -135,33 +160,6 @@ def _parse_application(event: dict[str, Any], packet: Packet, payload: bytes) ->
             event['errors'].append(str(exc))
             return
         event['status'] = 'ok'
-        return
-    text = decode_payload(payload)
-    if transport.get('protocol') != 'TCP':
-        return
-    if _looks_like_http(text):
-        event["application"] = _parse_http(text)
-        event["status"] = "ok"
-        headers = {k.lower(): v for k, v in event['application']['headers'].items()}
-        separator = b'\r\n\r\n' if b'\r\n\r\n' in payload else b'\n\n'
-        body = payload.partition(separator)[2]
-        incomplete = separator not in payload
-        if 'content-length' in headers:
-            length = int(headers['content-length'])
-            if length < 0:
-                raise ValueError('Content-Length am')
-            incomplete |= len(body) < length
-        if 'transfer-encoding' in headers:
-            incomplete = True
-        if incomplete:
-            event['status'] = 'partial'
-            event['errors'].append('HTTP chua day du hoac chua ho tro transfer encoding')
-    elif _looks_like_smtp(text, ports):
-        event["application"] = _parse_smtp(text)
-        event["status"] = "ok"
-        if not payload.endswith(b'\r\n'):
-            event['status'] = 'partial'
-            event['errors'].append('Dong SMTP chua ket thuc')
     elif event["network"] or event["transport"]:
         event["status"] = "unknown"
 
