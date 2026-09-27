@@ -6,6 +6,7 @@ from src.capture import iter_pcap
 
 
 def test_iter_pcap_streams_packets_with_timestamps(tmp_path: Path):
+    """Kiểm tra đọc lần lượt packet và giữ lại thời điểm trong PCAP."""
     path = tmp_path / "sample.pcap"
     wrpcap(
         str(path),

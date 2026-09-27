@@ -4,6 +4,7 @@ from src.output import JsonLinesWriter
 
 
 def test_json_lines_writer_flushes_each_event(tmp_path):
+    """Kiểm tra mỗi event được ghi thành dòng JSON ngay lập tức."""
     path = tmp_path / "events.jsonl"
 
     with JsonLinesWriter(path) as writer:

@@ -6,6 +6,7 @@ from src.parser import parse_packet
 
 
 def test_tcp_flags_and_payload_are_normalized():
+    """Kiểm tra các trường TCP và thông tin packet được chuẩn hóa."""
     packet = IP(src="10.0.0.1", dst="10.0.0.2") / TCP(
         sport=1234, dport=80, flags="PA", seq=10, ack=20, window=4096
     ) / Raw(b"hello")
@@ -31,6 +32,7 @@ def test_tcp_flags_and_payload_are_normalized():
 
 
 def test_http_get_on_non_standard_port_is_detected():
+    """Kiểm tra nhận diện và đọc HTTP GET trên port không chuẩn."""
     packet = IP() / TCP(sport=50000, dport=8088) / Raw(
         b"GET /index.html HTTP/1.1\r\nHost: example.test\r\n\r\n"
     )
@@ -45,6 +47,7 @@ def test_http_get_on_non_standard_port_is_detected():
 
 
 def test_http_response_and_body_are_parsed():
+    """Kiểm tra đọc mã trạng thái, header và body của HTTP response."""
     packet = IP() / TCP(sport=80, dport=50000) / Raw(
         b"HTTP/1.1 200 OK\r\nContent-Length: 5\r\n\r\nhello"
     )
@@ -58,6 +61,7 @@ def test_http_response_and_body_are_parsed():
 
 
 def test_dns_query_and_response_are_parsed():
+    """Kiểm tra đọc câu hỏi DNS và địa chỉ trong câu trả lời."""
     query = IP() / UDP(sport=53000, dport=53) / DNS(
         id=7, rd=1, qd=DNSQR(qname="example.com", qtype="A")
     )
@@ -79,6 +83,7 @@ def test_dns_query_and_response_are_parsed():
 
 
 def test_smtp_command_and_response_are_parsed():
+    """Kiểm tra đọc lệnh SMTP và mã phản hồi của máy chủ."""
     command = IP() / TCP(sport=50000, dport=25) / Raw(b"EHLO mail.example\r\n")
     response = IP() / TCP(sport=25, dport=50000) / Raw(b"250-mail.example\r\n")
 
@@ -92,6 +97,7 @@ def test_smtp_command_and_response_are_parsed():
 
 
 def test_unknown_and_malformed_packets_do_not_raise():
+    """Kiểm tra packet lạ và dữ liệu sai không làm bộ phân tích dừng."""
     unknown = IP() / UDP(sport=12345, dport=9999) / Raw(b"binary\xff")
     malformed = object()
 

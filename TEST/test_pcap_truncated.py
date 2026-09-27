@@ -9,6 +9,7 @@ from src.capture import iter_pcap
 
 @pytest.mark.parametrize("cut", [1, 8])
 def test_incomplete_record_reports_error_preserves_prior(tmp_path, cut):
+    """Kiểm tra PCAP bị cắt báo lỗi và vẫn giữ event đã đọc trước đó."""
     pcap_path = tmp_path / "cut.pcap"
     output_path = tmp_path / "events.jsonl"
     wrpcap(str(pcap_path), [IP() / TCP(flags="S"), IP() / TCP(flags="A")])
@@ -22,6 +23,7 @@ def test_incomplete_record_reports_error_preserves_prior(tmp_path, cut):
 
 
 def test_partial_record_header_is_not_clean_eof(tmp_path):
+    """Kiểm tra header record dở dang không bị xem như cuối file bình thường."""
     pcap_path = tmp_path / "cut_header.pcap"
     wrpcap(str(pcap_path), [IP() / TCP()])
     with pcap_path.open("ab") as stream:

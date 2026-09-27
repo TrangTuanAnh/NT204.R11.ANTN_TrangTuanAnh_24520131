@@ -41,7 +41,7 @@ def iter_pcap(path: str | Path) -> Iterator[tuple[Any, float]]:
 
 def capture_live(interface: str, process_packet: Callable[[Any, float], None],
                  count: int = 0, timeout: int | None = None) -> None:
-    """Chuyển ngay từng packet sang hàm xử lý, không tích vào RAM."""
+    """Bắt packet từ interface và chuyển ngay từng packet sang hàm xử lý."""
     if interface not in list_interfaces():
         raise ValueError('Interface khong ton tai; dung --list-interfaces')
     sniff(iface=interface, count=count, timeout=timeout, store=False,

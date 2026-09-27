@@ -11,6 +11,7 @@ from scapy.error import Scapy_Exception
 
 
 def build_parser() -> argparse.ArgumentParser:
+    """Tạo bộ tham số dòng lệnh cho các chế độ chạy của chương trình."""
     parser = argparse.ArgumentParser(description="Packet capture va parser cho IDS")
     source = parser.add_mutually_exclusive_group()
     source.add_argument("--interface", help="Ten network interface can bat packet")
@@ -23,6 +24,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    """Chọn nguồn packet, gọi bộ phân tích và ghi kết quả ra file."""
     args = build_parser().parse_args(argv)
     if args.count < 0 or (args.timeout is not None and args.timeout <= 0):
         print('count >= 0 va timeout > 0', file=sys.stderr)
@@ -39,6 +41,7 @@ def main(argv: list[str] | None = None) -> int:
         with JsonLinesWriter(args.output) as writer:
             packet_id = 0
             def process_packet(packet, timestamp):
+                """Đánh số, phân tích và ghi một packet vào file kết quả."""
                 nonlocal packet_id
                 packet_id += 1
                 writer.write(parse_packet(packet, packet_id, timestamp, source))

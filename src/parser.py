@@ -11,7 +11,7 @@ from .utils import decode_payload, text_value
 
 
 def parse_packet(packet: Any, packet_id: int, timestamp: float | None, source: str) -> dict[str, Any]:
-    """Chuyển một packet Scapy thành sự kiện JSON-compatible."""
+    """Đọc các lớp mạng của packet và tạo sự kiện chuẩn hóa kèm trạng thái."""
     event: dict[str, Any] = {
         "packet_id": packet_id,
         "timestamp": timestamp,
@@ -52,6 +52,7 @@ def parse_packet(packet: Any, packet_id: int, timestamp: float | None, source: s
 
 
 def _captured_length(packet: Any) -> int | None:
+    """Trả về số byte của packet, hoặc None nếu không đo được."""
     try:
         return len(packet)
     except (TypeError, ValueError):
@@ -59,6 +60,7 @@ def _captured_length(packet: Any) -> int | None:
 
 
 def _parse_network(event: dict[str, Any], packet: Packet) -> None:
+    """Đọc các trường IPv4 và thêm chúng vào sự kiện."""
     if not packet.haslayer(IP):
         return
     ip = packet[IP]
@@ -79,6 +81,7 @@ def _parse_network(event: dict[str, Any], packet: Packet) -> None:
 
 
 def _parse_transport(event: dict[str, Any], packet: Packet) -> None:
+    """Đọc các trường TCP hoặc UDP và thêm chúng vào sự kiện."""
     if packet.haslayer(TCP):
         tcp = packet[TCP]
         event["transport"] = {
@@ -103,6 +106,7 @@ def _parse_transport(event: dict[str, Any], packet: Packet) -> None:
 
 
 def _parse_application(event: dict[str, Any], packet: Packet, payload: bytes) -> None:
+    """Nhận diện DNS, HTTP hoặc SMTP từ packet và phân tích nội dung."""
     transport = event["transport"] or {}
     ports = {transport.get("src_port"), transport.get("dst_port")}
     if 53 in ports and payload:
@@ -152,12 +156,14 @@ def _parse_application(event: dict[str, Any], packet: Packet, payload: bytes) ->
 
 
 def _looks_like_http(text: str) -> bool:
+    """Kiểm tra dòng đầu có đúng dạng request hoặc response HTTP/1.x không."""
     return bool(re.match(r"^(GET|POST|PUT|DELETE|HEAD|OPTIONS|PATCH)\s+\S+\s+HTTP/1\.[01]\r?\n", text)) or bool(
         re.match(r"^HTTP/1\.[01]\s+\d{3}\b", text)
     )
 
 
 def _parse_http(text: str) -> dict[str, Any]:
+    """Tách dòng đầu, header và body của một thông điệp HTTP."""
     head, _, body = text.partition("\r\n\r\n")
     if not _:
         head, _, body = text.partition("\n\n")
@@ -188,6 +194,7 @@ def _parse_http(text: str) -> dict[str, Any]:
 
 
 def _parse_headers(lines: list[str]) -> dict[str, str]:
+    """Chuyển các dòng header thành các cặp tên và giá trị."""
     headers: dict[str, str] = {}
     for line in lines:
         if ":" in line:
@@ -197,12 +204,14 @@ def _parse_headers(lines: list[str]) -> dict[str, str]:
 
 
 def _looks_like_smtp(text: str, ports: set[int | None]) -> bool:
+    """Kiểm tra payload có dạng lệnh hoặc phản hồi SMTP được hỗ trợ không."""
     return bool(re.match(r'^(?:EHLO |HELO |MAIL FROM:|RCPT TO:)', text, re.IGNORECASE)) or (
         bool(ports & {25, 587}) and bool(re.match(r'^[2-5]\d{2}[ -][\x20-\x7e]*\r?\n', text))
     )
 
 
 def _parse_smtp(text: str) -> dict[str, Any]:
+    """Tách dòng SMTP thành lệnh hoặc mã phản hồi và nội dung."""
     line = text.splitlines()[0].strip() if text.splitlines() else ""
     match = re.match(r"^(\d{3})(?:[ -])(.*)$", line)
     if match:
@@ -222,6 +231,7 @@ def _parse_smtp(text: str) -> dict[str, Any]:
 
 
 def _parse_dns(dns: DNS) -> dict[str, Any]:
+    """Đọc câu hỏi và câu trả lời DNS thành dữ liệu thông thường."""
     questions = []
     current = dns.qd
     for _ in range(int(dns.qdcount or 0)):
