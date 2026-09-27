@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+import struct
 from typing import Any
 
 from scapy.layers.dns import DNS, DNSQR, DNSRR
@@ -8,6 +9,10 @@ from scapy.layers.inet import IP, TCP, UDP
 from scapy.packet import Packet
 
 from .utils import decode_payload, text_value
+
+
+class IncompleteDNS(ValueError):
+    """Thông báo DNS thiếu byte để đọc đủ các phần đã khai báo."""
 
 
 def parse_packet(packet: Any, packet_id: int, timestamp: float | None, source: str) -> dict[str, Any]:
@@ -106,10 +111,11 @@ def _parse_transport(event: dict[str, Any], packet: Packet) -> None:
 
 
 def _parse_application(event: dict[str, Any], packet: Packet, payload: bytes) -> None:
-    """Nhận diện DNS, HTTP hoặc SMTP từ packet và phân tích nội dung."""
+    """Phân tích ứng dụng; kiểm tra DNS đủ dữ liệu trước khi lấy các trường."""
     transport = event["transport"] or {}
     ports = {transport.get("src_port"), transport.get("dst_port")}
     if 53 in ports and payload:
+        event['application'] = {'protocol': 'DNS'}
         wire = payload
         if transport.get('protocol') == 'TCP':
             size = int.from_bytes(wire[:2], 'big')
@@ -122,7 +128,12 @@ def _parse_application(event: dict[str, Any], packet: Packet, payload: bytes) ->
             event['status'] = 'partial'
             event['errors'].append('Thieu header DNS')
             return
-        event['application'] = _parse_dns(DNS(wire))
+        try:
+            event['application'] = _parse_dns(wire)
+        except IncompleteDNS as exc:
+            event['status'] = 'partial'
+            event['errors'].append(str(exc))
+            return
         event['status'] = 'ok'
         return
     text = decode_payload(payload)
@@ -230,21 +241,97 @@ def _parse_smtp(text: str) -> dict[str, Any]:
     }
 
 
-def _parse_dns(dns: DNS) -> dict[str, Any]:
-    """Đọc câu hỏi và câu trả lời DNS thành dữ liệu thông thường."""
+def _dns_name_end(wire: bytes, offset: int) -> int:
+    """Tìm cuối tên DNS, kiểm tra đủ byte và các con trỏ nén tên hợp lệ."""
+    end = None
+    visited = set()
+    expanded_length = 0
+    while True:
+        if offset >= len(wire):
+            raise IncompleteDNS('DNS thieu du lieu ten mien')
+        if offset in visited:
+            raise ValueError('Con tro ten DNS lap vong')
+        visited.add(offset)
+        length = wire[offset]
+        if length & 0xc0 == 0xc0:
+            if offset + 2 > len(wire):
+                raise IncompleteDNS('DNS thieu byte con tro ten mien')
+            target = ((length & 0x3f) << 8) | wire[offset + 1]
+            if target < 12 or target >= offset:
+                raise ValueError('Con tro ten DNS khong hop le')
+            if end is None:
+                end = offset + 2
+            offset = target
+            continue
+        if length & 0xc0:
+            raise ValueError('Do dai nhan DNS khong hop le')
+        offset += 1
+        expanded_length += length + 1
+        if expanded_length > 255:
+            raise ValueError('Ten DNS vuot qua 255 byte')
+        if offset + length > len(wire):
+            raise IncompleteDNS('DNS thieu byte trong ten mien')
+        if length == 0:
+            return end if end is not None else offset
+        offset += length
+
+
+def _validate_dns_wire(wire: bytes) -> None:
+    """Kiểm tra đủ câu hỏi và bản ghi ở cả bốn phần DNS từ byte gốc."""
+    if len(wire) < 12:
+        raise IncompleteDNS('Thieu header DNS')
+    counts = struct.unpack('!4H', wire[4:12])
+    offset = 12
+    for section, count in enumerate(counts):
+        for _ in range(count):
+            offset = _dns_name_end(wire, offset)
+            header_length = 4 if section == 0 else 10
+            if offset + header_length > len(wire):
+                raise IncompleteDNS('DNS thieu truong cua cau hoi hoac ban ghi')
+            if section == 0:
+                offset += header_length
+                continue
+            record_type = int.from_bytes(wire[offset:offset + 2], 'big')
+            data_length = int.from_bytes(wire[offset + 8:offset + 10], 'big')
+            offset += header_length
+            end = offset + data_length
+            if end > len(wire):
+                raise IncompleteDNS('DNS thieu du lieu ban ghi')
+            if record_type in (1, 28) and data_length != {1: 4, 28: 16}[record_type]:
+                raise ValueError('Do dai dia chi DNS khong hop le')
+            if record_type in (2, 5, 12):
+                if _dns_name_end(wire, offset) != end:
+                    raise ValueError('Do dai ten trong ban ghi DNS khong hop le')
+            offset = end
+
+
+def _dns_records(section: Any, expected: int) -> list[Packet]:
+    """Lấy đủ bản ghi Scapy đã đọc, hỗ trợ dạng danh sách và chuỗi packet."""
+    if isinstance(section, list):
+        records = list(section)
+    else:
+        records = []
+        current = section
+        for _ in range(expected):
+            if not isinstance(current, (DNSQR, DNSRR)):
+                break
+            records.append(current)
+            current = current.payload
+    if len(records) != expected:
+        raise IncompleteDNS('So ban ghi DNS doc duoc khong khop header')
+    return records
+
+
+def _parse_dns(wire: bytes) -> dict[str, Any]:
+    """Chỉ tạo kết quả DNS sau khi byte gốc và số bản ghi đã được kiểm tra."""
+    _validate_dns_wire(wire)
+    dns = DNS(wire)
     questions = []
-    current = dns.qd
-    for _ in range(int(dns.qdcount or 0)):
-        if not isinstance(current, DNSQR):
-            break
+    for current in _dns_records(dns.qd, int(dns.qdcount or 0)):
         questions.append({"name": text_value(current.qname), "type": current.qtype})
-        current = current.payload
 
     answers = []
-    current = dns.an
-    for _ in range(int(dns.ancount or 0)):
-        if not isinstance(current, DNSRR):
-            break
+    for current in _dns_records(dns.an, int(dns.ancount or 0)):
         answers.append(
             {
                 "name": text_value(current.rrname),
@@ -252,7 +339,6 @@ def _parse_dns(dns: DNS) -> dict[str, Any]:
                 "data": text_value(current.rdata),
             }
         )
-        current = current.payload
     return {
         "protocol": "DNS",
         "transaction_id": dns.id,
