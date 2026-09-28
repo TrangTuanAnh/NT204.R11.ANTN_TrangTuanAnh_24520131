@@ -1,0 +1,9 @@
+[
+  {
+    "application.protocol": "SMTP",
+    "application.message_type": "response",
+    "application.status_code": 250,
+    "application.message": "OK",
+    "status": "ok"
+  }
+]
