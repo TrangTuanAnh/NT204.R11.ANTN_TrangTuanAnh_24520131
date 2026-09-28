@@ -1,0 +1,20 @@
+[
+  {
+    "transport.protocol": "TCP",
+    "transport.flags": "S",
+    "transport.src_port": 50000,
+    "status": "unknown"
+  },
+  {
+    "transport.protocol": "TCP",
+    "transport.flags": "SA",
+    "transport.src_port": 80,
+    "status": "unknown"
+  },
+  {
+    "transport.protocol": "TCP",
+    "transport.flags": "A",
+    "transport.src_port": 50000,
+    "status": "unknown"
+  }
+]
