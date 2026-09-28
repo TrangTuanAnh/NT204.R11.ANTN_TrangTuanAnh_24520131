@@ -1,0 +1,11 @@
+[
+  {
+    "application.protocol": "HTTP",
+    "application.message_type": "response",
+    "application.status_code": 200,
+    "application.headers.Content-Type": "text/plain",
+    "application.headers.Content-Length": "2",
+    "application.body": "OK",
+    "status": "ok"
+  }
+]
