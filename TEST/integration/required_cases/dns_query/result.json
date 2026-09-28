@@ -1,0 +1,119 @@
+{
+  "case": "dns_query",
+  "requirement": "Phân tích domain và query type",
+  "run_at": "2026-09-27T22:00:39+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "9d82c0a8e871e51fef7574dd2e7d9b477ef850fa155897283b4b468694b87f5a",
+  "exit_code": 0,
+  "passed": true,
+  "error": null,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.packet_id",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.source",
+      "expected": "pcap",
+      "actual": "pcap",
+      "passed": true
+    },
+    {
+      "field": "packet_1.timestamp",
+      "expected": 1700000000,
+      "actual": 1700000000.0,
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.protocol",
+      "expected": "DNS",
+      "actual": "DNS",
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.transaction_id",
+      "expected": 123,
+      "actual": 123,
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.is_response",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.questions.0.name",
+      "expected": "example.test",
+      "actual": "example.test",
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.questions.0.type",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.status",
+      "expected": "ok",
+      "actual": "ok",
+      "passed": true
+    }
+  ],
+  "events": [
+    {
+      "packet_id": 1,
+      "timestamp": 1700000000.0,
+      "source": "pcap",
+      "captured_length": 72,
+      "network": {
+        "version": 4,
+        "src_ip": "192.0.2.10",
+        "dst_ip": "192.0.2.20",
+        "ttl": 64,
+        "protocol": 17,
+        "total_length": 58,
+        "fragment_offset": 0,
+        "more_fragments": false
+      },
+      "transport": {
+        "protocol": "UDP",
+        "src_port": 40000,
+        "dst_port": 53,
+        "length": 38,
+        "payload_length": 30
+      },
+      "application": {
+        "protocol": "DNS",
+        "transaction_id": 123,
+        "is_response": false,
+        "response_code": 0,
+        "questions": [
+          {
+            "name": "example.test",
+            "type": 1
+          }
+        ],
+        "answers": []
+      },
+      "status": "ok",
+      "errors": []
+    }
+  ]
+}
