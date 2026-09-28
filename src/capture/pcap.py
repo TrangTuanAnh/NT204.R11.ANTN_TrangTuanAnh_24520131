@@ -8,7 +8,11 @@ from scapy.utils import PcapReader
 
 
 def iter_pcap(path: str | Path) -> Iterator[tuple[Any, float]]:
-    """Đọc PCAP tuần tự để không giữ toàn bộ packet trong bộ nhớ."""
+    """Trả lần lượt từng packet và timestamp đã lưu trong file PCAP.
+
+    Kiểm tra độ dài mỗi record trước khi đọc; file bị cắt giữa record sẽ
+    phát sinh ValueError thay vì bị hiểu nhầm là đã đọc hết file.
+    """
     with PcapReader(str(path)) as reader:
         if not isinstance(reader, PcapReader):
             raise ValueError('Can file PCAP; PCAPNG chua duoc ho tro')

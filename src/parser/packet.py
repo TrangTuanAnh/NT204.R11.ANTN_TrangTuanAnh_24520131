@@ -16,7 +16,11 @@ class IncompleteDNS(ValueError):
 
 
 def parse_packet(packet: Any, packet_id: int, timestamp: float | None, source: str) -> dict[str, Any]:
-    """Đọc các lớp mạng của packet và tạo sự kiện chuẩn hóa kèm trạng thái."""
+    """Tạo một event IDS từ packet với thông tin mạng, vận chuyển và ứng dụng.
+
+    Giữ packet_id, timestamp và source do bên gọi cấp; trả status/errors để
+    gói không hỗ trợ hoặc lỗi phân tích vẫn có kết quả ghi ra file.
+    """
     event: dict[str, Any] = {
         "packet_id": packet_id,
         "timestamp": timestamp,
@@ -57,7 +61,7 @@ def parse_packet(packet: Any, packet_id: int, timestamp: float | None, source: s
 
 
 def _captured_length(packet: Any) -> int | None:
-    """Trả về số byte của packet, hoặc None nếu không đo được."""
+    """Đo độ dài packet; trả None nếu len() gây TypeError hoặc ValueError."""
     try:
         return len(packet)
     except (TypeError, ValueError):
@@ -111,7 +115,10 @@ def _parse_transport(event: dict[str, Any], packet: Packet) -> None:
 
 
 def _parse_application(event: dict[str, Any], packet: Packet, payload: bytes) -> None:
-    """Ưu tiên dấu hiệu HTTP/SMTP trên TCP, sau đó xét DNS theo port và dữ liệu."""
+    """Nhận diện và đọc HTTP/SMTP theo payload TCP, rồi xét DNS trên port 53.
+
+    Cập nhật application, status và errors trực tiếp trong event.
+    """
     transport = event["transport"] or {}
     ports = {transport.get("src_port"), transport.get("dst_port")}
     is_tcp = transport.get('protocol') == 'TCP'
@@ -240,7 +247,7 @@ def _parse_smtp(text: str) -> dict[str, Any]:
 
 
 def _dns_name_end(wire: bytes, offset: int) -> int:
-    """Tìm cuối tên DNS, kiểm tra đủ byte và các con trỏ nén tên hợp lệ."""
+    """Trả vị trí ngay sau tên DNS trên wire, kiểm tra nhãn và con trỏ nén."""
     end = None
     visited = set()
     expanded_length = 0
@@ -304,7 +311,7 @@ def _validate_dns_wire(wire: bytes) -> None:
 
 
 def _dns_records(section: Any, expected: int) -> list[Packet]:
-    """Lấy đủ bản ghi Scapy đã đọc, hỗ trợ dạng danh sách và chuỗi packet."""
+    """Lấy đúng số bản ghi Scapy; báo thiếu nếu ít hơn số header khai báo."""
     if isinstance(section, list):
         records = list(section)
     else:
@@ -321,7 +328,7 @@ def _dns_records(section: Any, expected: int) -> list[Packet]:
 
 
 def _parse_dns(wire: bytes) -> dict[str, Any]:
-    """Chỉ tạo kết quả DNS sau khi byte gốc và số bản ghi đã được kiểm tra."""
+    """Kiểm tra thông điệp DNS rồi trả ID, cờ phản hồi, câu hỏi và answer."""
     _validate_dns_wire(wire)
     dns = DNS(wire)
     questions = []

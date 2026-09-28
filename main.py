@@ -4,14 +4,16 @@ import argparse
 import sys
 from pathlib import Path
 
-from src.capture import capture_live, iter_pcap, list_interfaces
-from src.output import JsonLinesWriter
-from src.parser import parse_packet
+from src.capture.interfaces import list_interfaces
+from src.capture.live import capture_live
+from src.capture.pcap import iter_pcap
+from src.output.jsonl import JsonLinesWriter
+from src.parser.packet import parse_packet
 from scapy.error import Scapy_Exception
 
 
 def build_parser() -> argparse.ArgumentParser:
-    """Tạo bộ tham số dòng lệnh cho các chế độ chạy của chương trình."""
+    """Khai báo tham số chọn nguồn packet, giới hạn bắt live và file đầu ra."""
     parser = argparse.ArgumentParser(description="Packet capture va parser cho IDS")
     source = parser.add_mutually_exclusive_group()
     source.add_argument("--interface", help="Ten network interface can bat packet")
@@ -24,7 +26,11 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
-    """Chọn nguồn packet, gọi bộ phân tích và ghi kết quả ra file."""
+    """Điều phối capture/PCAP qua cùng parser và ghi từng event ra JSON Lines.
+
+    Trả 0 khi xử lý xong, 2 khi tham số không hợp lệ, 1 khi nguồn có lỗi,
+    hoặc 130 khi người dùng dừng bằng Ctrl+C.
+    """
     args = build_parser().parse_args(argv)
     if args.count < 0 or (args.timeout is not None and args.timeout <= 0):
         print('count >= 0 va timeout > 0', file=sys.stderr)
@@ -41,7 +47,7 @@ def main(argv: list[str] | None = None) -> int:
         with JsonLinesWriter(args.output) as writer:
             packet_id = 0
             def process_packet(packet, timestamp):
-                """Đánh số, phân tích và ghi một packet vào file kết quả."""
+                """Đánh số gói từ nguồn đã chọn rồi ghi ngay event đã phân tích."""
                 nonlocal packet_id
                 packet_id += 1
                 writer.write(parse_packet(packet, packet_id, timestamp, source))
