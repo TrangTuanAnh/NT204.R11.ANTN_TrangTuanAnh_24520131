@@ -1,0 +1,127 @@
+{
+  "case": "http_post",
+  "requirement": "Phân tích HTTP request có body",
+  "run_at": "2026-09-27T22:00:38+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "29665326142fb7a73974f22dfdcfe58a20a475556b2ddbc4c7aaa80cf62b7203",
+  "exit_code": 0,
+  "passed": true,
+  "error": null,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.packet_id",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.source",
+      "expected": "pcap",
+      "actual": "pcap",
+      "passed": true
+    },
+    {
+      "field": "packet_1.timestamp",
+      "expected": 1700000000,
+      "actual": 1700000000.0,
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.protocol",
+      "expected": "HTTP",
+      "actual": "HTTP",
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.message_type",
+      "expected": "request",
+      "actual": "request",
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.method",
+      "expected": "POST",
+      "actual": "POST",
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.uri",
+      "expected": "/submit",
+      "actual": "/submit",
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.headers.Content-Length",
+      "expected": "5",
+      "actual": "5",
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.body",
+      "expected": "hello",
+      "actual": "hello",
+      "passed": true
+    },
+    {
+      "field": "packet_1.status",
+      "expected": "ok",
+      "actual": "ok",
+      "passed": true
+    }
+  ],
+  "events": [
+    {
+      "packet_id": 1,
+      "timestamp": 1700000000.0,
+      "source": "pcap",
+      "captured_length": 123,
+      "network": {
+        "version": 4,
+        "src_ip": "192.0.2.10",
+        "dst_ip": "192.0.2.20",
+        "ttl": 64,
+        "protocol": 6,
+        "total_length": 109,
+        "fragment_offset": 0,
+        "more_fragments": false
+      },
+      "transport": {
+        "protocol": "TCP",
+        "src_port": 40000,
+        "dst_port": 80,
+        "sequence": 0,
+        "acknowledgment": 0,
+        "flags": "S",
+        "window": 8192,
+        "payload_length": 69
+      },
+      "application": {
+        "protocol": "HTTP",
+        "message_type": "request",
+        "method": "POST",
+        "uri": "/submit",
+        "version": "HTTP/1.1",
+        "headers": {
+          "Host": "example.test",
+          "Content-Length": "5"
+        },
+        "body": "hello"
+      },
+      "status": "ok",
+      "errors": []
+    }
+  ]
+}
