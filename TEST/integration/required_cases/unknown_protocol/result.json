@@ -1,0 +1,97 @@
+{
+  "case": "unknown_protocol",
+  "requirement": "Giao thức không hỗ trợ không làm chương trình crash",
+  "run_at": "2026-09-27T22:00:42+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "2d6f8c3dd06ca446cf89d3071669295fc0392b3e2bf26e0a0d19962538f35d5a",
+  "exit_code": 0,
+  "passed": true,
+  "error": null,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.packet_id",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.source",
+      "expected": "pcap",
+      "actual": "pcap",
+      "passed": true
+    },
+    {
+      "field": "packet_1.timestamp",
+      "expected": 1700000000,
+      "actual": 1700000000.0,
+      "passed": true
+    },
+    {
+      "field": "packet_1.network.protocol",
+      "expected": 99,
+      "actual": 99,
+      "passed": true
+    },
+    {
+      "field": "packet_1.transport",
+      "expected": null,
+      "actual": null,
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.protocol",
+      "expected": null,
+      "actual": null,
+      "passed": true
+    },
+    {
+      "field": "packet_1.status",
+      "expected": "unknown",
+      "actual": "unknown",
+      "passed": true
+    },
+    {
+      "field": "packet_1.errors",
+      "expected": [],
+      "actual": [],
+      "passed": true
+    }
+  ],
+  "events": [
+    {
+      "packet_id": 1,
+      "timestamp": 1700000000.0,
+      "source": "pcap",
+      "captured_length": 36,
+      "network": {
+        "version": 4,
+        "src_ip": "192.0.2.10",
+        "dst_ip": "192.0.2.20",
+        "ttl": 64,
+        "protocol": 99,
+        "total_length": 22,
+        "fragment_offset": 0,
+        "more_fragments": false
+      },
+      "transport": null,
+      "application": {
+        "protocol": null
+      },
+      "status": "unknown",
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "network.protocol": 99,
+    "transport": null,
+    "application.protocol": null,
+    "status": "unknown",
+    "errors": []
+  }
+]
