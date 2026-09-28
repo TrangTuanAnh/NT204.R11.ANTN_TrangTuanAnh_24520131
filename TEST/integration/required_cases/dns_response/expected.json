@@ -1,0 +1,11 @@
+[
+  {
+    "application.protocol": "DNS",
+    "application.transaction_id": 123,
+    "application.is_response": true,
+    "application.answers.0.name": "example.test",
+    "application.answers.0.type": 1,
+    "application.answers.0.data": "192.0.2.1",
+    "status": "ok"
+  }
+]

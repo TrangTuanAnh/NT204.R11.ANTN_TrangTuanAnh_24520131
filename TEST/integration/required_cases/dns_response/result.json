@@ -1,0 +1,131 @@
+{
+  "case": "dns_response",
+  "requirement": "Phân tích ít nhất một answer",
+  "run_at": "2026-09-27T22:00:40+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "2d7d21ffffddf1d138751479abac447f9031dfad99a329d49aa97ec92e72d401",
+  "exit_code": 0,
+  "passed": true,
+  "error": null,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.packet_id",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.source",
+      "expected": "pcap",
+      "actual": "pcap",
+      "passed": true
+    },
+    {
+      "field": "packet_1.timestamp",
+      "expected": 1700000000,
+      "actual": 1700000000.0,
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.protocol",
+      "expected": "DNS",
+      "actual": "DNS",
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.transaction_id",
+      "expected": 123,
+      "actual": 123,
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.is_response",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.answers.0.name",
+      "expected": "example.test",
+      "actual": "example.test",
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.answers.0.type",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.answers.0.data",
+      "expected": "192.0.2.1",
+      "actual": "192.0.2.1",
+      "passed": true
+    },
+    {
+      "field": "packet_1.status",
+      "expected": "ok",
+      "actual": "ok",
+      "passed": true
+    }
+  ],
+  "events": [
+    {
+      "packet_id": 1,
+      "timestamp": 1700000000.0,
+      "source": "pcap",
+      "captured_length": 100,
+      "network": {
+        "version": 4,
+        "src_ip": "192.0.2.20",
+        "dst_ip": "192.0.2.10",
+        "ttl": 64,
+        "protocol": 17,
+        "total_length": 86,
+        "fragment_offset": 0,
+        "more_fragments": false
+      },
+      "transport": {
+        "protocol": "UDP",
+        "src_port": 53,
+        "dst_port": 40000,
+        "length": 66,
+        "payload_length": 58
+      },
+      "application": {
+        "protocol": "DNS",
+        "transaction_id": 123,
+        "is_response": true,
+        "response_code": 0,
+        "questions": [
+          {
+            "name": "example.test",
+            "type": 1
+          }
+        ],
+        "answers": [
+          {
+            "name": "example.test",
+            "type": 1,
+            "data": "192.0.2.1"
+          }
+        ]
+      },
+      "status": "ok",
+      "errors": []
+    }
+  ]
+}
