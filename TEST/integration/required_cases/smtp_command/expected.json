@@ -1,0 +1,30 @@
+[
+  {
+    "application.protocol": "SMTP",
+    "application.message_type": "command",
+    "application.command": "HELO",
+    "application.argument": "example.test",
+    "status": "ok"
+  },
+  {
+    "application.protocol": "SMTP",
+    "application.message_type": "command",
+    "application.command": "EHLO",
+    "application.argument": "example.test",
+    "status": "ok"
+  },
+  {
+    "application.protocol": "SMTP",
+    "application.message_type": "command",
+    "application.command": "MAIL",
+    "application.argument": "FROM:<sender@example.test>",
+    "status": "ok"
+  },
+  {
+    "application.protocol": "SMTP",
+    "application.message_type": "command",
+    "application.command": "RCPT",
+    "application.argument": "TO:<recipient@example.test>",
+    "status": "ok"
+  }
+]

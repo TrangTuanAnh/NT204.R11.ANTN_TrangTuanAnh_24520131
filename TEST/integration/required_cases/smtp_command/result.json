@@ -1,0 +1,355 @@
+{
+  "case": "smtp_command",
+  "requirement": "Phân tích HELO/EHLO, MAIL FROM hoặc RCPT TO",
+  "run_at": "2026-09-27T22:00:41+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "7fce1c3e6d37158a0589c2878823e9a7282a6a7927f3ec902fe0909bfe235752",
+  "exit_code": 0,
+  "passed": true,
+  "error": null,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "field": "packet_1.packet_id",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.source",
+      "expected": "pcap",
+      "actual": "pcap",
+      "passed": true
+    },
+    {
+      "field": "packet_1.timestamp",
+      "expected": 1700000000,
+      "actual": 1700000000.0,
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.protocol",
+      "expected": "SMTP",
+      "actual": "SMTP",
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.message_type",
+      "expected": "command",
+      "actual": "command",
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.command",
+      "expected": "HELO",
+      "actual": "HELO",
+      "passed": true
+    },
+    {
+      "field": "packet_1.application.argument",
+      "expected": "example.test",
+      "actual": "example.test",
+      "passed": true
+    },
+    {
+      "field": "packet_1.status",
+      "expected": "ok",
+      "actual": "ok",
+      "passed": true
+    },
+    {
+      "field": "packet_2.packet_id",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "packet_2.source",
+      "expected": "pcap",
+      "actual": "pcap",
+      "passed": true
+    },
+    {
+      "field": "packet_2.timestamp",
+      "expected": 1700000001,
+      "actual": 1700000001.0,
+      "passed": true
+    },
+    {
+      "field": "packet_2.application.protocol",
+      "expected": "SMTP",
+      "actual": "SMTP",
+      "passed": true
+    },
+    {
+      "field": "packet_2.application.message_type",
+      "expected": "command",
+      "actual": "command",
+      "passed": true
+    },
+    {
+      "field": "packet_2.application.command",
+      "expected": "EHLO",
+      "actual": "EHLO",
+      "passed": true
+    },
+    {
+      "field": "packet_2.application.argument",
+      "expected": "example.test",
+      "actual": "example.test",
+      "passed": true
+    },
+    {
+      "field": "packet_2.status",
+      "expected": "ok",
+      "actual": "ok",
+      "passed": true
+    },
+    {
+      "field": "packet_3.packet_id",
+      "expected": 3,
+      "actual": 3,
+      "passed": true
+    },
+    {
+      "field": "packet_3.source",
+      "expected": "pcap",
+      "actual": "pcap",
+      "passed": true
+    },
+    {
+      "field": "packet_3.timestamp",
+      "expected": 1700000002,
+      "actual": 1700000002.0,
+      "passed": true
+    },
+    {
+      "field": "packet_3.application.protocol",
+      "expected": "SMTP",
+      "actual": "SMTP",
+      "passed": true
+    },
+    {
+      "field": "packet_3.application.message_type",
+      "expected": "command",
+      "actual": "command",
+      "passed": true
+    },
+    {
+      "field": "packet_3.application.command",
+      "expected": "MAIL",
+      "actual": "MAIL",
+      "passed": true
+    },
+    {
+      "field": "packet_3.application.argument",
+      "expected": "FROM:<sender@example.test>",
+      "actual": "FROM:<sender@example.test>",
+      "passed": true
+    },
+    {
+      "field": "packet_3.status",
+      "expected": "ok",
+      "actual": "ok",
+      "passed": true
+    },
+    {
+      "field": "packet_4.packet_id",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "field": "packet_4.source",
+      "expected": "pcap",
+      "actual": "pcap",
+      "passed": true
+    },
+    {
+      "field": "packet_4.timestamp",
+      "expected": 1700000003,
+      "actual": 1700000003.0,
+      "passed": true
+    },
+    {
+      "field": "packet_4.application.protocol",
+      "expected": "SMTP",
+      "actual": "SMTP",
+      "passed": true
+    },
+    {
+      "field": "packet_4.application.message_type",
+      "expected": "command",
+      "actual": "command",
+      "passed": true
+    },
+    {
+      "field": "packet_4.application.command",
+      "expected": "RCPT",
+      "actual": "RCPT",
+      "passed": true
+    },
+    {
+      "field": "packet_4.application.argument",
+      "expected": "TO:<recipient@example.test>",
+      "actual": "TO:<recipient@example.test>",
+      "passed": true
+    },
+    {
+      "field": "packet_4.status",
+      "expected": "ok",
+      "actual": "ok",
+      "passed": true
+    }
+  ],
+  "events": [
+    {
+      "packet_id": 1,
+      "timestamp": 1700000000.0,
+      "source": "pcap",
+      "captured_length": 73,
+      "network": {
+        "version": 4,
+        "src_ip": "192.0.2.10",
+        "dst_ip": "192.0.2.20",
+        "ttl": 64,
+        "protocol": 6,
+        "total_length": 59,
+        "fragment_offset": 0,
+        "more_fragments": false
+      },
+      "transport": {
+        "protocol": "TCP",
+        "src_port": 40000,
+        "dst_port": 25,
+        "sequence": 0,
+        "acknowledgment": 0,
+        "flags": "S",
+        "window": 8192,
+        "payload_length": 19
+      },
+      "application": {
+        "protocol": "SMTP",
+        "message_type": "command",
+        "command": "HELO",
+        "argument": "example.test"
+      },
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "packet_id": 2,
+      "timestamp": 1700000001.0,
+      "source": "pcap",
+      "captured_length": 73,
+      "network": {
+        "version": 4,
+        "src_ip": "192.0.2.10",
+        "dst_ip": "192.0.2.20",
+        "ttl": 64,
+        "protocol": 6,
+        "total_length": 59,
+        "fragment_offset": 0,
+        "more_fragments": false
+      },
+      "transport": {
+        "protocol": "TCP",
+        "src_port": 40000,
+        "dst_port": 25,
+        "sequence": 0,
+        "acknowledgment": 0,
+        "flags": "S",
+        "window": 8192,
+        "payload_length": 19
+      },
+      "application": {
+        "protocol": "SMTP",
+        "message_type": "command",
+        "command": "EHLO",
+        "argument": "example.test"
+      },
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "packet_id": 3,
+      "timestamp": 1700000002.0,
+      "source": "pcap",
+      "captured_length": 87,
+      "network": {
+        "version": 4,
+        "src_ip": "192.0.2.10",
+        "dst_ip": "192.0.2.20",
+        "ttl": 64,
+        "protocol": 6,
+        "total_length": 73,
+        "fragment_offset": 0,
+        "more_fragments": false
+      },
+      "transport": {
+        "protocol": "TCP",
+        "src_port": 40000,
+        "dst_port": 25,
+        "sequence": 0,
+        "acknowledgment": 0,
+        "flags": "S",
+        "window": 8192,
+        "payload_length": 33
+      },
+      "application": {
+        "protocol": "SMTP",
+        "message_type": "command",
+        "command": "MAIL",
+        "argument": "FROM:<sender@example.test>"
+      },
+      "status": "ok",
+      "errors": []
+    },
+    {
+      "packet_id": 4,
+      "timestamp": 1700000003.0,
+      "source": "pcap",
+      "captured_length": 88,
+      "network": {
+        "version": 4,
+        "src_ip": "192.0.2.10",
+        "dst_ip": "192.0.2.20",
+        "ttl": 64,
+        "protocol": 6,
+        "total_length": 74,
+        "fragment_offset": 0,
+        "more_fragments": false
+      },
+      "transport": {
+        "protocol": "TCP",
+        "src_port": 40000,
+        "dst_port": 25,
+        "sequence": 0,
+        "acknowledgment": 0,
+        "flags": "S",
+        "window": 8192,
+        "payload_length": 34
+      },
+      "application": {
+        "protocol": "SMTP",
+        "message_type": "command",
+        "command": "RCPT",
+        "argument": "TO:<recipient@example.test>"
+      },
+      "status": "ok",
+      "errors": []
+    }
+  ]
+}
