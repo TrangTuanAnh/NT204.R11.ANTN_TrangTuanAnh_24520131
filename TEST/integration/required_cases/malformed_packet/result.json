@@ -1,0 +1,139 @@
+{
+  "case": "malformed_packet",
+  "requirement": "Packet không hợp lệ không làm chương trình crash",
+  "run_at": "2026-09-27T22:00:43+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "83183cf1272c52021080e78b61d75bea19000d9f488b01a49f2937896ed103e6",
+  "exit_code": 0,
+  "passed": true,
+  "error": null,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "packet_1.packet_id",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.source",
+      "expected": "pcap",
+      "actual": "pcap",
+      "passed": true
+    },
+    {
+      "field": "packet_1.timestamp",
+      "expected": 1700000000,
+      "actual": 1700000000.0,
+      "passed": true
+    },
+    {
+      "field": "packet_1.status",
+      "expected": "malformed",
+      "actual": "malformed",
+      "passed": true
+    },
+    {
+      "field": "packet_1.errors_nonempty",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "field": "packet_2.packet_id",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "packet_2.source",
+      "expected": "pcap",
+      "actual": "pcap",
+      "passed": true
+    },
+    {
+      "field": "packet_2.timestamp",
+      "expected": 1700000001,
+      "actual": 1700000001.0,
+      "passed": true
+    },
+    {
+      "field": "packet_2.transport.protocol",
+      "expected": "TCP",
+      "actual": "TCP",
+      "passed": true
+    },
+    {
+      "field": "packet_2.transport.flags",
+      "expected": "S",
+      "actual": "S",
+      "passed": true
+    },
+    {
+      "field": "packet_2.status",
+      "expected": "unknown",
+      "actual": "unknown",
+      "passed": true
+    }
+  ],
+  "events": [
+    {
+      "packet_id": 1,
+      "timestamp": 1700000000.0,
+      "source": "pcap",
+      "captured_length": 54,
+      "network": null,
+      "transport": null,
+      "application": {
+        "protocol": null
+      },
+      "status": "malformed",
+      "errors": [
+        "không thể phân tích packet: Header IPv4 khong hop le"
+      ]
+    },
+    {
+      "packet_id": 2,
+      "timestamp": 1700000001.0,
+      "source": "pcap",
+      "captured_length": 54,
+      "network": {
+        "version": 4,
+        "src_ip": "192.0.2.10",
+        "dst_ip": "192.0.2.20",
+        "ttl": 64,
+        "protocol": 6,
+        "total_length": 40,
+        "fragment_offset": 0,
+        "more_fragments": false
+      },
+      "transport": {
+        "protocol": "TCP",
+        "src_port": 40000,
+        "dst_port": 80,
+        "sequence": 0,
+        "acknowledgment": 0,
+        "flags": "S",
+        "window": 8192,
+        "payload_length": 0
+      },
+      "application": {
+        "protocol": null
+      },
+      "status": "unknown",
+      "errors": []
+    }
+  ]
+}

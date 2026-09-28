@@ -1,0 +1,11 @@
+[
+  {
+    "status": "malformed",
+    "errors_nonempty": true
+  },
+  {
+    "transport.protocol": "TCP",
+    "transport.flags": "S",
+    "status": "unknown"
+  }
+]
