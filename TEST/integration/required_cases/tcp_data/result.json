@@ -1,0 +1,112 @@
+{
+  "case": "tcp_data",
+  "requirement": "Phân tích TCP packet có payload",
+  "run_at": "2026-09-27T22:00:36+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "281441010cfa1a287a6d07118624a1890e29579724714222070ed7aa26899dc6",
+  "exit_code": 0,
+  "passed": true,
+  "error": null,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.packet_id",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.source",
+      "expected": "pcap",
+      "actual": "pcap",
+      "passed": true
+    },
+    {
+      "field": "packet_1.timestamp",
+      "expected": 1700000000,
+      "actual": 1700000000.0,
+      "passed": true
+    },
+    {
+      "field": "packet_1.transport.protocol",
+      "expected": "TCP",
+      "actual": "TCP",
+      "passed": true
+    },
+    {
+      "field": "packet_1.transport.flags",
+      "expected": "PA",
+      "actual": "PA",
+      "passed": true
+    },
+    {
+      "field": "packet_1.transport.sequence",
+      "expected": 42,
+      "actual": 42,
+      "passed": true
+    },
+    {
+      "field": "packet_1.transport.acknowledgment",
+      "expected": 7,
+      "actual": 7,
+      "passed": true
+    },
+    {
+      "field": "packet_1.transport.payload_length",
+      "expected": 5,
+      "actual": 5,
+      "passed": true
+    },
+    {
+      "field": "packet_1.status",
+      "expected": "unknown",
+      "actual": "unknown",
+      "passed": true
+    }
+  ],
+  "events": [
+    {
+      "packet_id": 1,
+      "timestamp": 1700000000.0,
+      "source": "pcap",
+      "captured_length": 59,
+      "network": {
+        "version": 4,
+        "src_ip": "192.0.2.10",
+        "dst_ip": "192.0.2.20",
+        "ttl": 64,
+        "protocol": 6,
+        "total_length": 45,
+        "fragment_offset": 0,
+        "more_fragments": false
+      },
+      "transport": {
+        "protocol": "TCP",
+        "src_port": 40000,
+        "dst_port": 9000,
+        "sequence": 42,
+        "acknowledgment": 7,
+        "flags": "PA",
+        "window": 8192,
+        "payload_length": 5
+      },
+      "application": {
+        "protocol": null
+      },
+      "status": "unknown",
+      "errors": []
+    }
+  ]
+}
