@@ -1,0 +1,109 @@
+{
+  "case": "udp",
+  "requirement": "Phân tích UDP packet",
+  "run_at": "2026-09-27T22:00:37+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "938824ff90c1285d34ee74c6ab6891e9c16492ba5858380b32846132489464ff",
+  "exit_code": 0,
+  "passed": true,
+  "error": null,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.packet_id",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "packet_1.source",
+      "expected": "pcap",
+      "actual": "pcap",
+      "passed": true
+    },
+    {
+      "field": "packet_1.timestamp",
+      "expected": 1700000000,
+      "actual": 1700000000.0,
+      "passed": true
+    },
+    {
+      "field": "packet_1.transport.protocol",
+      "expected": "UDP",
+      "actual": "UDP",
+      "passed": true
+    },
+    {
+      "field": "packet_1.transport.src_port",
+      "expected": 40000,
+      "actual": 40000,
+      "passed": true
+    },
+    {
+      "field": "packet_1.transport.dst_port",
+      "expected": 9000,
+      "actual": 9000,
+      "passed": true
+    },
+    {
+      "field": "packet_1.transport.length",
+      "expected": 13,
+      "actual": 13,
+      "passed": true
+    },
+    {
+      "field": "packet_1.transport.payload_length",
+      "expected": 5,
+      "actual": 5,
+      "passed": true
+    },
+    {
+      "field": "packet_1.status",
+      "expected": "unknown",
+      "actual": "unknown",
+      "passed": true
+    }
+  ],
+  "events": [
+    {
+      "packet_id": 1,
+      "timestamp": 1700000000.0,
+      "source": "pcap",
+      "captured_length": 47,
+      "network": {
+        "version": 4,
+        "src_ip": "192.0.2.10",
+        "dst_ip": "192.0.2.20",
+        "ttl": 64,
+        "protocol": 17,
+        "total_length": 33,
+        "fragment_offset": 0,
+        "more_fragments": false
+      },
+      "transport": {
+        "protocol": "UDP",
+        "src_port": 40000,
+        "dst_port": 9000,
+        "length": 13,
+        "payload_length": 5
+      },
+      "application": {
+        "protocol": null
+      },
+      "status": "unknown",
+      "errors": []
+    }
+  ]
+}
