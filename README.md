@@ -137,15 +137,7 @@ Get-Content output/dns_response_demo.jsonl | ConvertFrom-Json | Select-Object -E
 
 ## 5. Tổ chức mã nguồn và luồng xử lý
 
-```mermaid
-flowchart LR
-  live["Live interface"] --> capture["capture_live"]
-  pcap["File PCAP"] --> reader["iter_pcap"]
-  capture --> process["process_packet (main.py)"]
-  reader --> process
-  process --> parser["parse_packet"]
-  parser --> output["JSON Lines (.jsonl)"]
-```
+![Luồng xử lý packet từ live interface hoặc file PCAP đến JSON Lines](images/README/image.png)
 
 > Hai nguồn dùng chung `process_packet` trong `main.py` để đánh số gói, gọi parser và ghi kết quả. Trong parser, dữ liệu đi theo thứ tự **IPv4 -> TCP/UDP -> nhận diện ứng dụng -> phân tích HTTP/DNS/SMTP -> event chuẩn hóa**.
 
