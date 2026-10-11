@@ -1,0 +1,196 @@
+{
+  "id": "T06",
+  "case": "t06_missing_optional_fields",
+  "requirement": "xử lý null/[] nhất quán, không exception",
+  "run_at": "2026-10-11T11:41:17+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "90f7eabc37d2b16f029849d304213c2d5fd48b232b46b111a6997921233f7a62",
+  "command": "python main.py --events TEST/integration/required_cases/t06_missing_optional_fields/input.jsonl --config TEST/integration/required_cases/t06_missing_optional_fields/config.json --output output/t06_events.jsonl --flow-output output/t06_flows.jsonl",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 27,
+  "total_checks": 27,
+  "event_count": 4,
+  "flow_count": 4,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "field": "flow_count",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "field": "events.0.captured_length",
+      "expected": null,
+      "actual": null,
+      "passed": true
+    },
+    {
+      "field": "events.0.errors",
+      "expected": [],
+      "actual": [],
+      "passed": true
+    },
+    {
+      "field": "events.0.status",
+      "expected": null,
+      "actual": null,
+      "passed": true
+    },
+    {
+      "field": "events.0.application",
+      "expected": {
+        "protocol": null
+      },
+      "actual": {
+        "protocol": null
+      },
+      "passed": true
+    },
+    {
+      "field": "events.0.network.ttl",
+      "expected": null,
+      "actual": null,
+      "passed": true
+    },
+    {
+      "field": "events.0.transport.window",
+      "expected": null,
+      "actual": null,
+      "passed": true
+    },
+    {
+      "field": "events.0.preprocess_status",
+      "expected": "partial",
+      "actual": "partial",
+      "passed": true
+    },
+    {
+      "field": "events.0.processing_action",
+      "expected": "process",
+      "actual": "process",
+      "passed": true
+    },
+    {
+      "field": "events.0.reason",
+      "expected": [
+        "Thiếu trường không bắt buộc, đã điền null: captured_length, network.ttl, network.fragment_offset, network.more_fragments, transport.sequence, transport.acknowledgment, transport.window"
+      ],
+      "actual": [
+        "Thiếu trường không bắt buộc, đã điền null: captured_length, network.ttl, network.fragment_offset, network.more_fragments, transport.sequence, transport.acknowledgment, transport.window"
+      ],
+      "passed": true
+    },
+    {
+      "field": "flow_of_event.0.byte_count",
+      "expected": 40,
+      "actual": 40,
+      "passed": true
+    },
+    {
+      "field": "events.1.application.answers",
+      "expected": [],
+      "actual": [],
+      "passed": true
+    },
+    {
+      "field": "events.1.application.transaction_id",
+      "expected": null,
+      "actual": null,
+      "passed": true
+    },
+    {
+      "field": "events.1.preprocess_status",
+      "expected": "valid",
+      "actual": "valid",
+      "passed": true
+    },
+    {
+      "field": "events.2.application.headers",
+      "expected": {},
+      "actual": {},
+      "passed": true
+    },
+    {
+      "field": "events.2.application.body",
+      "expected": null,
+      "actual": null,
+      "passed": true
+    },
+    {
+      "field": "events.2.application.version",
+      "expected": null,
+      "actual": null,
+      "passed": true
+    },
+    {
+      "field": "events.2.decoded.uri",
+      "expected": "/",
+      "actual": "/",
+      "passed": true
+    },
+    {
+      "field": "events.3.packet_id",
+      "expected": null,
+      "actual": null,
+      "passed": true
+    },
+    {
+      "field": "events.3.source",
+      "expected": null,
+      "actual": null,
+      "passed": true
+    },
+    {
+      "field": "events.3.preprocess_status",
+      "expected": "valid",
+      "actual": "valid",
+      "passed": true
+    },
+    {
+      "field": "same_flow [0]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "d708470a798cb5d1"
+      ],
+      "passed": true
+    },
+    {
+      "field": "same_flow [1]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "0858ea4107ded0d8"
+      ],
+      "passed": true
+    },
+    {
+      "field": "same_flow [2]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "4b4ec2b11a93bdec"
+      ],
+      "passed": true
+    },
+    {
+      "field": "same_flow [3]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "001c7dacb70887ac"
+      ],
+      "passed": true
+    }
+  ]
+}

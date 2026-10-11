@@ -1,0 +1,49 @@
+{
+  "id": "T06",
+  "case": "t06_missing_optional_fields",
+  "requirement": "xử lý null/[] nhất quán, không exception",
+  "checks": {
+    "exit_code": 0,
+    "event_count": 4,
+    "flow_count": 4,
+    "events.0.captured_length": null,
+    "events.0.errors": [],
+    "events.0.status": null,
+    "events.0.application": {
+      "protocol": null
+    },
+    "events.0.network.ttl": null,
+    "events.0.transport.window": null,
+    "events.0.preprocess_status": "partial",
+    "events.0.processing_action": "process",
+    "events.0.reason": [
+      "Thiếu trường không bắt buộc, đã điền null: captured_length, network.ttl, network.fragment_offset, network.more_fragments, transport.sequence, transport.acknowledgment, transport.window"
+    ],
+    "flow_of_event.0.byte_count": 40,
+    "events.1.application.answers": [],
+    "events.1.application.transaction_id": null,
+    "events.1.preprocess_status": "valid",
+    "events.2.application.headers": {},
+    "events.2.application.body": null,
+    "events.2.application.version": null,
+    "events.2.decoded.uri": "/",
+    "events.3.packet_id": null,
+    "events.3.source": null,
+    "events.3.preprocess_status": "valid"
+  },
+  "same_flow": [
+    [
+      0
+    ],
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ]
+  ],
+  "different_flow": []
+}
