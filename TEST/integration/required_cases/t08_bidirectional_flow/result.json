@@ -1,0 +1,139 @@
+{
+  "id": "T08",
+  "case": "t08_bidirectional_flow",
+  "requirement": "cùng flow_id; đúng direction",
+  "run_at": "2026-10-11T11:41:19+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "087f8abc4d30f63cea21a94fa416ee0715d2cd811ea843c65ea117ad58b3e112",
+  "command": "python main.py --pcap TEST/integration/required_cases/t08_bidirectional_flow/input.pcap --config TEST/integration/required_cases/t08_bidirectional_flow/config.json --output output/t08_events.jsonl --flow-output output/t08_flows.jsonl",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 17,
+  "total_checks": 17,
+  "event_count": 6,
+  "flow_count": 1,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 6,
+      "actual": 6,
+      "passed": true
+    },
+    {
+      "field": "flow_count",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "events.0.direction",
+      "expected": "forward",
+      "actual": "forward",
+      "passed": true
+    },
+    {
+      "field": "events.1.direction",
+      "expected": "backward",
+      "actual": "backward",
+      "passed": true
+    },
+    {
+      "field": "events.2.direction",
+      "expected": "forward",
+      "actual": "forward",
+      "passed": true
+    },
+    {
+      "field": "events.3.direction",
+      "expected": "forward",
+      "actual": "forward",
+      "passed": true
+    },
+    {
+      "field": "events.4.direction",
+      "expected": "backward",
+      "actual": "backward",
+      "passed": true
+    },
+    {
+      "field": "events.5.direction",
+      "expected": "forward",
+      "actual": "forward",
+      "passed": true
+    },
+    {
+      "field": "flows.0.endpoint_a",
+      "expected": {
+        "ip": "198.51.100.200",
+        "port": 51000
+      },
+      "actual": {
+        "ip": "198.51.100.200",
+        "port": 51000
+      },
+      "passed": true
+    },
+    {
+      "field": "flows.0.endpoint_b",
+      "expected": {
+        "ip": "192.0.2.20",
+        "port": 80
+      },
+      "actual": {
+        "ip": "192.0.2.20",
+        "port": 80
+      },
+      "passed": true
+    },
+    {
+      "field": "flows.0.forward_packet_count",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "field": "flows.0.backward_packet_count",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "flows.0.forward_byte_count",
+      "expected": 254,
+      "actual": 254,
+      "passed": true
+    },
+    {
+      "field": "flows.0.backward_byte_count",
+      "expected": 174,
+      "actual": 174,
+      "passed": true
+    },
+    {
+      "field": "flows.0.application_protocol",
+      "expected": "HTTP",
+      "actual": "HTTP",
+      "passed": true
+    },
+    {
+      "field": "same_flow [0, 1, 2, 3, 4, 5]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "f73f1d3b205d6fb3",
+        "f73f1d3b205d6fb3",
+        "f73f1d3b205d6fb3",
+        "f73f1d3b205d6fb3",
+        "f73f1d3b205d6fb3",
+        "f73f1d3b205d6fb3"
+      ],
+      "passed": true
+    }
+  ]
+}

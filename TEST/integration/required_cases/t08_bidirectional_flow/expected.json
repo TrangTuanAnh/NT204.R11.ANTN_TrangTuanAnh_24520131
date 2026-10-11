@@ -1,0 +1,40 @@
+{
+  "id": "T08",
+  "case": "t08_bidirectional_flow",
+  "requirement": "cùng flow_id; đúng direction",
+  "checks": {
+    "exit_code": 0,
+    "event_count": 6,
+    "flow_count": 1,
+    "events.0.direction": "forward",
+    "events.1.direction": "backward",
+    "events.2.direction": "forward",
+    "events.3.direction": "forward",
+    "events.4.direction": "backward",
+    "events.5.direction": "forward",
+    "flows.0.endpoint_a": {
+      "ip": "198.51.100.200",
+      "port": 51000
+    },
+    "flows.0.endpoint_b": {
+      "ip": "192.0.2.20",
+      "port": 80
+    },
+    "flows.0.forward_packet_count": 4,
+    "flows.0.backward_packet_count": 2,
+    "flows.0.forward_byte_count": 254,
+    "flows.0.backward_byte_count": 174,
+    "flows.0.application_protocol": "HTTP"
+  },
+  "same_flow": [
+    [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  ],
+  "different_flow": []
+}
