@@ -1,0 +1,11 @@
+{
+  "tcp_idle_timeout": 120.0,
+  "udp_idle_timeout": 30.0,
+  "live_check_interval": 1.0,
+  "max_active_flows": 100000,
+  "max_payload_bytes": 65536,
+  "max_mime_parts": 50,
+  "max_event_bytes": 1048576,
+  "drop_invalid_events": false,
+  "drop_unsupported_events": false
+}

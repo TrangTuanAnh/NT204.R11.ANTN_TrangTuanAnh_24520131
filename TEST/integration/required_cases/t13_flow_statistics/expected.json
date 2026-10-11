@@ -1,0 +1,42 @@
+{
+  "id": "T13",
+  "case": "t13_flow_statistics",
+  "requirement": "packet/byte/flag counters và duration đúng",
+  "checks": {
+    "exit_code": 0,
+    "event_count": 10,
+    "flow_count": 1,
+    "flows.0.packet_count": 10,
+    "flows.0.byte_count": 767,
+    "flows.0.forward_packet_count": 6,
+    "flows.0.forward_byte_count": 479,
+    "flows.0.backward_packet_count": 4,
+    "flows.0.backward_byte_count": 288,
+    "flows.0.SYN_count": 2,
+    "flows.0.ACK_count": 9,
+    "flows.0.FIN_count": 2,
+    "flows.0.RST_count": 0,
+    "flows.0.start_time": 1700000000.0,
+    "flows.0.last_seen": 1700000000.32,
+    "flows.0.duration": 0.32,
+    "flows.0.state": "CLOSED",
+    "flows.0.handshake_observed": true,
+    "flows.0.application_protocol": "HTTP",
+    "flows.0.end_reason": "tcp_closed"
+  },
+  "same_flow": [
+    [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  ],
+  "different_flow": []
+}
