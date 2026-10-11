@@ -1,6 +1,8 @@
 # Output - Ghi event thành JSON Lines
 
-Module nhận dictionary event từ `main.py` và ghi vào file. Nó không phân tích packet, không nhận diện giao thức và không quyết định event có phải dấu hiệu xâm nhập hay không.
+Module nhận dictionary từ `main.py` và ghi vào file. Nó không phân tích packet, không nhận diện giao thức và không quyết định event có phải dấu hiệu xâm nhập hay không.
+
+Ở chế độ đầy đủ, `main.py` mở hai writer: một ghi event (`--output`, mặc định `output/ids.jsonl`), một ghi bản tổng kết flow (`--flow-output`, mặc định `output/flows.jsonl`). Chế độ `--parse-only` chỉ mở writer cho event.
 
 ## Các file và cách dùng
 
@@ -15,7 +17,7 @@ with JsonLinesWriter("output/ids.jsonl") as writer:
     writer.write(event)
 ```
 
-Ví dụ trên minh họa cách ghi dictionary; các trường còn lại của event được mô tả trong [README parser](../parser/README.md).
+Ví dụ trên minh họa cách ghi dictionary; các trường của event được mô tả trong [README chung](../../README.md#3-đọc-kết-quả-đầu-ra), các trường của bản tổng kết flow trong [README Flow Tracker](../flow/README.md#thống-kê-của-mỗi-flow).
 
 ## Vòng đời file
 
