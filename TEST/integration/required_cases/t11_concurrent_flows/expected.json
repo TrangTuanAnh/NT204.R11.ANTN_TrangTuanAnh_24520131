@@ -1,0 +1,60 @@
+{
+  "id": "T11",
+  "case": "t11_concurrent_flows",
+  "requirement": "không gộp nhầm flow",
+  "checks": {
+    "exit_code": 0,
+    "event_count": 11,
+    "flow_count": 4,
+    "flow_of_event.0.packet_count": 3,
+    "flow_of_event.0.state": "ESTABLISHED",
+    "flow_of_event.1.packet_count": 3,
+    "flow_of_event.1.state": "ESTABLISHED",
+    "flow_of_event.2.packet_count": 3,
+    "flow_of_event.2.state": "ESTABLISHED",
+    "flow_of_event.3.packet_count": 2,
+    "flow_of_event.3.protocol": "UDP",
+    "active_flows_trace": [
+      1,
+      2,
+      3,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ]
+  },
+  "same_flow": [
+    [
+      0,
+      4,
+      8
+    ],
+    [
+      1,
+      5,
+      9
+    ],
+    [
+      2,
+      7,
+      10
+    ],
+    [
+      3,
+      6
+    ]
+  ],
+  "different_flow": [
+    [
+      0,
+      1,
+      2,
+      3
+    ]
+  ]
+}

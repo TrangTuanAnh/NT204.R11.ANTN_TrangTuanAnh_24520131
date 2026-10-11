@@ -1,0 +1,164 @@
+{
+  "id": "T11",
+  "case": "t11_concurrent_flows",
+  "requirement": "không gộp nhầm flow",
+  "run_at": "2026-10-11T11:41:23+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "7fa397cca174f821db379cfac4be5fa9aedef10f5328375ded9c57f0a0af8139",
+  "command": "python main.py --pcap TEST/integration/required_cases/t11_concurrent_flows/input.pcap --config TEST/integration/required_cases/t11_concurrent_flows/config.json --output output/t11_events.jsonl --flow-output output/t11_flows.jsonl",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 17,
+  "total_checks": 17,
+  "event_count": 11,
+  "flow_count": 4,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 11,
+      "actual": 11,
+      "passed": true
+    },
+    {
+      "field": "flow_count",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "field": "flow_of_event.0.packet_count",
+      "expected": 3,
+      "actual": 3,
+      "passed": true
+    },
+    {
+      "field": "flow_of_event.0.state",
+      "expected": "ESTABLISHED",
+      "actual": "ESTABLISHED",
+      "passed": true
+    },
+    {
+      "field": "flow_of_event.1.packet_count",
+      "expected": 3,
+      "actual": 3,
+      "passed": true
+    },
+    {
+      "field": "flow_of_event.1.state",
+      "expected": "ESTABLISHED",
+      "actual": "ESTABLISHED",
+      "passed": true
+    },
+    {
+      "field": "flow_of_event.2.packet_count",
+      "expected": 3,
+      "actual": 3,
+      "passed": true
+    },
+    {
+      "field": "flow_of_event.2.state",
+      "expected": "ESTABLISHED",
+      "actual": "ESTABLISHED",
+      "passed": true
+    },
+    {
+      "field": "flow_of_event.3.packet_count",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "flow_of_event.3.protocol",
+      "expected": "UDP",
+      "actual": "UDP",
+      "passed": true
+    },
+    {
+      "field": "active_flows_trace",
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "actual": [
+        1,
+        2,
+        3,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "passed": true
+    },
+    {
+      "field": "same_flow [0, 4, 8]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "0cd6317f54a73e2f",
+        "0cd6317f54a73e2f",
+        "0cd6317f54a73e2f"
+      ],
+      "passed": true
+    },
+    {
+      "field": "same_flow [1, 5, 9]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "de16268f8dc00349",
+        "de16268f8dc00349",
+        "de16268f8dc00349"
+      ],
+      "passed": true
+    },
+    {
+      "field": "same_flow [2, 7, 10]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "b00df8dcaa863850",
+        "b00df8dcaa863850",
+        "b00df8dcaa863850"
+      ],
+      "passed": true
+    },
+    {
+      "field": "same_flow [3, 6]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "c973eda276550fc4",
+        "c973eda276550fc4"
+      ],
+      "passed": true
+    },
+    {
+      "field": "different_flow [0, 1, 2, 3]",
+      "expected": "các flow_id khác nhau",
+      "actual": [
+        "0cd6317f54a73e2f",
+        "de16268f8dc00349",
+        "b00df8dcaa863850",
+        "c973eda276550fc4"
+      ],
+      "passed": true
+    }
+  ]
+}
