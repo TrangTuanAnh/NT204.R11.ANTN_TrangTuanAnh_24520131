@@ -1,0 +1,108 @@
+{
+  "id": "T03",
+  "case": "t03_smtp_mime_decode",
+  "requirement": "decoded body đúng + decode_status",
+  "run_at": "2026-10-11T11:50:55+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "8677cd2ba3cbe0483fe3dca2ac3eade26a5df9e77d5f922359a6f501c0db89cc",
+  "command": "python main.py --pcap TEST/integration/required_cases/t03_smtp_mime_decode/input.pcap --config TEST/integration/required_cases/t03_smtp_mime_decode/config.json --output output/t03_events.jsonl --flow-output output/t03_flows.jsonl",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 15,
+  "total_checks": 15,
+  "event_count": 3,
+  "flow_count": 3,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 3,
+      "actual": 3,
+      "passed": true
+    },
+    {
+      "field": "events.0.application.message_type",
+      "expected": "data",
+      "actual": "data",
+      "passed": true
+    },
+    {
+      "field": "events.0.decoded.headers.subject",
+      "expected": "Báo cáo IDS",
+      "actual": "Báo cáo IDS",
+      "passed": true
+    },
+    {
+      "field": "events.0.decoded.body",
+      "expected": "Xin chào Bob,\r\nĐây là báo cáo IDS.\r\n",
+      "actual": "Xin chào Bob,\r\nĐây là báo cáo IDS.\r\n",
+      "passed": true
+    },
+    {
+      "field": "events.0.decoded.mime_parts.0.transfer_encoding",
+      "expected": "base64",
+      "actual": "base64",
+      "passed": true
+    },
+    {
+      "field": "events.0.decoded.mime_parts.0.status",
+      "expected": "ok",
+      "actual": "ok",
+      "passed": true
+    },
+    {
+      "field": "events.0.decode_status",
+      "expected": "ok",
+      "actual": "ok",
+      "passed": true
+    },
+    {
+      "field": "events.1.decoded.body",
+      "expected": "Giới thiệu: 1 + 1 = 2, dòng này được nối từ hai dòng mã hóa.",
+      "actual": "Giới thiệu: 1 + 1 = 2, dòng này được nối từ hai dòng mã hóa.",
+      "passed": true
+    },
+    {
+      "field": "events.1.decoded.mime_parts.0.transfer_encoding",
+      "expected": "quoted-printable",
+      "actual": "quoted-printable",
+      "passed": true
+    },
+    {
+      "field": "events.1.decoded.mime_parts.1.filename",
+      "expected": "data.bin",
+      "actual": "data.bin",
+      "passed": true
+    },
+    {
+      "field": "events.1.decoded.mime_parts.1.size",
+      "expected": 5,
+      "actual": 5,
+      "passed": true
+    },
+    {
+      "field": "events.1.decode_status",
+      "expected": "ok",
+      "actual": "ok",
+      "passed": true
+    },
+    {
+      "field": "events.2.decoded.mime_parts.0.status",
+      "expected": "error",
+      "actual": "error",
+      "passed": true
+    },
+    {
+      "field": "events.2.decode_status",
+      "expected": "error",
+      "actual": "error",
+      "passed": true
+    }
+  ]
+}

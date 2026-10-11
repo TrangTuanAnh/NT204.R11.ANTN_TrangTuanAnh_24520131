@@ -1,0 +1,24 @@
+{
+  "id": "T03",
+  "case": "t03_smtp_mime_decode",
+  "requirement": "decoded body đúng + decode_status",
+  "checks": {
+    "exit_code": 0,
+    "event_count": 3,
+    "events.0.application.message_type": "data",
+    "events.0.decoded.headers.subject": "Báo cáo IDS",
+    "events.0.decoded.body": "Xin chào Bob,\r\nĐây là báo cáo IDS.\r\n",
+    "events.0.decoded.mime_parts.0.transfer_encoding": "base64",
+    "events.0.decoded.mime_parts.0.status": "ok",
+    "events.0.decode_status": "ok",
+    "events.1.decoded.body": "Giới thiệu: 1 + 1 = 2, dòng này được nối từ hai dòng mã hóa.",
+    "events.1.decoded.mime_parts.0.transfer_encoding": "quoted-printable",
+    "events.1.decoded.mime_parts.1.filename": "data.bin",
+    "events.1.decoded.mime_parts.1.size": 5,
+    "events.1.decode_status": "ok",
+    "events.2.decoded.mime_parts.0.status": "error",
+    "events.2.decode_status": "error"
+  },
+  "same_flow": [],
+  "different_flow": []
+}
