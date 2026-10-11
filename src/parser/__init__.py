@@ -1,3 +1,3 @@
-from .packet import parse_packet
+from .packet import extract_payload, parse_packet
 
-__all__ = ["parse_packet"]
+__all__ = ["extract_payload", "parse_packet"]

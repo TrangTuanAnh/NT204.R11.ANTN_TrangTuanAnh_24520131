@@ -6,9 +6,12 @@ from typing import Any
 
 from scapy.layers.dns import DNS, DNSQR, DNSRR
 from scapy.layers.inet import IP, TCP, UDP
-from scapy.packet import Packet
+from scapy.packet import Packet, Padding
 
 from .utils import decode_payload, text_value
+
+# Port quen thuộc của SMTP, dùng làm tín hiệu phụ khi nhận diện phản hồi và nội dung thư.
+SMTP_PORTS = {25, 587}
 
 
 class IncompleteDNS(ValueError):
@@ -47,8 +50,7 @@ def parse_packet(packet: Any, packet_id: int, timestamp: float | None, source: s
             event['status'] = 'partial'
             event['errors'].append('Chua tai lap cac manh IPv4')
             return event
-        transport_layer = packet.getlayer(TCP) or packet.getlayer(UDP)
-        payload = bytes(transport_layer.payload) if transport_layer else b''
+        payload = extract_payload(packet)
         _parse_application(event, packet, payload)
         if network and network['total_length'] and len(bytes(packet[IP])) < network['total_length']:
             event['status'] = 'partial'
@@ -60,11 +62,33 @@ def parse_packet(packet: Any, packet_id: int, timestamp: float | None, source: s
     return event
 
 
+def extract_payload(packet: Any) -> bytes:
+    """Lấy phần dữ liệu ứng dụng nằm sau header TCP/UDP của gói.
+
+    Decoder dùng các byte gốc này để giải mã. Trả b"" khi gói không có
+    TCP/UDP hoặc không đọc được, để lỗi của một gói không làm dừng chương trình.
+    """
+    try:
+        layer = packet.getlayer(TCP) or packet.getlayer(UDP)
+        return _layer_payload(layer) if layer else b""
+    except Exception:
+        return b""
+
+
+def _layer_payload(layer: Packet) -> bytes:
+    """Trả dữ liệu phía sau một lớp, bỏ các byte đệm (padding) mà Ethernet thêm vào khung ngắn."""
+    data = bytes(layer.payload)
+    padding = layer.getlayer(Padding)
+    if padding is not None:
+        data = data[:len(data) - len(bytes(padding))]
+    return data
+
+
 def _captured_length(packet: Any) -> int | None:
-    """Đo độ dài packet; trả None nếu len() gây TypeError hoặc ValueError."""
+    """Đo độ dài packet; trả None nếu không đo được để event vẫn được tạo."""
     try:
         return len(packet)
-    except (TypeError, ValueError):
+    except Exception:
         return None
 
 
@@ -101,7 +125,7 @@ def _parse_transport(event: dict[str, Any], packet: Packet) -> None:
             "acknowledgment": tcp.ack,
             "flags": str(tcp.flags),
             "window": tcp.window,
-            "payload_length": len(bytes(tcp.payload)),
+            "payload_length": len(_layer_payload(tcp)),
         }
     elif packet.haslayer(UDP):
         udp = packet[UDP]
@@ -110,13 +134,14 @@ def _parse_transport(event: dict[str, Any], packet: Packet) -> None:
             "src_port": udp.sport,
             "dst_port": udp.dport,
             "length": udp.len,
-            "payload_length": len(bytes(udp.payload)),
+            "payload_length": len(_layer_payload(udp)),
         }
 
 
 def _parse_application(event: dict[str, Any], packet: Packet, payload: bytes) -> None:
     """Nhận diện và đọc HTTP/SMTP theo payload TCP, rồi xét DNS trên port 53.
 
+    SMTP gồm lệnh, phản hồi và nội dung thư gửi sau lệnh DATA (trên port SMTP).
     Cập nhật application, status và errors trực tiếp trong event.
     """
     transport = event["transport"] or {}
@@ -146,6 +171,13 @@ def _parse_application(event: dict[str, Any], packet: Packet, payload: bytes) ->
         if not payload.endswith(b'\r\n'):
             event['status'] = 'partial'
             event['errors'].append('Dong SMTP chua ket thuc')
+    elif is_tcp and ports & SMTP_PORTS and _looks_like_mail_data(text):
+        event["application"] = _parse_mail_data(text)
+        event["status"] = "ok"
+        # Thư kết thúc bằng một dòng chỉ có dấu chấm; chưa thấy dòng này thì thư còn ở gói sau.
+        if not payload.endswith(b"\r\n.\r\n"):
+            event["status"] = "partial"
+            event["errors"].append("Noi dung thu SMTP chua ket thuc trong goi nay")
     elif 53 in ports and payload:
         event['application'] = {'protocol': 'DNS'}
         wire = payload
@@ -222,7 +254,7 @@ def _parse_headers(lines: list[str]) -> dict[str, str]:
 def _looks_like_smtp(text: str, ports: set[int | None]) -> bool:
     """Kiểm tra payload có dạng lệnh hoặc phản hồi SMTP được hỗ trợ không."""
     return bool(re.match(r'^(?:EHLO |HELO |MAIL FROM:|RCPT TO:)', text, re.IGNORECASE)) or (
-        bool(ports & {25, 587}) and bool(re.match(r'^[2-5]\d{2}[ -][\x20-\x7e]*\r?\n', text))
+        bool(ports & SMTP_PORTS) and bool(re.match(r'^[2-5]\d{2}[ -][\x20-\x7e]*\r?\n', text))
     )
 
 
@@ -244,6 +276,37 @@ def _parse_smtp(text: str) -> dict[str, Any]:
         "command": command.upper(),
         "argument": argument or None,
     }
+
+
+def _strip_data_command(text: str) -> str:
+    """Bỏ lệnh DATA ở đầu nếu lệnh này nằm chung gói với nội dung thư."""
+    return text[6:] if text[:6].upper() == "DATA\r\n" else text
+
+
+def _looks_like_mail_data(text: str) -> bool:
+    """Kiểm tra payload có bắt đầu bằng một dòng header thư (dạng "Tên: giá trị") không."""
+    return bool(re.match(r"^[!-9;-~]+:", _strip_data_command(text)))
+
+
+def _parse_mail_data(text: str) -> dict[str, Any]:
+    """Tách nội dung thư thành header và body; bỏ dòng "." đánh dấu hết thư.
+
+    Header viết tràn nhiều dòng (dòng sau bắt đầu bằng khoảng trắng) được
+    nối lại để không mất thông tin như boundary của thư nhiều phần.
+    """
+    content = _strip_data_command(text)
+    head, separator, body = content.partition("\r\n\r\n")
+    if not separator:
+        head, _, body = content.partition("\n\n")
+    if body.endswith("\r\n.\r\n"):
+        body = body[:-3]
+    lines: list[str] = []
+    for line in head.splitlines():
+        if line[:1] in (" ", "\t") and lines:
+            lines[-1] += " " + line.strip()
+        else:
+            lines.append(line)
+    return {"protocol": "SMTP", "message_type": "data", "headers": _parse_headers(lines), "body": body}
 
 
 def _dns_name_end(wire: bytes, offset: int) -> int:
