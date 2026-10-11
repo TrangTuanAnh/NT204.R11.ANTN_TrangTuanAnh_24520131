@@ -8,10 +8,10 @@ Truy vấn DNS ID 123 cho example.test, loại A. Dữ liệu được tạo t�
 
 ## Cách chạy lại
 
-Từ thư mục gốc repo:
+Từ thư mục gốc repo, thêm `--parse-only` để chạy đúng chế độ của Bài tập 1 (chỉ capture và parse), cho ra event cùng dạng với `events.jsonl` đã lưu:
 
 ```powershell
-python main.py --pcap TEST/integration/required_cases/dns_query/input.pcap --output TEST/integration/required_cases/dns_query/rerun.jsonl
+python main.py --pcap TEST/integration/required_cases/dns_query/input.pcap --output TEST/integration/required_cases/dns_query/rerun.jsonl --parse-only
 ```
 
 File đầu ra được ghi nối tiếp. Dùng tên `rerun.jsonl` mới cho mỗi lần chạy lại để không trộn kết quả cũ.

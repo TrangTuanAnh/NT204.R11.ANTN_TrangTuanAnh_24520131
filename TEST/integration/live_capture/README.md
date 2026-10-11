@@ -27,12 +27,12 @@ Kết luận: **ĐẠT - đã bắt packet trên card Wi-Fi thật và ghi event
 
 ## Chạy lại
 
-Chạy lệnh đầu trong Terminal 1, rồi chạy ping trong Terminal 2 khi capture còn hoạt động. Dùng tên output mới vì chương trình ghi file theo chế độ append.
+Chạy lệnh đầu trong Terminal 1, rồi chạy ping trong Terminal 2 khi capture còn hoạt động. Lệnh capture dùng `--parse-only` để chạy đúng chế độ của Bài tập 1 như lúc tạo kết quả này. Dùng tên output mới vì chương trình ghi file theo chế độ append.
 
 Terminal 1:
 
 ```powershell
-python main.py --interface "Wi-Fi" --timeout 8 --output TEST/integration/live_capture/rerun.jsonl
+python main.py --interface "Wi-Fi" --timeout 8 --output TEST/integration/live_capture/rerun.jsonl --parse-only
 ```
 
 Terminal 2:
