@@ -1,0 +1,190 @@
+{
+  "id": "T05",
+  "case": "t05_event_normalization",
+  "requirement": "representation sau preprocess nhất quán",
+  "run_at": "2026-10-11T11:41:15+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "654285c61a6fe482be29bdb677ccd4157cdff1766f18131dea2ef23d6f1747db",
+  "command": "python main.py --events TEST/integration/required_cases/t05_event_normalization/input.jsonl --config TEST/integration/required_cases/t05_event_normalization/config.json --output output/t05_events.jsonl --flow-output output/t05_flows.jsonl",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 22,
+  "total_checks": 22,
+  "event_count": 3,
+  "flow_count": 2,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 3,
+      "actual": 3,
+      "passed": true
+    },
+    {
+      "field": "events.0.timestamp",
+      "expected": 1790899200.0,
+      "actual": 1790899200.0,
+      "passed": true
+    },
+    {
+      "field": "events.0.transport.protocol",
+      "expected": "TCP",
+      "actual": "TCP",
+      "passed": true
+    },
+    {
+      "field": "events.0.transport.flags",
+      "expected": "PA",
+      "actual": "PA",
+      "passed": true
+    },
+    {
+      "field": "events.0.application.protocol",
+      "expected": "HTTP",
+      "actual": "HTTP",
+      "passed": true
+    },
+    {
+      "field": "events.0.application.headers",
+      "expected": {
+        "host": "www.example.test",
+        "user-agent": "curl/8.0",
+        "x-forwarded-for": "198.51.100.7, 203.0.113.9"
+      },
+      "actual": {
+        "host": "www.example.test",
+        "user-agent": "curl/8.0",
+        "x-forwarded-for": "198.51.100.7, 203.0.113.9"
+      },
+      "passed": true
+    },
+    {
+      "field": "events.0.application.uri",
+      "expected": "/Shop/./Products/../Index.HTML?ID=%7e5&q=%2f",
+      "actual": "/Shop/./Products/../Index.HTML?ID=%7e5&q=%2f",
+      "passed": true
+    },
+    {
+      "field": "events.0.application.uri_normalized",
+      "expected": "/Shop/Index.HTML?ID=~5&q=%2F",
+      "actual": "/Shop/Index.HTML?ID=~5&q=%2F",
+      "passed": true
+    },
+    {
+      "field": "events.0.preprocess_status",
+      "expected": "valid",
+      "actual": "valid",
+      "passed": true
+    },
+    {
+      "field": "events.1.timestamp",
+      "expected": 1790899201.0,
+      "actual": 1790899201.0,
+      "passed": true
+    },
+    {
+      "field": "events.1.transport.protocol",
+      "expected": "TCP",
+      "actual": "TCP",
+      "passed": true
+    },
+    {
+      "field": "events.1.application.protocol",
+      "expected": "HTTP",
+      "actual": "HTTP",
+      "passed": true
+    },
+    {
+      "field": "events.1.application.headers.host",
+      "expected": "www.example.test",
+      "actual": "www.example.test",
+      "passed": true
+    },
+    {
+      "field": "events.2.timestamp",
+      "expected": 1790899202.5,
+      "actual": 1790899202.5,
+      "passed": true
+    },
+    {
+      "field": "events.2.network.src_ip",
+      "expected": "2001:db8::a",
+      "actual": "2001:db8::a",
+      "passed": true
+    },
+    {
+      "field": "events.2.network.dst_ip",
+      "expected": "2001:db8::35",
+      "actual": "2001:db8::35",
+      "passed": true
+    },
+    {
+      "field": "events.2.transport.protocol",
+      "expected": "UDP",
+      "actual": "UDP",
+      "passed": true
+    },
+    {
+      "field": "events.2.application.protocol",
+      "expected": "DNS",
+      "actual": "DNS",
+      "passed": true
+    },
+    {
+      "field": "events.2.application.questions",
+      "expected": [
+        {
+          "name": "www.example.test",
+          "type": 28
+        }
+      ],
+      "actual": [
+        {
+          "name": "www.example.test",
+          "type": 28
+        }
+      ],
+      "passed": true
+    },
+    {
+      "field": "events.2.application.answers",
+      "expected": [
+        {
+          "name": "www.example.test",
+          "type": 28,
+          "data": "2001:db8::1"
+        },
+        {
+          "name": "example.test",
+          "type": 5,
+          "data": "alias.example.test"
+        }
+      ],
+      "actual": [
+        {
+          "name": "www.example.test",
+          "type": 28,
+          "data": "2001:db8::1"
+        },
+        {
+          "name": "example.test",
+          "type": 5,
+          "data": "alias.example.test"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "field": "events.2.preprocess_status",
+      "expected": "valid",
+      "actual": "valid",
+      "passed": true
+    }
+  ]
+}

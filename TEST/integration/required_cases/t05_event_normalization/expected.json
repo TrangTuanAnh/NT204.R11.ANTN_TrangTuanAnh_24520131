@@ -1,0 +1,51 @@
+{
+  "id": "T05",
+  "case": "t05_event_normalization",
+  "requirement": "representation sau preprocess nhất quán",
+  "checks": {
+    "exit_code": 0,
+    "event_count": 3,
+    "events.0.timestamp": 1790899200.0,
+    "events.0.transport.protocol": "TCP",
+    "events.0.transport.flags": "PA",
+    "events.0.application.protocol": "HTTP",
+    "events.0.application.headers": {
+      "host": "www.example.test",
+      "user-agent": "curl/8.0",
+      "x-forwarded-for": "198.51.100.7, 203.0.113.9"
+    },
+    "events.0.application.uri": "/Shop/./Products/../Index.HTML?ID=%7e5&q=%2f",
+    "events.0.application.uri_normalized": "/Shop/Index.HTML?ID=~5&q=%2F",
+    "events.0.preprocess_status": "valid",
+    "events.1.timestamp": 1790899201.0,
+    "events.1.transport.protocol": "TCP",
+    "events.1.application.protocol": "HTTP",
+    "events.1.application.headers.host": "www.example.test",
+    "events.2.timestamp": 1790899202.5,
+    "events.2.network.src_ip": "2001:db8::a",
+    "events.2.network.dst_ip": "2001:db8::35",
+    "events.2.transport.protocol": "UDP",
+    "events.2.application.protocol": "DNS",
+    "events.2.application.questions": [
+      {
+        "name": "www.example.test",
+        "type": 28
+      }
+    ],
+    "events.2.application.answers": [
+      {
+        "name": "www.example.test",
+        "type": 28,
+        "data": "2001:db8::1"
+      },
+      {
+        "name": "example.test",
+        "type": 5,
+        "data": "alias.example.test"
+      }
+    ],
+    "events.2.preprocess_status": "valid"
+  },
+  "same_flow": [],
+  "different_flow": []
+}
