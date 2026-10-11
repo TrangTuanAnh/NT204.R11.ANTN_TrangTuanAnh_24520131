@@ -1,0 +1,58 @@
+{
+  "id": "T09",
+  "case": "t09_tcp_connection_close",
+  "requirement": "flow chuyển CLOSED/RESET phù hợp",
+  "checks": {
+    "exit_code": 0,
+    "event_count": 11,
+    "flow_count": 2,
+    "events.2.flow_state": "ESTABLISHED",
+    "events.3.flow_state": "CLOSING",
+    "events.4.flow_state": "CLOSING",
+    "events.5.flow_state": "CLOSING",
+    "events.6.flow_state": "CLOSED",
+    "events.10.flow_state": "RESET",
+    "flows.0.state": "CLOSED",
+    "flows.0.end_reason": "tcp_closed",
+    "flows.0.FIN_count": 2,
+    "flows.1.state": "RESET",
+    "flows.1.end_reason": "tcp_reset",
+    "flows.1.RST_count": 1,
+    "active_flows_trace": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0
+    ]
+  },
+  "same_flow": [
+    [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    [
+      7,
+      8,
+      9,
+      10
+    ]
+  ],
+  "different_flow": [
+    [
+      0,
+      7
+    ]
+  ]
+}
