@@ -1,0 +1,37 @@
+{
+  "id": "T10",
+  "case": "t10_udp_dns_flow",
+  "requirement": "1 UDP flow, packet/byte count đúng",
+  "checks": {
+    "exit_code": 0,
+    "event_count": 2,
+    "flow_count": 1,
+    "events.0.direction": "forward",
+    "events.1.direction": "backward",
+    "events.1.application.answers": [
+      {
+        "name": "www.example.test",
+        "type": 1,
+        "data": "192.0.2.80"
+      }
+    ],
+    "flows.0.protocol": "UDP",
+    "flows.0.application_protocol": "DNS",
+    "flows.0.packet_count": 2,
+    "flows.0.byte_count": 184,
+    "flows.0.forward_packet_count": 1,
+    "flows.0.forward_byte_count": 76,
+    "flows.0.backward_packet_count": 1,
+    "flows.0.backward_byte_count": 108,
+    "flows.0.duration": 0.05,
+    "flows.0.state": null,
+    "flows.0.SYN_count": null
+  },
+  "same_flow": [
+    [
+      0,
+      1
+    ]
+  ],
+  "different_flow": []
+}

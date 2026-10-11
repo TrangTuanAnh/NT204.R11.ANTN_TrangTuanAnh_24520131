@@ -1,0 +1,141 @@
+{
+  "id": "T10",
+  "case": "t10_udp_dns_flow",
+  "requirement": "1 UDP flow, packet/byte count đúng",
+  "run_at": "2026-10-11T11:41:22+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "af037cc3ce585140bf228a0c47015ff35194a7904f7a85e4d537af576f08e7a0",
+  "command": "python main.py --pcap TEST/integration/required_cases/t10_udp_dns_flow/input.pcap --config TEST/integration/required_cases/t10_udp_dns_flow/config.json --output output/t10_events.jsonl --flow-output output/t10_flows.jsonl",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 18,
+  "total_checks": 18,
+  "event_count": 2,
+  "flow_count": 1,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "flow_count",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "events.0.direction",
+      "expected": "forward",
+      "actual": "forward",
+      "passed": true
+    },
+    {
+      "field": "events.1.direction",
+      "expected": "backward",
+      "actual": "backward",
+      "passed": true
+    },
+    {
+      "field": "events.1.application.answers",
+      "expected": [
+        {
+          "name": "www.example.test",
+          "type": 1,
+          "data": "192.0.2.80"
+        }
+      ],
+      "actual": [
+        {
+          "name": "www.example.test",
+          "type": 1,
+          "data": "192.0.2.80"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "field": "flows.0.protocol",
+      "expected": "UDP",
+      "actual": "UDP",
+      "passed": true
+    },
+    {
+      "field": "flows.0.application_protocol",
+      "expected": "DNS",
+      "actual": "DNS",
+      "passed": true
+    },
+    {
+      "field": "flows.0.packet_count",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "flows.0.byte_count",
+      "expected": 184,
+      "actual": 184,
+      "passed": true
+    },
+    {
+      "field": "flows.0.forward_packet_count",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "flows.0.forward_byte_count",
+      "expected": 76,
+      "actual": 76,
+      "passed": true
+    },
+    {
+      "field": "flows.0.backward_packet_count",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "flows.0.backward_byte_count",
+      "expected": 108,
+      "actual": 108,
+      "passed": true
+    },
+    {
+      "field": "flows.0.duration",
+      "expected": 0.05,
+      "actual": 0.05,
+      "passed": true
+    },
+    {
+      "field": "flows.0.state",
+      "expected": null,
+      "actual": null,
+      "passed": true
+    },
+    {
+      "field": "flows.0.SYN_count",
+      "expected": null,
+      "actual": null,
+      "passed": true
+    },
+    {
+      "field": "same_flow [0, 1]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "5d8565c772fdef1a",
+        "5d8565c772fdef1a"
+      ],
+      "passed": true
+    }
+  ]
+}
