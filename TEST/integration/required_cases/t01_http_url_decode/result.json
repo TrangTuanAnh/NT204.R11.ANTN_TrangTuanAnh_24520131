@@ -1,0 +1,124 @@
+{
+  "id": "T01",
+  "case": "t01_http_url_decode",
+  "requirement": "decoded URI đúng; raw URI còn nguyên",
+  "run_at": "2026-10-11T11:41:11+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "f743312627aeb4cca4fea30a341860d2d15cfd1a431e53b5e937adaed64d1ff4",
+  "command": "python main.py --pcap TEST/integration/required_cases/t01_http_url_decode/input.pcap --config TEST/integration/required_cases/t01_http_url_decode/config.json --output output/t01_events.jsonl --flow-output output/t01_flows.jsonl",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 9,
+  "total_checks": 9,
+  "event_count": 2,
+  "flow_count": 1,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "events.0.application.uri",
+      "expected": "/search?q=%27%20OR%201%3D1&lang=vi%2Ben&next=%2527",
+      "actual": "/search?q=%27%20OR%201%3D1&lang=vi%2Ben&next=%2527",
+      "passed": true
+    },
+    {
+      "field": "events.0.decoded.uri",
+      "expected": "/search?q=' OR 1=1&lang=vi+en&next=%27",
+      "actual": "/search?q=' OR 1=1&lang=vi+en&next=%27",
+      "passed": true
+    },
+    {
+      "field": "events.0.decoded.query",
+      "expected": [
+        [
+          "q",
+          "' OR 1=1"
+        ],
+        [
+          "lang",
+          "vi+en"
+        ],
+        [
+          "next",
+          "%27"
+        ]
+      ],
+      "actual": [
+        [
+          "q",
+          "' OR 1=1"
+        ],
+        [
+          "lang",
+          "vi+en"
+        ],
+        [
+          "next",
+          "%27"
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "field": "events.0.decode_status",
+      "expected": "ok",
+      "actual": "ok",
+      "passed": true
+    },
+    {
+      "field": "events.1.decoded.body",
+      "expected": "user=admin%27--&pass=a+b%26c&note=",
+      "actual": "user=admin%27--&pass=a+b%26c&note=",
+      "passed": true
+    },
+    {
+      "field": "events.1.decoded.form",
+      "expected": [
+        [
+          "user",
+          "admin'--"
+        ],
+        [
+          "pass",
+          "a b&c"
+        ],
+        [
+          "note",
+          ""
+        ]
+      ],
+      "actual": [
+        [
+          "user",
+          "admin'--"
+        ],
+        [
+          "pass",
+          "a b&c"
+        ],
+        [
+          "note",
+          ""
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "field": "events.1.decode_status",
+      "expected": "ok",
+      "actual": "ok",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "T01",
+  "case": "t01_http_url_decode",
+  "requirement": "decoded URI đúng; raw URI còn nguyên",
+  "checks": {
+    "exit_code": 0,
+    "event_count": 2,
+    "events.0.application.uri": "/search?q=%27%20OR%201%3D1&lang=vi%2Ben&next=%2527",
+    "events.0.decoded.uri": "/search?q=' OR 1=1&lang=vi+en&next=%27",
+    "events.0.decoded.query": [
+      [
+        "q",
+        "' OR 1=1"
+      ],
+      [
+        "lang",
+        "vi+en"
+      ],
+      [
+        "next",
+        "%27"
+      ]
+    ],
+    "events.0.decode_status": "ok",
+    "events.1.decoded.body": "user=admin%27--&pass=a+b%26c&note=",
+    "events.1.decoded.form": [
+      [
+        "user",
+        "admin'--"
+      ],
+      [
+        "pass",
+        "a b&c"
+      ],
+      [
+        "note",
+        ""
+      ]
+    ],
+    "events.1.decode_status": "ok"
+  },
+  "same_flow": [],
+  "different_flow": []
+}
