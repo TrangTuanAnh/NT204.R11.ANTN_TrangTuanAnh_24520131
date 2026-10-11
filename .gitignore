@@ -5,4 +5,8 @@ htmlcov/
 .venv/
 *.pyc
 *.jsonl
+# Giu lai cac file JSON Lines la dau vao/ket qua kiem thu trong TEST
+!TEST/**/input.jsonl
+!TEST/**/events.jsonl
+!TEST/**/flows.jsonl
 output/*.log
