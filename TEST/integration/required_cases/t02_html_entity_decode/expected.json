@@ -1,0 +1,18 @@
+{
+  "id": "T02",
+  "case": "t02_html_entity_decode",
+  "requirement": "decoded text đúng, không crash",
+  "checks": {
+    "exit_code": 0,
+    "event_count": 3,
+    "events.0.application.body": "<p>Xin chào &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; &amp; &#39;ok&#39; &#x3C;b&#x3E;</p>",
+    "events.0.decoded.body": "<p>Xin chào <script>alert(\"XSS\")</script> & 'ok' <b></p>",
+    "events.0.decode_status": "ok",
+    "events.1.decoded.body": "Bình luận: <img src=x onerror=alert(1)>",
+    "events.1.decode_status": "ok",
+    "events.2.decoded.body": "{\"note\": \"&lt;b&gt;\"}",
+    "events.2.decode_status": "ok"
+  },
+  "same_flow": [],
+  "different_flow": []
+}
