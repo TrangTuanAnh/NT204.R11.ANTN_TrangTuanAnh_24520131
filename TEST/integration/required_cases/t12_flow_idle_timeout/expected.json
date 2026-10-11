@@ -1,0 +1,52 @@
+{
+  "id": "T12",
+  "case": "t12_flow_idle_timeout",
+  "requirement": "flow hết hạn và bị loại khỏi active table",
+  "checks": {
+    "exit_code": 0,
+    "event_count": 9,
+    "flow_count": 4,
+    "flows.0.end_reason": "idle_timeout",
+    "flows.0.endpoint_a": {
+      "ip": "192.0.2.10",
+      "port": 50000
+    },
+    "flows.0.packet_count": 2,
+    "flow_of_event.2.end_reason": "idle_timeout",
+    "flow_of_event.2.state": "ESTABLISHED",
+    "flow_of_event.5.end_reason": "idle_timeout",
+    "flow_of_event.7.end_reason": "end_of_input",
+    "flow_of_event.7.packet_count": 2,
+    "active_flows_trace": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3,
+      1
+    ]
+  },
+  "same_flow": [
+    [
+      0,
+      1
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      7,
+      8
+    ]
+  ],
+  "different_flow": [
+    [
+      0,
+      7
+    ]
+  ]
+}

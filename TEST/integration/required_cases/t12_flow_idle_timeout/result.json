@@ -1,0 +1,152 @@
+{
+  "id": "T12",
+  "case": "t12_flow_idle_timeout",
+  "requirement": "flow hết hạn và bị loại khỏi active table",
+  "run_at": "2026-10-11T11:41:24+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "f4c8e6cb55c9820f5beac078b302e0395d65d30025f7e6fca2e2f27f57b5ea3e",
+  "command": "python main.py --pcap TEST/integration/required_cases/t12_flow_idle_timeout/input.pcap --config TEST/integration/required_cases/t12_flow_idle_timeout/config.json --output output/t12_events.jsonl --flow-output output/t12_flows.jsonl",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 16,
+  "total_checks": 16,
+  "event_count": 9,
+  "flow_count": 4,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 9,
+      "actual": 9,
+      "passed": true
+    },
+    {
+      "field": "flow_count",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "field": "flows.0.end_reason",
+      "expected": "idle_timeout",
+      "actual": "idle_timeout",
+      "passed": true
+    },
+    {
+      "field": "flows.0.endpoint_a",
+      "expected": {
+        "ip": "192.0.2.10",
+        "port": 50000
+      },
+      "actual": {
+        "ip": "192.0.2.10",
+        "port": 50000
+      },
+      "passed": true
+    },
+    {
+      "field": "flows.0.packet_count",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "flow_of_event.2.end_reason",
+      "expected": "idle_timeout",
+      "actual": "idle_timeout",
+      "passed": true
+    },
+    {
+      "field": "flow_of_event.2.state",
+      "expected": "ESTABLISHED",
+      "actual": "ESTABLISHED",
+      "passed": true
+    },
+    {
+      "field": "flow_of_event.5.end_reason",
+      "expected": "idle_timeout",
+      "actual": "idle_timeout",
+      "passed": true
+    },
+    {
+      "field": "flow_of_event.7.end_reason",
+      "expected": "end_of_input",
+      "actual": "end_of_input",
+      "passed": true
+    },
+    {
+      "field": "flow_of_event.7.packet_count",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "active_flows_trace",
+      "expected": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        3,
+        3,
+        3,
+        1
+      ],
+      "actual": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        3,
+        3,
+        3,
+        1
+      ],
+      "passed": true
+    },
+    {
+      "field": "same_flow [0, 1]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "efed469b3a2e9007",
+        "efed469b3a2e9007"
+      ],
+      "passed": true
+    },
+    {
+      "field": "same_flow [5, 6]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "3a250da563c261b8",
+        "3a250da563c261b8"
+      ],
+      "passed": true
+    },
+    {
+      "field": "same_flow [7, 8]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "c7c58ddd6ef4ad6c",
+        "c7c58ddd6ef4ad6c"
+      ],
+      "passed": true
+    },
+    {
+      "field": "different_flow [0, 7]",
+      "expected": "các flow_id khác nhau",
+      "actual": [
+        "efed469b3a2e9007",
+        "c7c58ddd6ef4ad6c"
+      ],
+      "passed": true
+    }
+  ]
+}
