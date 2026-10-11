@@ -1,0 +1,27 @@
+{
+  "id": "T04",
+  "case": "t04_invalid_character_bytes",
+  "requirement": "đánh dấu lỗi/partial; chương trình tiếp tục",
+  "checks": {
+    "exit_code": 0,
+    "event_count": 5,
+    "events.0.decoded.body": "ten=��abc",
+    "events.0.decode_status": "partial",
+    "events.0.decode_errors": [
+      "Body HTTP: có byte không hợp lệ với bảng mã utf-8 (vị trí 4)"
+    ],
+    "events.1.decoded.uri": "/file�name",
+    "events.1.decode_status": "partial",
+    "events.2.application.protocol": null,
+    "events.2.decoded.text": "�( hello �",
+    "events.2.decode_status": "partial",
+    "events.3.decoded.body": "caf��",
+    "events.3.decode_errors": [
+      "Body HTTP: có byte không hợp lệ với bảng mã us-ascii (vị trí 3)"
+    ],
+    "events.4.decoded.uri": "/ok",
+    "events.4.decode_status": "ok"
+  },
+  "same_flow": [],
+  "different_flow": []
+}
