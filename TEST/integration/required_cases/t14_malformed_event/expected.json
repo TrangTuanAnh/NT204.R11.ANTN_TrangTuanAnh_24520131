@@ -1,0 +1,60 @@
+{
+  "id": "T14",
+  "case": "t14_malformed_event",
+  "requirement": "không crash; status/reason phù hợp",
+  "checks": {
+    "exit_code": 0,
+    "event_count": 12,
+    "flow_count": 2,
+    "events.0.processing_action": "process",
+    "events.1.preprocess_status": "invalid",
+    "events.1.processing_action": "skip",
+    "events.1.errors": [
+      "Dòng 2 không phải JSON hợp lệ (Expecting property name enclosed in double quotes)"
+    ],
+    "events.2.preprocess_status": "invalid",
+    "events.2.errors": [
+      "Dòng 3 không phải JSON object"
+    ],
+    "events.3.preprocess_status": "invalid",
+    "events.3.reason": [
+      "transport.src_port không hợp lệ: -1"
+    ],
+    "events.4.preprocess_status": "invalid",
+    "events.4.reason": [
+      "timestamp không hợp lệ (không đọc được dạng thời gian): 'hôm qua'"
+    ],
+    "events.5.reason": [
+      "network.src_ip không phải địa chỉ IP hợp lệ: '999.0.0.1'"
+    ],
+    "events.6.reason": [
+      "network.protocol (6) không khớp với UDP"
+    ],
+    "events.7.preprocess_status": "partial",
+    "events.7.processing_action": "skip",
+    "events.7.reason": [
+      "Giao thức IP số 1 chưa được hỗ trợ (chỉ theo dõi TCP/UDP)"
+    ],
+    "events.8.preprocess_status": "partial",
+    "events.8.processing_action": "skip",
+    "events.8.reason": [
+      "Giao thức vận chuyển SCTP chưa được hỗ trợ (chỉ theo dõi TCP/UDP)"
+    ],
+    "events.9.preprocess_status": "invalid",
+    "events.9.timestamp": null,
+    "events.10.preprocess_status": "partial",
+    "events.10.processing_action": "process",
+    "events.11.processing_action": "process",
+    "flow_of_event.0.packet_count": 2
+  },
+  "same_flow": [
+    [
+      0,
+      11
+    ],
+    [
+      10
+    ]
+  ],
+  "different_flow": []
+}

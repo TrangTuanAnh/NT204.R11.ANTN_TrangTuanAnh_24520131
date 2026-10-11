@@ -1,0 +1,229 @@
+{
+  "id": "T14",
+  "case": "t14_malformed_event",
+  "requirement": "không crash; status/reason phù hợp",
+  "run_at": "2026-10-11T11:41:26+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "f164f4fab84ad71dbb36db2247ff5711782cca9123a672afe5fb9133c558c006",
+  "command": "python main.py --events TEST/integration/required_cases/t14_malformed_event/input.jsonl --config TEST/integration/required_cases/t14_malformed_event/config.json --output output/t14_events.jsonl --flow-output output/t14_flows.jsonl",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 29,
+  "total_checks": 29,
+  "event_count": 12,
+  "flow_count": 2,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 12,
+      "actual": 12,
+      "passed": true
+    },
+    {
+      "field": "flow_count",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "events.0.processing_action",
+      "expected": "process",
+      "actual": "process",
+      "passed": true
+    },
+    {
+      "field": "events.1.preprocess_status",
+      "expected": "invalid",
+      "actual": "invalid",
+      "passed": true
+    },
+    {
+      "field": "events.1.processing_action",
+      "expected": "skip",
+      "actual": "skip",
+      "passed": true
+    },
+    {
+      "field": "events.1.errors",
+      "expected": [
+        "Dòng 2 không phải JSON hợp lệ (Expecting property name enclosed in double quotes)"
+      ],
+      "actual": [
+        "Dòng 2 không phải JSON hợp lệ (Expecting property name enclosed in double quotes)"
+      ],
+      "passed": true
+    },
+    {
+      "field": "events.2.preprocess_status",
+      "expected": "invalid",
+      "actual": "invalid",
+      "passed": true
+    },
+    {
+      "field": "events.2.errors",
+      "expected": [
+        "Dòng 3 không phải JSON object"
+      ],
+      "actual": [
+        "Dòng 3 không phải JSON object"
+      ],
+      "passed": true
+    },
+    {
+      "field": "events.3.preprocess_status",
+      "expected": "invalid",
+      "actual": "invalid",
+      "passed": true
+    },
+    {
+      "field": "events.3.reason",
+      "expected": [
+        "transport.src_port không hợp lệ: -1"
+      ],
+      "actual": [
+        "transport.src_port không hợp lệ: -1"
+      ],
+      "passed": true
+    },
+    {
+      "field": "events.4.preprocess_status",
+      "expected": "invalid",
+      "actual": "invalid",
+      "passed": true
+    },
+    {
+      "field": "events.4.reason",
+      "expected": [
+        "timestamp không hợp lệ (không đọc được dạng thời gian): 'hôm qua'"
+      ],
+      "actual": [
+        "timestamp không hợp lệ (không đọc được dạng thời gian): 'hôm qua'"
+      ],
+      "passed": true
+    },
+    {
+      "field": "events.5.reason",
+      "expected": [
+        "network.src_ip không phải địa chỉ IP hợp lệ: '999.0.0.1'"
+      ],
+      "actual": [
+        "network.src_ip không phải địa chỉ IP hợp lệ: '999.0.0.1'"
+      ],
+      "passed": true
+    },
+    {
+      "field": "events.6.reason",
+      "expected": [
+        "network.protocol (6) không khớp với UDP"
+      ],
+      "actual": [
+        "network.protocol (6) không khớp với UDP"
+      ],
+      "passed": true
+    },
+    {
+      "field": "events.7.preprocess_status",
+      "expected": "partial",
+      "actual": "partial",
+      "passed": true
+    },
+    {
+      "field": "events.7.processing_action",
+      "expected": "skip",
+      "actual": "skip",
+      "passed": true
+    },
+    {
+      "field": "events.7.reason",
+      "expected": [
+        "Giao thức IP số 1 chưa được hỗ trợ (chỉ theo dõi TCP/UDP)"
+      ],
+      "actual": [
+        "Giao thức IP số 1 chưa được hỗ trợ (chỉ theo dõi TCP/UDP)"
+      ],
+      "passed": true
+    },
+    {
+      "field": "events.8.preprocess_status",
+      "expected": "partial",
+      "actual": "partial",
+      "passed": true
+    },
+    {
+      "field": "events.8.processing_action",
+      "expected": "skip",
+      "actual": "skip",
+      "passed": true
+    },
+    {
+      "field": "events.8.reason",
+      "expected": [
+        "Giao thức vận chuyển SCTP chưa được hỗ trợ (chỉ theo dõi TCP/UDP)"
+      ],
+      "actual": [
+        "Giao thức vận chuyển SCTP chưa được hỗ trợ (chỉ theo dõi TCP/UDP)"
+      ],
+      "passed": true
+    },
+    {
+      "field": "events.9.preprocess_status",
+      "expected": "invalid",
+      "actual": "invalid",
+      "passed": true
+    },
+    {
+      "field": "events.9.timestamp",
+      "expected": null,
+      "actual": null,
+      "passed": true
+    },
+    {
+      "field": "events.10.preprocess_status",
+      "expected": "partial",
+      "actual": "partial",
+      "passed": true
+    },
+    {
+      "field": "events.10.processing_action",
+      "expected": "process",
+      "actual": "process",
+      "passed": true
+    },
+    {
+      "field": "events.11.processing_action",
+      "expected": "process",
+      "actual": "process",
+      "passed": true
+    },
+    {
+      "field": "flow_of_event.0.packet_count",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "same_flow [0, 11]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "d708470a798cb5d1",
+        "d708470a798cb5d1"
+      ],
+      "passed": true
+    },
+    {
+      "field": "same_flow [10]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "fc191b21b411b21b"
+      ],
+      "passed": true
+    }
+  ]
+}
