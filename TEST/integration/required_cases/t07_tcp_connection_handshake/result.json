@@ -1,0 +1,100 @@
+{
+  "id": "T07",
+  "case": "t07_tcp_connection_handshake",
+  "requirement": "1 flow; trạng thái ESTABLISHED",
+  "run_at": "2026-10-11T11:41:18+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "c6fd4e6bf1591a222b1b201b59791bd0348b7bb784fc35a15b0dcd78a059e6d0",
+  "command": "python main.py --pcap TEST/integration/required_cases/t07_tcp_connection_handshake/input.pcap --config TEST/integration/required_cases/t07_tcp_connection_handshake/config.json --output output/t07_events.jsonl --flow-output output/t07_flows.jsonl",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 13,
+  "total_checks": 13,
+  "event_count": 3,
+  "flow_count": 1,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 3,
+      "actual": 3,
+      "passed": true
+    },
+    {
+      "field": "flow_count",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "events.0.flow_state",
+      "expected": "NEW",
+      "actual": "NEW",
+      "passed": true
+    },
+    {
+      "field": "events.1.flow_state",
+      "expected": "HANDSHAKE",
+      "actual": "HANDSHAKE",
+      "passed": true
+    },
+    {
+      "field": "events.2.flow_state",
+      "expected": "ESTABLISHED",
+      "actual": "ESTABLISHED",
+      "passed": true
+    },
+    {
+      "field": "flows.0.state",
+      "expected": "ESTABLISHED",
+      "actual": "ESTABLISHED",
+      "passed": true
+    },
+    {
+      "field": "flows.0.handshake_observed",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "field": "flows.0.packet_count",
+      "expected": 3,
+      "actual": 3,
+      "passed": true
+    },
+    {
+      "field": "flows.0.SYN_count",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "flows.0.ACK_count",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "flows.0.end_reason",
+      "expected": "end_of_input",
+      "actual": "end_of_input",
+      "passed": true
+    },
+    {
+      "field": "same_flow [0, 1, 2]",
+      "expected": "cùng một flow_id",
+      "actual": [
+        "d708470a798cb5d1",
+        "d708470a798cb5d1",
+        "d708470a798cb5d1"
+      ],
+      "passed": true
+    }
+  ]
+}
