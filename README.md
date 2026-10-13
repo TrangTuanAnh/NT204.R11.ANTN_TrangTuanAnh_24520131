@@ -286,6 +286,30 @@ output/                     Nơi lưu kết quả chạy
 
 Mỗi thư mục trong `src/` có README riêng giải thích cách hoạt động của module.
 
+### Dữ liệu vào/ra của từng module
+
+**Các module không trao đổi với nhau qua file.** Chúng chạy trong cùng một tiến trình và truyền **cùng một `dict` event trong bộ nhớ** bằng lời gọi hàm, do [pipeline](src/pipeline.py) nối lại. Mỗi bước thêm trường của mình vào event rồi chuyển cho bước sau. Chỉ có hai đầu của luồng làm việc với file: nguồn vào (file PCAP, hoặc file event nếu dùng `--events`) và hai file kết quả do `main.py` ghi.
+
+| Module | Đầu vào | Đầu ra |
+| --- | --- | --- |
+| [capture](src/capture/README.md) | Card mạng, file PCAP hoặc file event JSON Lines | Card/PCAP: từng cặp `(gói Scapy, timestamp)`. File event: từng `dict` event (dòng hỏng thành event `malformed`). |
+| [parser](src/parser/README.md) | Gói Scapy, `packet_id`, `timestamp`, `source` | `dict` event gồm `network`, `transport`, `application`, `status`, `errors`; hàm `extract_payload` trả thêm byte payload gốc. |
+| [decoder](src/decoder/README.md) | Event của parser, byte payload (`None` nếu event đọc từ file), cấu hình | Cùng event, thêm `decoded`, `decode_status`, `decode_errors`; các trường của parser giữ nguyên. |
+| [preprocessor](src/preprocessor/README.md) | Event đã qua decoder, cấu hình | Cùng event đã chuẩn hóa và điền đủ trường, thêm `preprocess_status`, `processing_action`, `reason`. |
+| [flow](src/flow/README.md) | Event có `processing_action` là `process` | Gắn `flow_id`, `direction`, `flow_state` vào event; trả danh sách bản tổng kết của các flow vừa kết thúc. |
+| [pipeline](src/pipeline.py) | Gói Scapy (kèm số thứ tự, timestamp, nguồn) hoặc event | `(event hoặc None, danh sách flow kết thúc)`; `None` khi event bị bỏ theo cấu hình (`drop`). |
+| [output](src/output/README.md) | Một `dict` | Một dòng JSON trong file kết quả. |
+
+```text
+gói Scapy → parser → decoder → preprocessor → flow tracker
+              │         │            │              │
+         event gốc  + decoded  + preprocess_status  + flow_id, direction, flow_state
+                               + processing_action
+                               + reason
+```
+
+`main.py` nhận kết quả của pipeline và ghi: event vào `--output` (mỗi gói một dòng, ghi ngay), bản tổng kết flow vào `--flow-output` (mỗi flow một dòng, ghi khi flow kết thúc). Event có `processing_action` là `skip` vẫn được ghi nhưng không vào flow tracker; `drop` thì không được ghi.
+
 ## 6. Giới hạn hiện tại
 
 - Phân tích từng gói riêng lẻ, chưa ghép TCP stream hoặc tái lắp IPv4 phân mảnh. HTTP hoặc thư trải trên nhiều gói chỉ được đọc và giải mã phần nằm trong từng gói; gói IPv4 phân mảnh không được theo dõi flow.
