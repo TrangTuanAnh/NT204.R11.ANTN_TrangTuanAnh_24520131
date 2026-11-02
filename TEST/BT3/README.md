@@ -3,7 +3,7 @@
 Thư mục này lưu kết quả 14 ca kiểm thử bắt buộc của Bài tập 3 và một ca bổ sung với bộ rule của Snort. Mỗi ca một thư mục gồm gói tin đầu vào, file rule, giá trị mong đợi, kết quả chương trình ghi ra, kết quả đối chiếu và README riêng.
 
 - Gói tin là dữ liệu tổng hợp dựng bằng Scapy rồi lưu ra PCAP, đọc offline, không gửi ra mạng.
-- Các giá trị mong đợi được khai báo trước trong [detection_cases.py](../integration/detection_cases.py), theo đề bài, Snort manual và các quy tắc ghi trong README của module [rules](../../src/rules/README.md) và [detection](../../src/detection/README.md).
+- Các giá trị mong đợi được khai báo riêng trong [detection_cases.py](../integration/detection_cases.py), theo đề bài, Snort manual và các quy tắc ghi trong README của module [rules](../../src/rules/README.md) và [detection](../../src/detection/README.md).
 - `candidates` lấy trực tiếp từ Repository. Các số `rejected`, `content_checks`, `candidate_rules` nằm trong mục `engine` của `rule_report.json`.
 
 | Ca | Nội dung xác nhận | Kết quả quan sát | Đối chiếu |

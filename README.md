@@ -142,7 +142,7 @@ Kết quả cần thấy: 2 Detection Event của rule `100001` ở gói 4 và g
 
 Khi nạp rule, chương trình in số rule theo từng kết luận và cảnh báo về các rule không dùng được. Chi tiết của từng rule và số liệu đánh giá nằm trong file `--rule-report`.
 
-Bộ rule cộng đồng của Snort nằm ở [rules/community.rules](rules/README.md). **Lưu ý:** cả 568 rule đang bật của bộ này đều có keyword ngoài phạm vi đề bài, nên đều bị bỏ, xem [mục 6](#6-giới-hạn-hiện-tại).
+Bộ rule cộng đồng của Snort nằm ở `rules/community.rules` (nguồn và kết quả nạp ghi trong [rules/README.md](rules/README.md)). **Lưu ý:** cả 568 rule đang bật của bộ này đều có keyword ngoài phạm vi đề bài, nên đều bị bỏ, xem [mục 6](#6-giới-hạn-hiện-tại).
 
 ### Chế độ chỉ phân tích (như Bài tập 1)
 
@@ -335,7 +335,7 @@ Chạy toàn bộ kiểm thử tự động (kiểm tra từng module, chạy l�
 python -m pytest
 ```
 
-Tạo lại kết quả một ca của Bài tập 2, ví dụ T07: `python TEST/integration/run_required_cases.py --case T07 --overwrite`. Bố cục thư mục kiểm thử và cách dùng script xem [TEST/README.md](TEST/README.md).
+Tạo lại kết quả một ca của Bài tập 2, ví dụ T07: `python TEST/integration/run_required_cases.py --case T07 --overwrite`; của Bài tập 3, ví dụ ca 07: `python TEST/integration/run_detection_cases.py --case 07 --overwrite`. Bố cục thư mục kiểm thử và cách dùng script xem [TEST/README.md](TEST/README.md).
 
 Có thể chạy lại từng ca bằng `main.py` theo lệnh ghi trong README của ca đó, ví dụ ca idle timeout dùng cấu hình riêng:
 
@@ -353,7 +353,7 @@ config/default.json         Cấu hình mẫu, bằng giá trị mặc định
 pytest.ini                  Cấu hình chạy pytest
 src/
   config.py                 Đọc và kiểm tra cấu hình
-  pipeline.py               Nối parser → decoder → preprocessor → flow tracker, cô lập lỗi từng bước
+  pipeline.py               Nối parser → decoder → preprocessor → flow tracker → so khớp rule, cô lập lỗi từng bước
   capture/                  Liệt kê interface, bắt live, đọc PCAP, đọc file event
   parser/                   Phân tích giao thức và tạo event
   decoder/                  Giải mã URI/form, thực thể HTML, thư MIME, bảng mã
@@ -362,7 +362,7 @@ src/
   rules/                    Đọc file rule, phân tích và phân loại rule, lưu rule có chỉ mục
   detection/                Đánh giá event theo rule, so khớp, tạo Detection Event
   output/                   Ghi JSON Lines
-rules/                      Bộ rule cộng đồng của Snort
+rules/                      File rule: bộ rule cộng đồng của Snort (khác với mã trong src/rules/)
 TEST/                       Kiểm thử theo module và kết quả các ca bắt buộc
 requirements.txt            Thư viện cần cài
 data/                       Nơi đặt PCAP đầu vào của người dùng
@@ -426,3 +426,9 @@ gói Scapy → parser → decoder → preprocessor → flow tracker → so khớ
 - **Công cụ:** OpenAI Codex.
 - **Mục đích:** hỗ trợ thiết kế, viết và rà soát mã nguồn; viết kiểm thử và script tạo kết quả kiểm thử; biên soạn tài liệu.
 - **Phần mã nguồn có AI hỗ trợ:** `main.py`, `src/config.py`, `src/pipeline.py`, `src/capture/events.py`, `src/capture/live.py`, phần bổ sung trong `src/parser/packet.py`, các module `src/decoder/`, `src/preprocessor/`, `src/flow/`, và các file kiểm thử trong `TEST/`.
+
+### AI trong Bài tập 3
+
+- **Công cụ:** Claude Code (sonnet 5.5).
+- **Mục đích:**viết mã nguồn của Core Engine; viết kiểm thử; đối chiếu cú pháp rule với Snort manual; tải bộ rule cộng đồng của Snort và thống kê kết quả nạp.
+- **Phần mã nguồn có AI hỗ trợ:** các module `src/rules/`, `src/detection/`, phần bổ sung trong `main.py`, `src/config.py`, `config/default.json`, `src/pipeline.py`, `src/flow/`, các file kiểm thử mới trong `TEST/` (kể cả script `TEST/integration/run_detection_cases.py` và kết quả trong `TEST/BT3/`).

@@ -40,6 +40,8 @@ Ngoài kiểm tra từng module, `test_required_cases.py` làm hai việc:
 - Chạy 14 ca T01–T14 qua đúng hàm `main` của chương trình và đối chiếu mọi giá trị mong đợi trong `cases.py`.
 - Chạy lại đầu vào đã lưu của **mọi** ca trong `required_cases/` (cả 12 ca Bài tập 1, với `--parse-only`) và so với `events.jsonl`/`flows.jsonl` đã lưu. Bài kiểm thử này báo lỗi nếu thay đổi code làm kết quả đã nộp không còn tái hiện được.
 
+`test_detection_cases.py` làm tương tự cho 15 ca của Bài tập 3: chạy từng ca qua hàm `main` và đối chiếu mọi giá trị mong đợi trong `detection_cases.py`, rồi chạy lại đầu vào đã lưu trong `BT3/` và so với `events.jsonl`, `flows.jsonl`, `detections.jsonl` đã lưu, cùng mục `summary` và `engine` của `rule_report.json`.
+
 ## Tạo lại kết quả các ca Bài tập 2
 
 ```powershell
