@@ -1,0 +1,4 @@
+alert tcp any any -> any 80 (msg:"Ca 09 - dung kieu chu"; content:"ADMIN"; sid:100901; rev:1;)
+alert tcp any any -> any 80 (msg:"Ca 09 - sai kieu chu"; content:"admin"; sid:100902; rev:1;)
+alert tcp any any -> any 80 (msg:"Ca 09 - co nocase"; content:"admin"; nocase; sid:100903; rev:1;)
+alert tcp any any -> any 80 (msg:"Ca 09 - viet bang hex"; content:"|41 44 4D 49 4E|"; sid:100904; rev:1;)

@@ -1,0 +1,19 @@
+{
+  "case": "case09_nocase",
+  "requirement": "Phân biệt/không phân biệt hoa thường đúng.",
+  "checks": {
+    "exit_code": 0,
+    "detection_count": 3,
+    "by_packet.1": [
+      100901,
+      100903,
+      100904
+    ],
+    "report.engine.rejected.content": 1,
+    "detections.0.match.contents.0.nocase": false,
+    "detections.1.match.contents.0.nocase": true,
+    "detections.1.match.contents.0.position": 5,
+    "detections.2.match.contents.0.content": "|41 44 4D 49 4E|"
+  },
+  "equal_paths": []
+}

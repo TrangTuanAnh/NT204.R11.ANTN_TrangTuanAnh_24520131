@@ -1,0 +1,269 @@
+{
+  "summary": {
+    "files": 1,
+    "disabled_files": 0,
+    "comment_lines": 0,
+    "blank_lines": 0,
+    "rule_lines": 4,
+    "valid": 4,
+    "invalid": 0,
+    "unsupported": 0,
+    "disabled": 0
+  },
+  "unsupported_keywords": {},
+  "files": [
+    {
+      "path": "TEST/BT3/case09_nocase/input.rules",
+      "enabled": true,
+      "rule_lines": 4,
+      "comment_lines": 0,
+      "blank_lines": 0
+    }
+  ],
+  "rules": [
+    {
+      "file": "TEST/BT3/case09_nocase/input.rules",
+      "line": 1,
+      "sid": 100901,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 100901,
+        "rev": 1,
+        "msg": "Ca 09 - dung kieu chu",
+        "classtype": null,
+        "priority": null,
+        "contents": [
+          {
+            "content": "ADMIN",
+            "hex": "41444d494e",
+            "negated": false,
+            "nocase": false,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case09_nocase/input.rules",
+      "line": 2,
+      "sid": 100902,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 100902,
+        "rev": 1,
+        "msg": "Ca 09 - sai kieu chu",
+        "classtype": null,
+        "priority": null,
+        "contents": [
+          {
+            "content": "admin",
+            "hex": "61646d696e",
+            "negated": false,
+            "nocase": false,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case09_nocase/input.rules",
+      "line": 3,
+      "sid": 100903,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 100903,
+        "rev": 1,
+        "msg": "Ca 09 - co nocase",
+        "classtype": null,
+        "priority": null,
+        "contents": [
+          {
+            "content": "admin",
+            "hex": "61646d696e",
+            "negated": false,
+            "nocase": true,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case09_nocase/input.rules",
+      "line": 4,
+      "sid": 100904,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 100904,
+        "rev": 1,
+        "msg": "Ca 09 - viet bang hex",
+        "classtype": null,
+        "priority": null,
+        "contents": [
+          {
+            "content": "|41 44 4D 49 4E|",
+            "hex": "41444d494e",
+            "negated": false,
+            "nocase": false,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    }
+  ],
+  "engine": {
+    "rules_in_repository": 4,
+    "events_seen": 1,
+    "events_evaluated": 1,
+    "events_skipped": 0,
+    "candidate_rules": 4,
+    "content_checks": 4,
+    "matches": 3,
+    "rejected": {
+      "header": 0,
+      "flow": 0,
+      "packet": 0,
+      "content": 1
+    },
+    "errors": 0
+  }
+}
