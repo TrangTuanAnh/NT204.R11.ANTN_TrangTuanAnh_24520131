@@ -1,0 +1,6 @@
+alert tcp any any -> any 80 (msg:"Ca 10 - GET depth 3"; content:"GET"; depth:3; sid:101001; rev:1;)
+alert tcp any any -> any 80 (msg:"Ca 10 - GET offset 1"; content:"GET"; offset:1; sid:101002; rev:1;)
+alert tcp any any -> any 80 (msg:"Ca 10 - index 5,5"; content:"index"; offset:5; depth:5; sid:101003; rev:1;)
+alert tcp any any -> any 80 (msg:"Ca 10 - index depth 5"; content:"index"; depth:5; sid:101004; rev:1;)
+alert tcp any any -> any 80 (msg:"Ca 10 - index offset 6"; content:"index"; offset:6; sid:101005; rev:1;)
+alert tcp any any -> any 80 (msg:"Ca 10 - index 4,5"; content:"index"; offset:4; depth:5; sid:101006; rev:1;)

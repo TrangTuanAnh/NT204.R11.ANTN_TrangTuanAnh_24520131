@@ -1,0 +1,17 @@
+{
+  "case": "case10_offset_depth",
+  "requirement": "Chỉ match trong vùng được chỉ định.",
+  "checks": {
+    "exit_code": 0,
+    "detection_count": 2,
+    "by_packet.1": [
+      101001,
+      101003
+    ],
+    "report.engine.rejected.content": 4,
+    "detections.0.match.contents.0.position": 0,
+    "detections.1.match.contents.0.position": 5,
+    "detections.0.match.buffer": "payload"
+  },
+  "equal_paths": []
+}
