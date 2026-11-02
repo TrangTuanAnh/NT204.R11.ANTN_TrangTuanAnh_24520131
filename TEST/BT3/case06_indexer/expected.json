@@ -1,0 +1,48 @@
+{
+  "case": "case06_indexer",
+  "requirement": "Trả đúng tập candidate rules.",
+  "checks": {
+    "exit_code": 0,
+    "report.summary.valid": 8,
+    "candidates.0": [
+      100601,
+      100602,
+      100603
+    ],
+    "candidates.1": [
+      100601,
+      100602,
+      100604
+    ],
+    "candidates.2": [
+      100601,
+      100602,
+      100605
+    ],
+    "candidates.3": [
+      100601,
+      100602,
+      100608
+    ],
+    "candidates.4": [
+      100601,
+      100602
+    ],
+    "candidates.5": [
+      100601,
+      100606,
+      100607
+    ],
+    "candidates.6": [
+      100601,
+      100606
+    ],
+    "candidates.7": [
+      100601
+    ],
+    "report.engine.events_evaluated": 8,
+    "report.engine.rules_in_repository": 8,
+    "report.engine.candidate_rules": 20
+  },
+  "equal_paths": []
+}

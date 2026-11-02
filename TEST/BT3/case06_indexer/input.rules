@@ -1,0 +1,8 @@
+alert ip any any -> any any (msg:"Ip moi goi"; sid:100601; rev:1;)
+alert tcp any any -> any any (msg:"Tcp moi port"; sid:100602; rev:1;)
+alert tcp any any -> any 80 (msg:"Tcp dich 80"; sid:100603; rev:1;)
+alert tcp any 80 -> any any (msg:"Tcp nguon 80"; sid:100604; rev:1;)
+alert tcp any any -> any 8000:8100 (msg:"Tcp khoang port"; sid:100605; rev:1;)
+alert udp any any -> any any (msg:"Udp moi port"; sid:100606; rev:1;)
+alert udp any any -> any 53 (msg:"Udp dich 53"; sid:100607; rev:1;)
+alert tcp 10.0.0.5 any -> any 443 (msg:"Tcp IP cu the dich 443"; sid:100608; rev:1;)
