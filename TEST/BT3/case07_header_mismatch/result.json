@@ -1,0 +1,90 @@
+{
+  "case": "case07_header_mismatch",
+  "requirement": "Rule bị loại trước content matching.",
+  "run_at": "2026-11-02T21:50:38+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "82ab3e7d16832562c0a9b9989353894d3f62bca9bb34d8a1e7b4b7d06ca34e65",
+  "command": "python main.py --pcap TEST/BT3/case07_header_mismatch/input.pcap --rules TEST/BT3/case07_header_mismatch/input.rules --config TEST/BT3/case07_header_mismatch/config.json --output output/case07_events.jsonl --flow-output output/case07_flows.jsonl --detection-output output/case07_detections.jsonl --rule-report output/case07_rule_report.json",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 10,
+  "total_checks": 10,
+  "event_count": 1,
+  "flow_count": 1,
+  "detection_count": 1,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "detection_count",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "candidates.0",
+      "expected": [
+        100701,
+        100702,
+        100705
+      ],
+      "actual": [
+        100701,
+        100702,
+        100705
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.engine.rules_in_repository",
+      "expected": 5,
+      "actual": 5,
+      "passed": true
+    },
+    {
+      "field": "report.engine.candidate_rules",
+      "expected": 3,
+      "actual": 3,
+      "passed": true
+    },
+    {
+      "field": "report.engine.rejected.header",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "report.engine.rejected.content",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "report.engine.content_checks",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "report.engine.matches",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "by_packet.1",
+      "expected": [
+        100705
+      ],
+      "actual": [
+        100705
+      ],
+      "passed": true
+    }
+  ]
+}

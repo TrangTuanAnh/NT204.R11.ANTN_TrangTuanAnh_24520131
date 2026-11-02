@@ -1,0 +1,5 @@
+alert tcp 10.9.9.9 any -> any 80 (msg:"Sai IP nguon"; content:"GET"; sid:100701; rev:1;)
+alert tcp any any -> 192.168.99.0/24 80 (msg:"Sai IP dich"; content:"GET"; sid:100702; rev:1;)
+alert tcp any any -> any 8080 (msg:"Sai port dich"; content:"GET"; sid:100703; rev:1;)
+alert udp any any -> any 80 (msg:"Sai giao thuc"; content:"GET"; sid:100704; rev:1;)
+alert tcp any any -> any 80 (msg:"Dung header"; content:"GET"; sid:100705; rev:1;)

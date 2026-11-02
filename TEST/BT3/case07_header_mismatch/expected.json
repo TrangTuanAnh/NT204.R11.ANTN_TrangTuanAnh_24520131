@@ -1,0 +1,23 @@
+{
+  "case": "case07_header_mismatch",
+  "requirement": "Rule bị loại trước content matching.",
+  "checks": {
+    "exit_code": 0,
+    "detection_count": 1,
+    "candidates.0": [
+      100701,
+      100702,
+      100705
+    ],
+    "report.engine.rules_in_repository": 5,
+    "report.engine.candidate_rules": 3,
+    "report.engine.rejected.header": 2,
+    "report.engine.rejected.content": 0,
+    "report.engine.content_checks": 1,
+    "report.engine.matches": 1,
+    "by_packet.1": [
+      100705
+    ]
+  },
+  "equal_paths": []
+}
