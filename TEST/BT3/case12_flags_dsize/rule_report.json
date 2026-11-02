@@ -1,0 +1,695 @@
+{
+  "summary": {
+    "files": 1,
+    "disabled_files": 0,
+    "comment_lines": 0,
+    "blank_lines": 0,
+    "rule_lines": 13,
+    "valid": 13,
+    "invalid": 0,
+    "unsupported": 0,
+    "disabled": 0
+  },
+  "unsupported_keywords": {},
+  "files": [
+    {
+      "path": "TEST/BT3/case12_flags_dsize/input.rules",
+      "enabled": true,
+      "rule_lines": 13,
+      "comment_lines": 0,
+      "blank_lines": 0
+    }
+  ],
+  "rules": [
+    {
+      "file": "TEST/BT3/case12_flags_dsize/input.rules",
+      "line": 1,
+      "sid": 101201,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "<>",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 101201,
+        "rev": 1,
+        "msg": "Ca 12 - flags:S",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": {
+          "modifier": "",
+          "flags": "S",
+          "ignored": ""
+        },
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case12_flags_dsize/input.rules",
+      "line": 2,
+      "sid": 101202,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "<>",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 101202,
+        "rev": 1,
+        "msg": "Ca 12 - flags:SA",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": {
+          "modifier": "",
+          "flags": "SA",
+          "ignored": ""
+        },
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case12_flags_dsize/input.rules",
+      "line": 3,
+      "sid": 101203,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "<>",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 101203,
+        "rev": 1,
+        "msg": "Ca 12 - flags:+A",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": {
+          "modifier": "+",
+          "flags": "A",
+          "ignored": ""
+        },
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case12_flags_dsize/input.rules",
+      "line": 4,
+      "sid": 101204,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "<>",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 101204,
+        "rev": 1,
+        "msg": "Ca 12 - flags:*FR",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": {
+          "modifier": "*",
+          "flags": "FR",
+          "ignored": ""
+        },
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case12_flags_dsize/input.rules",
+      "line": 5,
+      "sid": 101205,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "<>",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 101205,
+        "rev": 1,
+        "msg": "Ca 12 - flags:!A",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": {
+          "modifier": "!",
+          "flags": "A",
+          "ignored": ""
+        },
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case12_flags_dsize/input.rules",
+      "line": 6,
+      "sid": 101206,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "<>",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 101206,
+        "rev": 1,
+        "msg": "Ca 12 - flags:0",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": {
+          "modifier": "",
+          "flags": "",
+          "ignored": ""
+        },
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case12_flags_dsize/input.rules",
+      "line": 7,
+      "sid": 101207,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "<>",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 101207,
+        "rev": 1,
+        "msg": "Ca 12 - flags:S,CE",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": {
+          "modifier": "",
+          "flags": "S",
+          "ignored": "CE"
+        },
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case12_flags_dsize/input.rules",
+      "line": 8,
+      "sid": 101208,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "<>",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 101208,
+        "rev": 1,
+        "msg": "Ca 12 - dsize:5",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": null,
+        "dsize": {
+          "operator": "=",
+          "low": 5,
+          "high": null
+        },
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case12_flags_dsize/input.rules",
+      "line": 9,
+      "sid": 101209,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "<>",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 101209,
+        "rev": 1,
+        "msg": "Ca 12 - dsize:>100",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": null,
+        "dsize": {
+          "operator": ">",
+          "low": 100,
+          "high": null
+        },
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case12_flags_dsize/input.rules",
+      "line": 10,
+      "sid": 101210,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "<>",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 101210,
+        "rev": 1,
+        "msg": "Ca 12 - dsize:<1",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": null,
+        "dsize": {
+          "operator": "<",
+          "low": 1,
+          "high": null
+        },
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case12_flags_dsize/input.rules",
+      "line": 11,
+      "sid": 101211,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "<>",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 101211,
+        "rev": 1,
+        "msg": "Ca 12 - dsize:3<>5",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": null,
+        "dsize": {
+          "operator": "<>",
+          "low": 3,
+          "high": 5
+        },
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case12_flags_dsize/input.rules",
+      "line": 12,
+      "sid": 101212,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "<>",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 101212,
+        "rev": 1,
+        "msg": "Ca 12 - dsize:6<>199",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": null,
+        "dsize": {
+          "operator": "<>",
+          "low": 6,
+          "high": 199
+        },
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case12_flags_dsize/input.rules",
+      "line": 13,
+      "sid": 101213,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "<>",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 101213,
+        "rev": 1,
+        "msg": "Ca 12 - flags:+A; dsize:5",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": {
+          "modifier": "+",
+          "flags": "A",
+          "ignored": ""
+        },
+        "dsize": {
+          "operator": "=",
+          "low": 5,
+          "high": null
+        },
+        "flow": null
+      }
+    }
+  ],
+  "engine": {
+    "rules_in_repository": 13,
+    "events_seen": 7,
+    "events_evaluated": 7,
+    "events_skipped": 0,
+    "candidate_rules": 91,
+    "content_checks": 0,
+    "matches": 22,
+    "rejected": {
+      "header": 0,
+      "flow": 0,
+      "packet": 69,
+      "content": 0
+    },
+    "errors": 0
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "case": "case12_flags_dsize",
+  "requirement": "Match/không match đúng theo event.",
+  "checks": {
+    "exit_code": 0,
+    "by_packet.1": [
+      101201,
+      101205,
+      101207,
+      101210
+    ],
+    "by_packet.2": [
+      101202,
+      101203,
+      101210
+    ],
+    "by_packet.3": [
+      101203,
+      101208,
+      101211,
+      101213
+    ],
+    "by_packet.4": [
+      101203,
+      101204,
+      101210
+    ],
+    "by_packet.5": [
+      101203,
+      101209
+    ],
+    "by_packet.6": [
+      101205,
+      101206,
+      101210
+    ],
+    "by_packet.7": [
+      101205,
+      101207,
+      101210
+    ],
+    "events.5.transport.flags": "",
+    "events.6.transport.flags": "SEC",
+    "report.summary.valid": 13
+  },
+  "equal_paths": []
+}
