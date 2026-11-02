@@ -9,4 +9,6 @@ htmlcov/
 !TEST/**/input.jsonl
 !TEST/**/events.jsonl
 !TEST/**/flows.jsonl
+!TEST/**/detections.jsonl
 output/*.log
+output/*.json
