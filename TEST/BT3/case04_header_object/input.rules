@@ -1,0 +1,4 @@
+alert tcp any any -> any any (msg:"Any va any"; sid:100401; rev:1;)
+alert tcp 10.0.0.5 52133 -> 192.168.1.20 80 (msg:"IP don, port don"; sid:100402; rev:1;)
+alert tcp 10.0.0.0/8 1024:65535 -> 192.168.1.0/24 :1023 (msg:"CIDR, khoang port"; sid:100403; rev:1;)
+alert tcp any 1024: -> 192.168.1.20 8000:8080 (msg:"Khoang mo"; sid:100404; rev:1;)

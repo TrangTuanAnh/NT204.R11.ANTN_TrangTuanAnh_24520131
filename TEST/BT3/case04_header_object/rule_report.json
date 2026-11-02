@@ -1,0 +1,245 @@
+{
+  "summary": {
+    "files": 1,
+    "disabled_files": 0,
+    "comment_lines": 0,
+    "blank_lines": 0,
+    "rule_lines": 4,
+    "valid": 4,
+    "invalid": 0,
+    "unsupported": 0,
+    "disabled": 0
+  },
+  "unsupported_keywords": {},
+  "files": [
+    {
+      "path": "TEST/BT3/case04_header_object/input.rules",
+      "enabled": true,
+      "rule_lines": 4,
+      "comment_lines": 0,
+      "blank_lines": 0
+    }
+  ],
+  "rules": [
+    {
+      "file": "TEST/BT3/case04_header_object/input.rules",
+      "line": 1,
+      "sid": 100401,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "sid": 100401,
+        "rev": 1,
+        "msg": "Any va any",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case04_header_object/input.rules",
+      "line": 2,
+      "sid": 100402,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": false,
+          "include": [
+            "10.0.0.5/32"
+          ],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": false,
+          "include": [
+            [
+              52133,
+              52133
+            ]
+          ],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": false,
+          "include": [
+            "192.168.1.20/32"
+          ],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 100402,
+        "rev": 1,
+        "msg": "IP don, port don",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case04_header_object/input.rules",
+      "line": 3,
+      "sid": 100403,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": false,
+          "include": [
+            "10.0.0.0/8"
+          ],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": false,
+          "include": [
+            [
+              1024,
+              65535
+            ]
+          ],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": false,
+          "include": [
+            "192.168.1.0/24"
+          ],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              0,
+              1023
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 100403,
+        "rev": 1,
+        "msg": "CIDR, khoang port",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case04_header_object/input.rules",
+      "line": 4,
+      "sid": 100404,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": false,
+          "include": [
+            [
+              1024,
+              65535
+            ]
+          ],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": false,
+          "include": [
+            "192.168.1.20/32"
+          ],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              8000,
+              8080
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 100404,
+        "rev": 1,
+        "msg": "Khoang mo",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    }
+  ],
+  "engine": {
+    "rules_in_repository": 4,
+    "events_seen": 1,
+    "events_evaluated": 1,
+    "events_skipped": 0,
+    "candidate_rules": 3,
+    "content_checks": 0,
+    "matches": 3,
+    "rejected": {
+      "header": 0,
+      "flow": 0,
+      "packet": 0,
+      "content": 0
+    },
+    "errors": 0
+  }
+}

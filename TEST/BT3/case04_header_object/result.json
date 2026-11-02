@@ -1,0 +1,352 @@
+{
+  "case": "case04_header_object",
+  "requirement": "Internal Rule Object đúng.",
+  "run_at": "2026-11-02T21:50:36+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "82ab3e7d16832562c0a9b9989353894d3f62bca9bb34d8a1e7b4b7d06ca34e65",
+  "command": "python main.py --pcap TEST/BT3/case04_header_object/input.pcap --rules TEST/BT3/case04_header_object/input.rules --config TEST/BT3/case04_header_object/config.json --output output/case04_events.jsonl --flow-output output/case04_flows.jsonl --detection-output output/case04_detections.jsonl --rule-report output/case04_rule_report.json",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 23,
+  "total_checks": 23,
+  "event_count": 1,
+  "flow_count": 1,
+  "detection_count": 3,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "report.summary.valid",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "field": "report.rules.0.rule.action",
+      "expected": "alert",
+      "actual": "alert",
+      "passed": true
+    },
+    {
+      "field": "report.rules.0.rule.protocol",
+      "expected": "tcp",
+      "actual": "tcp",
+      "passed": true
+    },
+    {
+      "field": "report.rules.0.rule.direction",
+      "expected": "->",
+      "actual": "->",
+      "passed": true
+    },
+    {
+      "field": "report.rules.0.rule.source",
+      "expected": {
+        "any": true,
+        "include": [],
+        "exclude": []
+      },
+      "actual": {
+        "any": true,
+        "include": [],
+        "exclude": []
+      },
+      "passed": true
+    },
+    {
+      "field": "report.rules.0.rule.source_ports",
+      "expected": {
+        "any": true,
+        "include": [],
+        "exclude": []
+      },
+      "actual": {
+        "any": true,
+        "include": [],
+        "exclude": []
+      },
+      "passed": true
+    },
+    {
+      "field": "report.rules.0.rule.destination",
+      "expected": {
+        "any": true,
+        "include": [],
+        "exclude": []
+      },
+      "actual": {
+        "any": true,
+        "include": [],
+        "exclude": []
+      },
+      "passed": true
+    },
+    {
+      "field": "report.rules.0.rule.destination_ports",
+      "expected": {
+        "any": true,
+        "include": [],
+        "exclude": []
+      },
+      "actual": {
+        "any": true,
+        "include": [],
+        "exclude": []
+      },
+      "passed": true
+    },
+    {
+      "field": "report.rules.1.rule.source",
+      "expected": {
+        "any": false,
+        "include": [
+          "10.0.0.5/32"
+        ],
+        "exclude": []
+      },
+      "actual": {
+        "any": false,
+        "include": [
+          "10.0.0.5/32"
+        ],
+        "exclude": []
+      },
+      "passed": true
+    },
+    {
+      "field": "report.rules.1.rule.source_ports",
+      "expected": {
+        "any": false,
+        "include": [
+          [
+            52133,
+            52133
+          ]
+        ],
+        "exclude": []
+      },
+      "actual": {
+        "any": false,
+        "include": [
+          [
+            52133,
+            52133
+          ]
+        ],
+        "exclude": []
+      },
+      "passed": true
+    },
+    {
+      "field": "report.rules.1.rule.destination",
+      "expected": {
+        "any": false,
+        "include": [
+          "192.168.1.20/32"
+        ],
+        "exclude": []
+      },
+      "actual": {
+        "any": false,
+        "include": [
+          "192.168.1.20/32"
+        ],
+        "exclude": []
+      },
+      "passed": true
+    },
+    {
+      "field": "report.rules.1.rule.destination_ports",
+      "expected": {
+        "any": false,
+        "include": [
+          [
+            80,
+            80
+          ]
+        ],
+        "exclude": []
+      },
+      "actual": {
+        "any": false,
+        "include": [
+          [
+            80,
+            80
+          ]
+        ],
+        "exclude": []
+      },
+      "passed": true
+    },
+    {
+      "field": "report.rules.2.rule.source",
+      "expected": {
+        "any": false,
+        "include": [
+          "10.0.0.0/8"
+        ],
+        "exclude": []
+      },
+      "actual": {
+        "any": false,
+        "include": [
+          "10.0.0.0/8"
+        ],
+        "exclude": []
+      },
+      "passed": true
+    },
+    {
+      "field": "report.rules.2.rule.source_ports",
+      "expected": {
+        "any": false,
+        "include": [
+          [
+            1024,
+            65535
+          ]
+        ],
+        "exclude": []
+      },
+      "actual": {
+        "any": false,
+        "include": [
+          [
+            1024,
+            65535
+          ]
+        ],
+        "exclude": []
+      },
+      "passed": true
+    },
+    {
+      "field": "report.rules.2.rule.destination",
+      "expected": {
+        "any": false,
+        "include": [
+          "192.168.1.0/24"
+        ],
+        "exclude": []
+      },
+      "actual": {
+        "any": false,
+        "include": [
+          "192.168.1.0/24"
+        ],
+        "exclude": []
+      },
+      "passed": true
+    },
+    {
+      "field": "report.rules.2.rule.destination_ports",
+      "expected": {
+        "any": false,
+        "include": [
+          [
+            0,
+            1023
+          ]
+        ],
+        "exclude": []
+      },
+      "actual": {
+        "any": false,
+        "include": [
+          [
+            0,
+            1023
+          ]
+        ],
+        "exclude": []
+      },
+      "passed": true
+    },
+    {
+      "field": "report.rules.3.rule.source_ports",
+      "expected": {
+        "any": false,
+        "include": [
+          [
+            1024,
+            65535
+          ]
+        ],
+        "exclude": []
+      },
+      "actual": {
+        "any": false,
+        "include": [
+          [
+            1024,
+            65535
+          ]
+        ],
+        "exclude": []
+      },
+      "passed": true
+    },
+    {
+      "field": "report.rules.3.rule.destination_ports",
+      "expected": {
+        "any": false,
+        "include": [
+          [
+            8000,
+            8080
+          ]
+        ],
+        "exclude": []
+      },
+      "actual": {
+        "any": false,
+        "include": [
+          [
+            8000,
+            8080
+          ]
+        ],
+        "exclude": []
+      },
+      "passed": true
+    },
+    {
+      "field": "report.rules.1.rule.sid",
+      "expected": 100402,
+      "actual": 100402,
+      "passed": true
+    },
+    {
+      "field": "report.rules.1.rule.rev",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "report.rules.1.rule.msg",
+      "expected": "IP don, port don",
+      "actual": "IP don, port don",
+      "passed": true
+    },
+    {
+      "field": "by_packet.1",
+      "expected": [
+        100401,
+        100402,
+        100403
+      ],
+      "actual": [
+        100401,
+        100402,
+        100403
+      ],
+      "passed": true
+    }
+  ]
+}
