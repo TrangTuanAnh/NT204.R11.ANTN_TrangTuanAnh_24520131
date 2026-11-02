@@ -1,0 +1,29 @@
+{
+  "case": "case13_several_rules",
+  "requirement": "Sinh đầy đủ các kết quả match.",
+  "checks": {
+    "exit_code": 0,
+    "detection_count": 7,
+    "by_packet.1": [
+      101301
+    ],
+    "by_packet.2": [],
+    "by_packet.3": [
+      101301,
+      101303
+    ],
+    "by_packet.4": [
+      101301,
+      101302,
+      101303,
+      101304
+    ],
+    "report.engine.matches": 7,
+    "report.engine.rejected.content": 6,
+    "detections.3.packet_id": 4,
+    "detections.4.packet_id": 4,
+    "detections.5.packet_id": 4,
+    "detections.6.packet_id": 4
+  },
+  "equal_paths": []
+}

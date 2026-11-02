@@ -1,0 +1,289 @@
+{
+  "summary": {
+    "files": 1,
+    "disabled_files": 0,
+    "comment_lines": 0,
+    "blank_lines": 0,
+    "rule_lines": 5,
+    "valid": 5,
+    "invalid": 0,
+    "unsupported": 0,
+    "disabled": 0
+  },
+  "unsupported_keywords": {},
+  "files": [
+    {
+      "path": "TEST/BT3/case13_several_rules/input.rules",
+      "enabled": true,
+      "rule_lines": 5,
+      "comment_lines": 0,
+      "blank_lines": 0
+    }
+  ],
+  "rules": [
+    {
+      "file": "TEST/BT3/case13_several_rules/input.rules",
+      "line": 1,
+      "sid": 101301,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 101301,
+        "rev": 1,
+        "msg": "Ca 13 - theo port",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case13_several_rules/input.rules",
+      "line": 2,
+      "sid": 101302,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "sid": 101302,
+        "rev": 1,
+        "msg": "Ca 13 - theo content",
+        "classtype": null,
+        "priority": null,
+        "contents": [
+          {
+            "content": "passwd",
+            "hex": "706173737764",
+            "negated": false,
+            "nocase": false,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case13_several_rules/input.rules",
+      "line": 3,
+      "sid": 101303,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": false,
+          "include": [
+            "10.0.0.0/8"
+          ],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": false,
+          "include": [
+            "192.168.1.0/24"
+          ],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "sid": 101303,
+        "rev": 1,
+        "msg": "Ca 13 - theo dai IP",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": null,
+        "dsize": null,
+        "flow": {
+          "direction": "to_server",
+          "state": "established"
+        }
+      }
+    },
+    {
+      "file": "TEST/BT3/case13_several_rules/input.rules",
+      "line": 4,
+      "sid": 101304,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "ip",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "sid": 101304,
+        "rev": 1,
+        "msg": "Ca 13 - moi goi co du lieu",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": null,
+        "dsize": {
+          "operator": ">",
+          "low": 0,
+          "high": null
+        },
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case13_several_rules/input.rules",
+      "line": 5,
+      "sid": 101305,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 101305,
+        "rev": 1,
+        "msg": "Ca 13 - khong khop",
+        "classtype": null,
+        "priority": null,
+        "contents": [
+          {
+            "content": "khong_co",
+            "hex": "6b686f6e675f636f",
+            "negated": false,
+            "nocase": false,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    }
+  ],
+  "engine": {
+    "rules_in_repository": 5,
+    "events_seen": 4,
+    "events_evaluated": 4,
+    "events_skipped": 0,
+    "candidate_rules": 18,
+    "content_checks": 7,
+    "matches": 7,
+    "rejected": {
+      "header": 1,
+      "flow": 1,
+      "packet": 3,
+      "content": 6
+    },
+    "errors": 0
+  }
+}

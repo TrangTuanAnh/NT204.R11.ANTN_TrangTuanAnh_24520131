@@ -1,0 +1,5 @@
+alert tcp any any -> any 80 (msg:"Ca 13 - theo port"; sid:101301; rev:1;)
+alert tcp any any -> any any (msg:"Ca 13 - theo content"; content:"passwd"; sid:101302; rev:1;)
+alert tcp 10.0.0.0/8 any -> 192.168.1.0/24 any (msg:"Ca 13 - theo dai IP"; flow:to_server,established; sid:101303; rev:1;)
+alert ip any any -> any any (msg:"Ca 13 - moi goi co du lieu"; dsize:>0; sid:101304; rev:1;)
+alert tcp any any -> any 80 (msg:"Ca 13 - khong khop"; content:"khong_co"; sid:101305; rev:1;)

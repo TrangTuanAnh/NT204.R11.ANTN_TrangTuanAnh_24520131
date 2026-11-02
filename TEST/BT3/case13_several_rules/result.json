@@ -1,0 +1,110 @@
+{
+  "case": "case13_several_rules",
+  "requirement": "Sinh đầy đủ các kết quả match.",
+  "run_at": "2026-11-02T21:50:43+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "30055f5cccb8bbfbc69bfd7833ecbbd862a83a2614d18b38458a4efcad82060a",
+  "command": "python main.py --pcap TEST/BT3/case13_several_rules/input.pcap --rules TEST/BT3/case13_several_rules/input.rules --config TEST/BT3/case13_several_rules/config.json --output output/case13_events.jsonl --flow-output output/case13_flows.jsonl --detection-output output/case13_detections.jsonl --rule-report output/case13_rule_report.json",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 12,
+  "total_checks": 12,
+  "event_count": 4,
+  "flow_count": 1,
+  "detection_count": 7,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "detection_count",
+      "expected": 7,
+      "actual": 7,
+      "passed": true
+    },
+    {
+      "field": "by_packet.1",
+      "expected": [
+        101301
+      ],
+      "actual": [
+        101301
+      ],
+      "passed": true
+    },
+    {
+      "field": "by_packet.2",
+      "expected": [],
+      "actual": [],
+      "passed": true
+    },
+    {
+      "field": "by_packet.3",
+      "expected": [
+        101301,
+        101303
+      ],
+      "actual": [
+        101301,
+        101303
+      ],
+      "passed": true
+    },
+    {
+      "field": "by_packet.4",
+      "expected": [
+        101301,
+        101302,
+        101303,
+        101304
+      ],
+      "actual": [
+        101301,
+        101302,
+        101303,
+        101304
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.engine.matches",
+      "expected": 7,
+      "actual": 7,
+      "passed": true
+    },
+    {
+      "field": "report.engine.rejected.content",
+      "expected": 6,
+      "actual": 6,
+      "passed": true
+    },
+    {
+      "field": "detections.3.packet_id",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "field": "detections.4.packet_id",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "field": "detections.5.packet_id",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "field": "detections.6.packet_id",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    }
+  ]
+}
