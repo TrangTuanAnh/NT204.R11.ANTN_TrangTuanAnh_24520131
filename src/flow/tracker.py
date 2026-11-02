@@ -42,6 +42,8 @@ class FlowTracker:
         self._created = 0                         # số flow đã tạo, góp phần tạo flow_id
         self._now: float | None = None            # thời điểm mới nhất đã thấy
         self._next_deadline: float | None = None  # mốc sớm nhất mà một flow có thể hết hạn
+        # Thông tin flow của gói vừa qua track(), lưu ở đây vì flow có thể đã bị xóa khỏi bảng ngay sau gói đó.
+        self.last_context: dict[str, Any] | None = None
 
     @property
     def active_count(self) -> int:
@@ -79,6 +81,7 @@ class FlowTracker:
         application = event.get("application") or {}
         flow.add_packet(direction, timestamp, _packet_size(event), flags, application.get("protocol"))
         event["flow_id"], event["direction"], event["flow_state"] = flow.flow_id, direction, flow.state
+        self.last_context = flow.context(direction)
         if flow.state in FINISHED_STATES:
             finished.append(self._close(key, "tcp_closed" if flow.state == CLOSED else "tcp_reset"))
         return finished

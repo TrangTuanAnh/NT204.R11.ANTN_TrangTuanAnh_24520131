@@ -25,6 +25,7 @@ class TcpConnection:
         """Kết nối mới tạo ở trạng thái NEW, chưa thấy cờ nào."""
         self.state = NEW
         self.handshake_observed = False  # đã thấy đủ ba bước SYN → SYN/ACK → ACK
+        self.was_established = False     # kết nối đã từng thông, vẫn đúng cả khi đang đóng hoặc đã đóng
         self._saw_syn = False
         self._saw_syn_ack = False
         self._fin_directions: set[str] = set()  # các chiều đã gửi FIN
@@ -53,6 +54,7 @@ class TcpConnection:
             # ACK cuối của bắt tay, hoặc bắt gặp một kết nối đang chạy dở (không thấy bắt tay).
             self.handshake_observed = self._saw_syn and self._saw_syn_ack and direction == "forward"
             self.state = ESTABLISHED
+            self.was_established = True
 
     def starts_new_connection(self, flags: str) -> bool:
         """Gói SYN (không kèm ACK) đến khi kết nối cũ đã qua bắt tay nghĩa là một kết nối mới."""

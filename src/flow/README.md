@@ -104,6 +104,16 @@ Flow kết thúc được ghi ra và **xóa khỏi bảng ngay**, nên gói sau 
 
 Event được gắn thêm `flow_id`, `direction` và `flow_state` (trạng thái TCP sau gói đó). Event không được theo dõi flow có ba trường này là `null`.
 
+## Thông tin flow cho phần so khớp rule
+
+Sau mỗi lần gọi `track(event)`, thuộc tính `tracker.last_context` giữ thông tin flow của gói vừa xử lý để [phần so khớp rule](../detection/README.md) sử dụng. Thông tin này được lưu riêng vì flow có thể đã bị xóa khỏi bảng ngay sau gói đó, ví dụ gói RST, và không ghi vào event để file event giữ nguyên dạng.
+
+| Trường | Nội dung |
+| --- | --- |
+| `flow_id`, `protocol`, `application_protocol`, `state`, `handshake_observed`, `packet_count`, `byte_count` | Giá trị của flow ngay sau khi cộng gói này |
+| `direction`, `to_server` | Chiều của gói; `to_server` đúng khi gói đi từ bên mở kết nối (`forward`) |
+| `established` | Kết nối đã từng thông; vẫn đúng khi đang đóng hoặc đã đóng. UDP luôn là `false` |
+
 ## Giới hạn hiện tại
 
 - Không dùng số sequence/acknowledgment để xác minh gói, nên gói giả mạo đúng cờ vẫn làm đổi trạng thái.

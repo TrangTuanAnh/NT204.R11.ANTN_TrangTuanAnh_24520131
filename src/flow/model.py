@@ -69,6 +69,26 @@ class Flow:
                     self.flag_counts[name] += 1
             self.tcp.update(flags, direction)
 
+    def context(self, direction: str) -> dict[str, Any]:
+        """Thông tin flow ngay sau khi cộng gói vừa rồi, để phần so khớp rule sử dụng.
+
+        endpoint_a được coi là bên mở kết nối, nên chiều "forward" là gói đi tới server.
+        established chỉ đúng với TCP và vẫn đúng khi kết nối đang đóng, vì một bên
+        vẫn có thể gửi dữ liệu trong lúc đó; UDP không có kết nối nên luôn là False.
+        """
+        return {
+            "flow_id": self.flow_id,
+            "protocol": self.protocol,
+            "application_protocol": self.application_protocol,
+            "direction": direction,
+            "to_server": direction == "forward",
+            "state": self.state,
+            "established": self.tcp is not None and self.tcp.was_established,
+            "handshake_observed": self.tcp.handshake_observed if self.tcp is not None else None,
+            "packet_count": self.packet_count,
+            "byte_count": self.byte_count,
+        }
+
     def summary(self, end_reason: str) -> dict[str, Any]:
         """Tạo bản tổng kết của flow để ghi ra file khi flow kết thúc.
 
