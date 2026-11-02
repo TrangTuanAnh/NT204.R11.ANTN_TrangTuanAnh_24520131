@@ -1,0 +1,24 @@
+{
+  "case": "case11_distance_within",
+  "requirement": "Relative matching đúng.",
+  "checks": {
+    "exit_code": 0,
+    "detection_count": 4,
+    "by_packet.1": [
+      101101,
+      101102,
+      101105,
+      101106
+    ],
+    "report.engine.rejected.content": 2,
+    "detections.0.match.contents.0.position": 0,
+    "detections.0.match.contents.1.position": 8,
+    "detections.1.match.contents.0.position": 13,
+    "detections.1.match.contents.1.position": 16,
+    "detections.2.match.contents.0.position": 8,
+    "detections.2.match.contents.1.position": 13,
+    "detections.3.match.contents.0.position": 8,
+    "detections.3.match.contents.1.position": 5
+  },
+  "equal_paths": []
+}

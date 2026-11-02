@@ -1,0 +1,100 @@
+{
+  "case": "case11_distance_within",
+  "requirement": "Relative matching đúng.",
+  "run_at": "2026-11-02T21:50:41+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "1d59af41cf8cc110e8d3124a77cd3d93e6b97335fd1f8e1a14524fbb2d29c4ad",
+  "command": "python main.py --pcap TEST/BT3/case11_distance_within/input.pcap --rules TEST/BT3/case11_distance_within/input.rules --config TEST/BT3/case11_distance_within/config.json --output output/case11_events.jsonl --flow-output output/case11_flows.jsonl --detection-output output/case11_detections.jsonl --rule-report output/case11_rule_report.json",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 12,
+  "total_checks": 12,
+  "event_count": 1,
+  "flow_count": 1,
+  "detection_count": 4,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "detection_count",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "field": "by_packet.1",
+      "expected": [
+        101101,
+        101102,
+        101105,
+        101106
+      ],
+      "actual": [
+        101101,
+        101102,
+        101105,
+        101106
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.engine.rejected.content",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "detections.0.match.contents.0.position",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "detections.0.match.contents.1.position",
+      "expected": 8,
+      "actual": 8,
+      "passed": true
+    },
+    {
+      "field": "detections.1.match.contents.0.position",
+      "expected": 13,
+      "actual": 13,
+      "passed": true
+    },
+    {
+      "field": "detections.1.match.contents.1.position",
+      "expected": 16,
+      "actual": 16,
+      "passed": true
+    },
+    {
+      "field": "detections.2.match.contents.0.position",
+      "expected": 8,
+      "actual": 8,
+      "passed": true
+    },
+    {
+      "field": "detections.2.match.contents.1.position",
+      "expected": 13,
+      "actual": 13,
+      "passed": true
+    },
+    {
+      "field": "detections.3.match.contents.0.position",
+      "expected": 8,
+      "actual": 8,
+      "passed": true
+    },
+    {
+      "field": "detections.3.match.contents.1.position",
+      "expected": 5,
+      "actual": 5,
+      "passed": true
+    }
+  ]
+}

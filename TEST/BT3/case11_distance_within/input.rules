@@ -1,0 +1,6 @@
+alert tcp any any -> any 9000 (msg:"Ca 11 - distance 1"; content:"ABC"; content:"DEF"; distance:1; sid:101101; rev:1;)
+alert tcp any any -> any 9000 (msg:"Ca 11 - distance 0 within 3"; content:"ABC"; content:"DEF"; distance:0; within:3; sid:101102; rev:1;)
+alert tcp any any -> any 9000 (msg:"Ca 11 - distance 20"; content:"ABC"; content:"DEF"; distance:20; sid:101103; rev:1;)
+alert tcp any any -> any 9000 (msg:"Ca 11 - within 3"; content:"DEF"; content:"ABC"; within:3; sid:101104; rev:1;)
+alert tcp any any -> any 9000 (msg:"Ca 11 - distance 2 within 3"; content:"DEF"; content:"ABC"; distance:2; within:3; sid:101105; rev:1;)
+alert tcp any any -> any 9000 (msg:"Ca 11 - distance am"; content:"DEF"; content:"345"; distance:-6; within:3; sid:101106; rev:1;)
