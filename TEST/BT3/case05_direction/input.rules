@@ -1,0 +1,2 @@
+alert tcp 10.0.0.5 any -> 192.168.1.20 80 (msg:"Ca 05 - mot chieu"; sid:100501; rev:1;)
+alert tcp 10.0.0.5 any <> 192.168.1.20 80 (msg:"Ca 05 - hai chieu"; sid:100502; rev:1;)

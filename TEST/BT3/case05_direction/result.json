@@ -1,0 +1,100 @@
+{
+  "case": "case05_direction",
+  "requirement": "So khớp đúng chiều/bidirectional.",
+  "run_at": "2026-11-02T21:50:37+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "824002e9d9d65a92acd92a928b0da543e230d7cc97f5a42b5b5aeb098c4d51cc",
+  "command": "python main.py --pcap TEST/BT3/case05_direction/input.pcap --rules TEST/BT3/case05_direction/input.rules --config TEST/BT3/case05_direction/config.json --output output/case05_events.jsonl --flow-output output/case05_flows.jsonl --detection-output output/case05_detections.jsonl --rule-report output/case05_rule_report.json",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 12,
+  "total_checks": 12,
+  "event_count": 3,
+  "flow_count": 2,
+  "detection_count": 3,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "detection_count",
+      "expected": 3,
+      "actual": 3,
+      "passed": true
+    },
+    {
+      "field": "by_packet.1",
+      "expected": [
+        100501,
+        100502
+      ],
+      "actual": [
+        100501,
+        100502
+      ],
+      "passed": true
+    },
+    {
+      "field": "by_packet.2",
+      "expected": [
+        100502
+      ],
+      "actual": [
+        100502
+      ],
+      "passed": true
+    },
+    {
+      "field": "by_packet.3",
+      "expected": [],
+      "actual": [],
+      "passed": true
+    },
+    {
+      "field": "detections.0.match.reversed_direction",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "field": "detections.1.match.reversed_direction",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "field": "detections.2.match.reversed_direction",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "field": "detections.2.src_ip",
+      "expected": "192.168.1.20",
+      "actual": "192.168.1.20",
+      "passed": true
+    },
+    {
+      "field": "detections.2.src_port",
+      "expected": 80,
+      "actual": 80,
+      "passed": true
+    },
+    {
+      "field": "detections.2.dst_ip",
+      "expected": "10.0.0.5",
+      "actual": "10.0.0.5",
+      "passed": true
+    },
+    {
+      "field": "detections.2.dst_port",
+      "expected": 52133,
+      "actual": 52133,
+      "passed": true
+    }
+  ]
+}
