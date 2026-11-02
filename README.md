@@ -1,8 +1,6 @@
-# Hệ thống IDS - Capture, Parser, Decoder, Preprocessor & Flow Tracker
+# Hệ thống IDS - Capture, Parser, Decoder, Preprocessor, Flow Tracker & Core Engine
 
-- Chương trình Python thu thập gói tin từ **card mạng đang hoạt động** hoặc **file PCAP** (hoặc đọc **event có sẵn** từ file JSON Lines), phân tích IPv4, TCP/UDP, HTTP/1.x, DNS, SMTP, giải mã dữ liệu ứng dụng, kiểm tra và chuẩn hóa event, rồi gom các gói thành **flow hai chiều**. Kết quả được ghi thành **JSON Lines - mỗi dòng một JSON**: một file event (mỗi gói một dòng) và một file tổng kết flow (mỗi flow một dòng).
-
-> Repository dùng cho toàn bộ đồ án IDS. Mỗi bài tập thêm module vào **cùng một luồng xử lý**; mã nguồn được chia theo module chức năng, không chia theo bài tập.
+- Chương trình Python thu thập gói tin từ **card mạng đang hoạt động** hoặc **file PCAP** (hoặc đọc **event có sẵn** từ file JSON Lines), phân tích IPv4, TCP/UDP, HTTP/1.x, DNS, SMTP, giải mã dữ liệu ứng dụng, kiểm tra và chuẩn hóa event, gom các gói thành **flow hai chiều**, rồi so khớp với **rule Snort** để sinh **Detection Event**. Kết quả được ghi thành **JSON Lines - mỗi dòng một JSON**: một file event (mỗi gói một dòng), một file tổng kết flow (mỗi flow một dòng) và một file Detection Event (mỗi lần rule khớp một dòng).
 
 ```mermaid
 flowchart LR
@@ -13,16 +11,21 @@ flowchart LR
     events[File event JSON Lines] --> decoder
     decoder --> preprocessor
     preprocessor --> flow[flow tracker]
+    rulefiles[File .rules] --> rules[rules]
+    flow --> detection
+    rules --> detection
     flow --> out1[("Event: output/ids.jsonl")]
     flow --> out2[("Flow: output/flows.jsonl")]
+    detection --> out3[("Detection Event: output/detections.jsonl")]
 ```
 
 | Bài tập | Nội dung | Module | Kiểm thử |
 | --- | --- | --- | --- |
 | 1 | Packet Capture & Parser | [capture](src/capture/README.md), [parser](src/parser/README.md), [output](src/output/README.md) | 12 ca bắt buộc + bắt gói thật trên Wi-Fi |
 | 2 | Decoder, Preprocessor & Flow/Connection Tracker | [decoder](src/decoder/README.md), [preprocessor](src/preprocessor/README.md), [flow](src/flow/README.md), [pipeline](src/pipeline.py), [config](src/config.py) | 14 ca bắt buộc T01–T14 + kiểm thử tự động từng module |
+| 3 | Core Engine và Snort rule matching | [rules](src/rules/README.md), [detection](src/detection/README.md), [bộ rule Snort](rules/README.md) | 14 ca bắt buộc trong [TEST/BT3](TEST/BT3/README.md) + kiểm thử tự động từng module |
 
-Ví dụ: với một gói HTTP GET có URI `/search?q=%27%20OR%201%3D1`, chương trình cho biết IP/port, method, header như Bài tập 1, đồng thời giải mã URI thành `/search?q=' OR 1=1`, chuẩn hóa tên header, gắn gói vào đúng flow và cập nhật thống kê của flow đó.
+Ví dụ: với một gói HTTP GET có URI `/search?q=%27%20OR%201%3D1`, chương trình cho biết IP/port, method, header như Bài tập 1, đồng thời giải mã URI thành `/search?q=' OR 1=1`, chuẩn hóa tên header, gắn gói vào đúng flow và cập nhật thống kê của flow đó. Nếu có rule tìm chuỗi `' OR 1=1`, chương trình sinh một Detection Event cho biết rule nào khớp, trên flow nào và chuỗi nằm ở đâu.
 
 ## 1. Các chức năng hiện tại
 
@@ -59,6 +62,21 @@ Ví dụ: với một gói HTTP GET có URI `/search?q=%27%20OR%201%3D1`, chươ
 | Flow: TCP connection tracking | Trạng thái `NEW` → `HANDSHAKE` → `ESTABLISHED` → `CLOSING` → `CLOSED`, hoặc `RESET`; dựa vào cờ SYN, ACK, FIN, RST, xử lý cả gói không có payload. |
 | Flow: UDP và idle timeout | UDP gom theo 5-tuple hai chiều trong thời gian chờ; flow TCP/UDP hết hạn được ghi ra và xóa khỏi bảng flow đang hoạt động, kể cả khi bắt live mà mạng im lặng. |
 | Flow: thống kê | `flow_id`, `protocol`, `application_protocol`, endpoint A/B, `start_time`, `last_seen`, `duration`, số gói/byte tổng và theo từng chiều, `SYN_count`, `ACK_count`, `FIN_count`, `RST_count`, `state`. |
+
+### Bài tập 3 - Core Engine và Snort rule matching
+
+| Yêu cầu trong đề | Chức năng đã triển khai |
+| --- | --- |
+| Rule Loader | Đọc một hoặc nhiều file `.rules`, bỏ dòng trống và comment, ghép rule viết trên nhiều dòng; bật/tắt file và từng rule bằng cấu hình; một rule sai chỉ sinh cảnh báo. |
+| Rule Parser & Validator | Tách header và tùy chọn thành một đối tượng `Rule` thống nhất; phân loại `valid` / `invalid` / `unsupported` kèm lý do. |
+| Rule ngoài phạm vi | Rule có keyword, hành động hoặc giao thức ngoài phạm vi được báo `unsupported` và bị bỏ hẳn, không làm dừng chương trình. |
+| Rule Repository / Indexer | Lưu rule hợp lệ, có chỉ mục theo giao thức và port nên không duyệt toàn bộ rule cho mỗi gói. |
+| Rule Matching Engine: Header | So khớp giao thức, IP nguồn/đích (`any`, IPv4, CIDR), port (`any`, port đơn, khoảng) và chiều `->`, `<>`. |
+| Rule Matching Engine: Flow | `to_server`, `to_client`, `established`, `not_established` theo thông tin của Flow Tracker. |
+| Rule Matching Engine: Content | `content`, `nocase`, `offset`, `depth`, `distance`, `within`, trên byte gốc của gói và dữ liệu ứng dụng đã giải mã. |
+| Rule Matching Engine: Packet/TCP | `flags` (gồm `+`, `*`, `!`, `0`, cờ bỏ qua) và `dsize` (bằng, `>`, `<`, khoảng). |
+| Rule Evaluation Engine | Lấy các rule cần xét, cho phép nhiều rule cùng khớp một gói, đếm số event đã đánh giá, số rule phải xét, số lần khớp và số rule bị loại ở từng bước. |
+| Detection Event Generator | Tạo bản ghi thống nhất khi rule khớp, ghi ra file riêng; phần so khớp không in cảnh báo. |
 
 ## 2. Cài đặt và chạy thử
 
@@ -111,6 +129,21 @@ python main.py --interface "Wi-Fi" --count 100 --timeout 30 --output output/live
 
 Thay `Wi-Fi` bằng tên interface trên máy. Lệnh dừng khi bắt đủ 100 gói hoặc hết 30 giây. Có thể nhấn **Ctrl+C** để dừng sớm; kết quả đã ghi vẫn được giữ, các flow còn mở được ghi ra với lý do `interrupted`. Trong lúc bắt, cứ mỗi `live_check_interval` giây chương trình kiểm tra và ghi ra các flow đã hết hạn, kể cả khi mạng im lặng.
 
+### Chạy với rule Snort
+
+Thêm `--rules` để so khớp với một hoặc nhiều file rule. Không có `--rules` (và không có `rule_files` trong cấu hình) thì chương trình chạy như Bài tập 2, không tạo file Detection Event. Ví dụ với ca Directory traversal:
+
+```powershell
+python main.py --pcap TEST/BT3/case14_detection_event/input.pcap --rules TEST/BT3/case14_detection_event/input.rules --output output/demo_events.jsonl --flow-output output/demo_flows.jsonl --detection-output output/demo_detections.jsonl --rule-report output/demo_rule_report.json
+Get-Content output/demo_detections.jsonl | ForEach-Object { ($_ | ConvertFrom-Json) | Select-Object packet_id, sid, msg, src_ip, dst_ip, flow_id }
+```
+
+Kết quả cần thấy: 2 Detection Event của rule `100001` ở gói 4 và gói 5. Gói 5 viết `..%2f` nên không có `../` trong byte gốc, nhưng vẫn được phát hiện nhờ URI đã giải mã.
+
+Khi nạp rule, chương trình in số rule theo từng kết luận và cảnh báo về các rule không dùng được. Chi tiết của từng rule và số liệu đánh giá nằm trong file `--rule-report`.
+
+Bộ rule cộng đồng của Snort nằm ở [rules/community.rules](rules/README.md). **Lưu ý:** cả 568 rule đang bật của bộ này đều có keyword ngoài phạm vi đề bài, nên đều bị bỏ, xem [mục 6](#6-giới-hạn-hiện-tại).
+
 ### Chế độ chỉ phân tích (như Bài tập 1)
 
 Thêm `--parse-only` để chỉ capture và parse, không giải mã, không chuẩn hóa, không theo dõi flow. Event có đúng cấu trúc của Bài tập 1 và không tạo file flow; các ca kiểm thử của Bài tập 1 dùng chế độ này để chạy lại.
@@ -133,6 +166,9 @@ Luồng xử lý ở chế độ này giữ nguyên như Bài tập 1:
 | `--events <đường-dẫn>` | Chọn nguồn file event JSON Lines (không dùng chung với `--parse-only`). |
 | `--output <đường-dẫn>` | File event đầu ra; mặc định `output/ids.jsonl`. Thư mục cha được tạo nếu chưa có. |
 | `--flow-output <đường-dẫn>` | File tổng kết flow; mặc định `output/flows.jsonl`. |
+| `--rules <file> [<file> ...]` | Một hoặc nhiều file `.rules`, cộng thêm vào `rule_files` trong cấu hình. Không dùng chung với `--parse-only`. |
+| `--detection-output <đường-dẫn>` | File Detection Event; mặc định `output/detections.jsonl`. Chỉ được tạo khi có rule. |
+| `--rule-report <đường-dẫn>` | File báo cáo nạp rule và số liệu đánh giá; mặc định `output/rule_report.json`. Mỗi lần chạy ghi đè file cũ. |
 | `--config <đường-dẫn>` | File cấu hình JSON; không truyền thì dùng giá trị mặc định. |
 | `--parse-only` | Chỉ capture và parse như Bài tập 1. |
 | `--count N` | Số gói live tối đa; mặc định `0` là không giới hạn. |
@@ -159,6 +195,10 @@ File [config/default.json](config/default.json) ghi đủ các tùy chọn với
 | `max_event_bytes` | `1048576` | Độ dài tối đa của một dòng khi đọc file event (`--events`). |
 | `drop_invalid_events` | `false` | `true`: bỏ hẳn event `invalid` (không ghi ra file); `false`: vẫn ghi kèm lý do. |
 | `drop_unsupported_events` | `false` | `true`: bỏ hẳn event chưa hỗ trợ (ICMP, ARP, gói phân mảnh...); `false`: vẫn ghi kèm lý do. |
+| `rule_files` | `[]` | Các file `.rules` cần nạp, cộng với `--rules`. Không có file nào thì không chạy bước so khớp rule. |
+| `disabled_rule_files` | `[]` | Tắt cả file rule, ghi bằng tên file hoặc đường dẫn. |
+| `disabled_sids` | `[]` | Tắt từng rule theo `sid`. Bỏ `sid` khỏi danh sách là bật lại. |
+| `rule_variables` | như `snort.conf` | Giá trị các biến dùng trong rule như `$HOME_NET`, `$HTTP_PORTS`; chỉ cần ghi biến muốn đổi, ví dụ `{"rule_variables": {"HOME_NET": "192.168.1.0/24"}}`. |
 
 ## 3. Đọc kết quả đầu ra
 
@@ -240,14 +280,56 @@ Mỗi dòng là bản tổng kết của một flow, được ghi khi flow kết
 - Với UDP, `state`, `handshake_observed` và bốn bộ đếm cờ TCP là `null`.
 - `end_reason` cho biết vì sao flow kết thúc: `tcp_closed`, `tcp_reset`, `idle_timeout`, `new_connection`, `table_full`, `end_of_input`, `capture_stopped`, `interrupted`, `source_error`. Chi tiết trong [README Flow Tracker](src/flow/README.md#khi-nào-flow-kết-thúc).
 
+### File Detection Event
+
+Mỗi dòng ứng với một lần một rule khớp một gói, nên một gói có thể sinh nhiều dòng. File event không thay đổi khi bật rule. Ví dụ của ca 14:
+
+```json
+{
+  "timestamp": 1700000000.03, "packet_id": 4,
+  "sid": 100001, "rev": 1, "msg": "Directory traversal detected",
+  "priority": 1, "classtype": "web-application-attack",
+  "src_ip": "10.0.0.5", "src_port": 52133, "dst_ip": "192.168.1.20", "dst_port": 80,
+  "protocol": "TCP", "application_protocol": "HTTP", "flow_id": "bf720fcad18fbaa7",
+  "match": {
+    "reversed_direction": false,
+    "flow": { "direction": "forward", "state": "ESTABLISHED", "established": true },
+    "buffer": "payload",
+    "contents": [ { "content": "../", "position": 5, "nocase": false, "negated": false } ]
+  },
+  "rule_file": "TEST/BT3/case14_detection_event/input.rules", "rule_line": 1
+}
+```
+
+| Trường | Nội dung |
+| --- | --- |
+| `timestamp`, `packet_id` | Thời điểm và số thứ tự của gói khớp rule. |
+| `sid`, `rev`, `msg`, `priority`, `classtype` | Lấy từ rule; rule không ghi thì là `null`. |
+| `src_ip`, `src_port`, `dst_ip`, `dst_port`, `protocol` | Nguồn và đích thật của gói, kể cả khi rule `<>` khớp theo chiều ngược. Gói không có TCP/UDP có `protocol` là `IP`, port là `null`. |
+| `application_protocol`, `flow_id` | Giao thức ứng dụng và flow của gói. Gói không được theo dõi flow có `flow_id` là `null`. |
+| `match` | Thông tin khớp: `reversed_direction`; `flow`, `flags`, `dsize` nếu rule có các keyword này; `buffer` (nơi tìm thấy: `payload` hoặc `application`) và `contents` (từng chuỗi cùng vị trí byte) nếu rule có `content`. |
+| `rule_file`, `rule_line` | Rule nằm ở file nào, dòng nào. |
+
+### File báo cáo rule
+
+File JSON `--rule-report` gồm:
+
+| Mục | Nội dung |
+| --- | --- |
+| `summary` | Số file, số dòng comment, dòng trống, số rule theo từng kết luận `valid`, `invalid`, `unsupported`, `disabled`. |
+| `unsupported_keywords` | Keyword nào làm bao nhiêu rule bị bỏ. |
+| `files`, `rules` | Kết quả từng file và từng rule kèm lý do; rule `valid` có thêm Internal Rule Object. |
+| `engine` | Số liệu đánh giá, xem [README Detection](src/detection/README.md#rule-evaluation-engine). |
+
 ## 4. Kiểm thử theo yêu cầu của task
 
 Thư mục [required_cases](TEST/integration/required_cases/README.md) lưu kết quả các ca bắt buộc, mỗi ca một thư mục gồm đầu vào, giá trị mong đợi, kết quả chương trình ghi ra, kết quả đối chiếu và README riêng:
 
 - **Bài tập 1 - 12 ca:** TCP handshake, TCP data, UDP, HTTP GET/POST/response, DNS query/response, SMTP command/response, giao thức không hỗ trợ và packet không hợp lệ. Bắt gói thật trên Wi-Fi nằm trong [live_capture](TEST/integration/live_capture/README.md).
 - **Bài tập 2 - 14 ca T01–T14:** HTTP URL decode, HTML entity, SMTP Base64/QP, invalid bytes, normalization, missing field, TCP handshake, bidirectional flow, TCP close, UDP query/response, concurrent flows, idle timeout, statistics, malformed event. Cả 14 ca đều **ĐẠT**.
+- **Bài tập 3 - 14 ca trong [TEST/BT3](TEST/BT3/README.md):** nạp file rule, rule sai cú pháp, keyword ngoài phạm vi, parse header, direction, indexer, header không khớp, flow, nocase, offset/depth, distance/within, flags và dsize, nhiều rule cùng khớp, Detection Event; thêm một ca bổ sung với bộ rule của Snort. Tất cả đều **ĐẠT**.
 
-Chạy toàn bộ kiểm thử tự động (kiểm tra từng module, chạy lại 14 ca T01–T14, và kiểm tra kết quả đã lưu của cả 26 ca vẫn tái hiện được):
+Chạy toàn bộ kiểm thử tự động (kiểm tra từng module, chạy lại các ca của Bài tập 2 và Bài tập 3, và kiểm tra kết quả đã lưu của mọi ca vẫn tái hiện được):
 
 ```powershell
 python -m pytest
@@ -263,7 +345,7 @@ python main.py --pcap TEST/integration/required_cases/t12_flow_idle_timeout/inpu
 
 ## 5. Tổ chức mã nguồn
 
-Hai nguồn gói tin (live, PCAP) dùng chung hàm `process_packet` trong `main.py` để đánh số gói rồi đưa vào [pipeline](src/pipeline.py). Pipeline chạy lần lượt **parser → decoder → preprocessor → flow tracker**; nguồn file event bỏ qua bước parser. `main.py` ghi event vào file event và tổng kết flow vào file flow.
+Hai nguồn gói tin (live, PCAP) dùng chung hàm `process_packet` trong `main.py` để đánh số gói rồi đưa vào [pipeline](src/pipeline.py). Pipeline chạy lần lượt **parser → decoder → preprocessor → flow tracker → so khớp rule**; nguồn file event bỏ qua bước parser. `main.py` ghi event vào file event, tổng kết flow vào file flow và Detection Event vào file riêng.
 
 ```text
 main.py                     Nhận tham số, chọn nguồn, nối các module, ghi kết quả
@@ -277,7 +359,10 @@ src/
   decoder/                  Giải mã URI/form, thực thể HTML, thư MIME, bảng mã
   preprocessor/             Kiểm tra, chuẩn hóa event, gắn trạng thái xử lý
   flow/                     Gom flow hai chiều, trạng thái TCP, thời gian chờ, thống kê
+  rules/                    Đọc file rule, phân tích và phân loại rule, lưu rule có chỉ mục
+  detection/                Đánh giá event theo rule, so khớp, tạo Detection Event
   output/                   Ghi JSON Lines
+rules/                      Bộ rule cộng đồng của Snort
 TEST/                       Kiểm thử theo module và kết quả các ca bắt buộc
 requirements.txt            Thư viện cần cài
 data/                       Nơi đặt PCAP đầu vào của người dùng
@@ -288,7 +373,7 @@ Mỗi thư mục trong `src/` có README riêng giải thích cách hoạt độ
 
 ### Dữ liệu vào/ra của từng module
 
-**Các module không trao đổi với nhau qua file.** Chúng chạy trong cùng một tiến trình và truyền **cùng một `dict` event trong bộ nhớ** bằng lời gọi hàm, do [pipeline](src/pipeline.py) nối lại. Mỗi bước thêm trường của mình vào event rồi chuyển cho bước sau. Chỉ có hai đầu của luồng làm việc với file: nguồn vào (file PCAP, hoặc file event nếu dùng `--events`) và hai file kết quả do `main.py` ghi.
+**Các module không trao đổi với nhau qua file.** Chúng chạy trong cùng một tiến trình và truyền **cùng một `dict` event trong bộ nhớ** bằng lời gọi hàm, do [pipeline](src/pipeline.py) nối lại. Mỗi bước thêm trường của mình vào event rồi chuyển cho bước sau. Chỉ có hai đầu của luồng làm việc với file: nguồn vào (file PCAP, file event nếu dùng `--events`, file rule nếu dùng `--rules`) và các file kết quả do `main.py` ghi.
 
 | Module | Đầu vào | Đầu ra |
 | --- | --- | --- |
@@ -296,19 +381,21 @@ Mỗi thư mục trong `src/` có README riêng giải thích cách hoạt độ
 | [parser](src/parser/README.md) | Gói Scapy, `packet_id`, `timestamp`, `source` | `dict` event gồm `network`, `transport`, `application`, `status`, `errors`; hàm `extract_payload` trả thêm byte payload gốc. |
 | [decoder](src/decoder/README.md) | Event của parser, byte payload (`None` nếu event đọc từ file), cấu hình | Cùng event, thêm `decoded`, `decode_status`, `decode_errors`; các trường của parser giữ nguyên. |
 | [preprocessor](src/preprocessor/README.md) | Event đã qua decoder, cấu hình | Cùng event đã chuẩn hóa và điền đủ trường, thêm `preprocess_status`, `processing_action`, `reason`. |
-| [flow](src/flow/README.md) | Event có `processing_action` là `process` | Gắn `flow_id`, `direction`, `flow_state` vào event; trả danh sách bản tổng kết của các flow vừa kết thúc. |
-| [pipeline](src/pipeline.py) | Gói Scapy (kèm số thứ tự, timestamp, nguồn) hoặc event | `(event hoặc None, danh sách flow kết thúc)`; `None` khi event bị bỏ theo cấu hình (`drop`). |
+| [flow](src/flow/README.md) | Event có `processing_action` là `process` | Gắn `flow_id`, `direction`, `flow_state` vào event; trả danh sách bản tổng kết của các flow vừa kết thúc; giữ thông tin flow của gói vừa xử lý cho bước so khớp rule. |
+| [rules](src/rules/README.md) | File `.rules`, cấu hình | Kho rule có chỉ mục và báo cáo kết quả nạp từng rule. |
+| [detection](src/detection/README.md) | Event đã chuẩn hóa, thông tin flow, byte payload (`None` nếu event đọc từ file), kho rule | Các Detection Event; không sửa event. |
+| [pipeline](src/pipeline.py) | Gói Scapy (kèm số thứ tự, timestamp, nguồn) hoặc event | `(event hoặc None, danh sách flow kết thúc)`; `None` khi event bị bỏ theo cấu hình (`drop`). Detection Event lấy riêng bằng `take_detections()`. |
 | [output](src/output/README.md) | Một `dict` | Một dòng JSON trong file kết quả. |
 
 ```text
-gói Scapy → parser → decoder → preprocessor → flow tracker
-              │         │            │              │
-         event gốc  + decoded  + preprocess_status  + flow_id, direction, flow_state
-                               + processing_action
-                               + reason
+gói Scapy → parser → decoder → preprocessor → flow tracker → so khớp rule
+              │         │            │              │              │
+         event gốc  + decoded  + preprocess_status  + flow_id,     Detection Event
+                               + processing_action    direction,   (bản ghi riêng,
+                               + reason               flow_state    không thêm vào event)
 ```
 
-`main.py` nhận kết quả của pipeline và ghi: event vào `--output` (mỗi gói một dòng, ghi ngay), bản tổng kết flow vào `--flow-output` (mỗi flow một dòng, ghi khi flow kết thúc). Event có `processing_action` là `skip` vẫn được ghi nhưng không vào flow tracker; `drop` thì không được ghi.
+`main.py` nhận kết quả của pipeline và ghi: event vào `--output` (mỗi gói một dòng, ghi ngay), bản tổng kết flow vào `--flow-output` (mỗi flow một dòng, ghi khi flow kết thúc), Detection Event vào `--detection-output` (mỗi lần rule khớp một dòng, ghi ngay). Event có `processing_action` là `skip` vẫn được ghi nhưng không vào flow tracker; `drop` thì không được ghi.
 
 ## 6. Giới hạn hiện tại
 
@@ -319,6 +406,12 @@ gói Scapy → parser → decoder → preprocessor → flow tracker
 - Trạng thái TCP chỉ dựa vào cờ và chiều gói, không xác minh số sequence/acknowledgment; gói đến ngay sau khi kết nối đã đóng mở một flow mới rất ngắn.
 - `flow_id` chỉ dùng để phân biệt flow trong một lần chạy (chạy lại cùng dữ liệu cho cùng ID).
 - Chỉ hỗ trợ PCAP, chưa hỗ trợ PCAPNG. Nếu file PCAP bị cắt giữa header hoặc dữ liệu record, chương trình báo lỗi, dừng đọc file và thoát với mã `1`; event đã ghi được giữ và các flow còn mở được ghi ra với lý do `source_error`.
+- Rule có **bất kỳ** thành phần nào ngoài phạm vi đề bài đều bị bỏ cả rule. Vì vậy cả 568 rule đang bật của [bộ rule cộng đồng Snort](rules/README.md) đều không được dùng, do đều có `metadata`; nhiều rule còn dùng `http_uri`, `pcre`, `flowbits`. Bộ rule này được nạp và báo cáo đầy đủ nhưng không sinh Detection Event; rule viết trong phạm vi vẫn chạy bình thường.
+- So khớp theo từng gói: chuỗi trải trên nhiều gói TCP không được tìm thấy, vì chưa ghép TCP stream.
+- `to_server`/`to_client` lấy bên gửi gói đầu tiên làm bên mở kết nối. Với capture bắt giữa chừng, nếu gói đầu tiên là phản hồi của server thì chiều bị đảo. Phiên có đủ bắt tay, hoặc bắt đầu từ gói SYN/ACK, thì đúng.
+- UDP không có kết nối nên `flow:established` không khớp, `flow:not_established` luôn khớp.
+- Rule chỉ có `classtype` mà không có `priority` thì `priority` là `null`, vì chưa đọc file `classification.config` của Snort.
+- Vùng `application` được dựng lại từ các trường đã chuẩn hóa nên tên header viết thường. Event đọc từ file (`--events`) không có byte gốc nên `offset`/`depth` tính trên vùng này, có thể khác với byte thật của gói.
 
 ## 7. Khai báo sử dụng AI
 

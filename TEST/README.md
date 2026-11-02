@@ -1,6 +1,6 @@
 # Kiểm thử
 
-Thư mục `TEST` chứa kết quả các ca kiểm thử bắt buộc của từng bài tập và các bài kiểm thử tự động (pytest). Thư mục con được chia theo **module chức năng** giống `src/`, không chia theo bài tập.
+Thư mục `TEST` chứa kết quả các ca kiểm thử bắt buộc của từng bài tập và các bài kiểm thử tự động (pytest). Thư mục con được chia theo **module chức năng** giống `src/`, không chia theo bài tập. Riêng `BT3/` lưu kết quả các ca của Bài tập 3 theo đúng yêu cầu của đề.
 
 ```text
 TEST/
@@ -9,7 +9,9 @@ TEST/
   parser/                      Phần parser bổ sung: payload, byte đệm Ethernet, nội dung thư SMTP
   decoder/                     URI/form, thực thể HTML, MIME, bảng mã, giới hạn kích thước
   preprocessor/                Kiểm tra trường, chuẩn hóa, dữ liệu thiếu/chưa hỗ trợ, chính sách bỏ event
-  flow/                        Flow hai chiều, trạng thái TCP, thời gian chờ, thống kê
+  flow/                        Flow hai chiều, trạng thái TCP, thời gian chờ, thống kê, thông tin flow cho so khớp rule
+  rules/                       Đọc file rule, phân loại valid/invalid/unsupported, chỉ mục, báo cáo nạp rule
+  detection/                   So khớp header, flow, flags, dsize, content; đánh giá nhiều rule; Detection Event
   pipeline/                    Nối các bước, cô lập lỗi, chương trình chính main.py, cấu hình
   integration/
     cases.py                   Khai báo đầu vào và kết quả mong đợi của các ca T01–T14
@@ -17,6 +19,10 @@ TEST/
     test_required_cases.py     Chạy lại các ca bằng pytest và so với kết quả đã lưu
     required_cases/            Kết quả các ca bắt buộc của Bài tập 1 và Bài tập 2 (xem README trong đó)
     live_capture/              Kết quả bắt gói trên card Wi-Fi thật (Bài tập 1)
+    detection_cases.py         Khai báo đầu vào và kết quả mong đợi của các ca Bài tập 3
+    run_detection_cases.py     Tạo đầu vào, chạy main.py và lưu kết quả từng ca vào BT3/
+    test_detection_cases.py    Chạy lại các ca bằng pytest và so với kết quả đã lưu
+  BT3/                         Kết quả các ca bắt buộc của Bài tập 3 (xem README trong đó)
 ```
 
 ## Chạy kiểm thử
@@ -42,5 +48,14 @@ python TEST/integration/run_required_cases.py --overwrite              # cả 14
 ```
 
 Script dựng lại `input.pcap`/`input.jsonl`, `config.json`, `expected.json`, chạy `main.py` bằng một tiến trình riêng, rồi ghi `events.jsonl`, `flows.jsonl`, `result.json` và `README.md` của từng ca. Không có `--overwrite` thì script từ chối ghi đè kết quả đã có. Các trường thay đổi giữa các lần chạy là `run_at` trong `result.json`; mã băm đầu vào và kết quả đối chiếu giữ nguyên.
+
+## Tạo lại kết quả các ca Bài tập 3
+
+```powershell
+python TEST/integration/run_detection_cases.py --case 07 --overwrite   # một ca
+python TEST/integration/run_detection_cases.py --overwrite             # tất cả các ca
+```
+
+Script làm tương tự như trên và thêm `input.rules`, `detections.jsonl`, `rule_report.json` cho từng ca, xem [bảng kết quả](BT3/README.md).
 
 [Về README chung](../README.md)
