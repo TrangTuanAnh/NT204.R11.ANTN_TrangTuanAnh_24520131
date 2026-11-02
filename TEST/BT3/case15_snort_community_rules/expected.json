@@ -1,0 +1,17 @@
+{
+  "case": "case15_snort_community_rules",
+  "requirement": "Rule/keyword ngoài phạm vi được báo unsupported, không làm chương trình dừng.",
+  "checks": {
+    "exit_code": 0,
+    "detection_count": 0,
+    "report.summary.rule_lines": 568,
+    "report.summary.valid": 0,
+    "report.summary.invalid": 0,
+    "report.summary.unsupported": 568,
+    "report.unsupported_keywords.metadata": 568,
+    "report.engine.rules_in_repository": 0,
+    "report.engine.events_evaluated": 1,
+    "report.engine.errors": 0
+  },
+  "equal_paths": []
+}
