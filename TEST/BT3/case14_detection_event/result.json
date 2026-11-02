@@ -1,0 +1,178 @@
+{
+  "case": "case14_detection_event",
+  "requirement": "Có đủ sid/msg/flow/5-tuple/protocol/match info.",
+  "run_at": "2026-11-02T21:50:43+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "1a6f9cecad0a85d6957e1253c78f6f80d6b4fcb64b1456cd82ac6981a467a9c2",
+  "command": "python main.py --pcap TEST/BT3/case14_detection_event/input.pcap --rules TEST/BT3/case14_detection_event/input.rules --config TEST/BT3/case14_detection_event/config.json --output output/case14_events.jsonl --flow-output output/case14_flows.jsonl --detection-output output/case14_detections.jsonl --rule-report output/case14_rule_report.json",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 22,
+  "total_checks": 22,
+  "event_count": 5,
+  "flow_count": 1,
+  "detection_count": 2,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "detection_count",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "detections.0.timestamp",
+      "expected": 1700000000.03,
+      "actual": 1700000000.03,
+      "passed": true
+    },
+    {
+      "field": "detections.0.packet_id",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "field": "detections.0.sid",
+      "expected": 100001,
+      "actual": 100001,
+      "passed": true
+    },
+    {
+      "field": "detections.0.rev",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "detections.0.msg",
+      "expected": "Directory traversal detected",
+      "actual": "Directory traversal detected",
+      "passed": true
+    },
+    {
+      "field": "detections.0.priority",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "detections.0.classtype",
+      "expected": "web-application-attack",
+      "actual": "web-application-attack",
+      "passed": true
+    },
+    {
+      "field": "detections.0.src_ip",
+      "expected": "10.0.0.5",
+      "actual": "10.0.0.5",
+      "passed": true
+    },
+    {
+      "field": "detections.0.src_port",
+      "expected": 52133,
+      "actual": 52133,
+      "passed": true
+    },
+    {
+      "field": "detections.0.dst_ip",
+      "expected": "192.168.1.20",
+      "actual": "192.168.1.20",
+      "passed": true
+    },
+    {
+      "field": "detections.0.dst_port",
+      "expected": 80,
+      "actual": 80,
+      "passed": true
+    },
+    {
+      "field": "detections.0.protocol",
+      "expected": "TCP",
+      "actual": "TCP",
+      "passed": true
+    },
+    {
+      "field": "detections.0.application_protocol",
+      "expected": "HTTP",
+      "actual": "HTTP",
+      "passed": true
+    },
+    {
+      "field": "detections.0.match.buffer",
+      "expected": "payload",
+      "actual": "payload",
+      "passed": true
+    },
+    {
+      "field": "detections.0.match.contents",
+      "expected": [
+        {
+          "content": "../",
+          "position": 5,
+          "nocase": false,
+          "negated": false
+        }
+      ],
+      "actual": [
+        {
+          "content": "../",
+          "position": 5,
+          "nocase": false,
+          "negated": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "field": "detections.0.match.flow",
+      "expected": {
+        "direction": "forward",
+        "state": "ESTABLISHED",
+        "established": true
+      },
+      "actual": {
+        "direction": "forward",
+        "state": "ESTABLISHED",
+        "established": true
+      },
+      "passed": true
+    },
+    {
+      "field": "detections.1.packet_id",
+      "expected": 5,
+      "actual": 5,
+      "passed": true
+    },
+    {
+      "field": "detections.1.match.buffer",
+      "expected": "application",
+      "actual": "application",
+      "passed": true
+    },
+    {
+      "field": "detections.0.flow_id = events.3.flow_id",
+      "expected": "hai giá trị bằng nhau",
+      "actual": [
+        "bf720fcad18fbaa7",
+        "bf720fcad18fbaa7"
+      ],
+      "passed": true
+    },
+    {
+      "field": "detections.1.flow_id = events.3.flow_id",
+      "expected": "hai giá trị bằng nhau",
+      "actual": [
+        "bf720fcad18fbaa7",
+        "bf720fcad18fbaa7"
+      ],
+      "passed": true
+    }
+  ]
+}

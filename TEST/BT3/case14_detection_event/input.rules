@@ -1,0 +1,1 @@
+alert tcp any any -> any 80 (msg:"Directory traversal detected"; flow:to_server,established; content:"../"; classtype:web-application-attack; priority:1; sid:100001; rev:1;)

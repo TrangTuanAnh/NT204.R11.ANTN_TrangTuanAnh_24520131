@@ -1,0 +1,101 @@
+{
+  "summary": {
+    "files": 1,
+    "disabled_files": 0,
+    "comment_lines": 0,
+    "blank_lines": 0,
+    "rule_lines": 1,
+    "valid": 1,
+    "invalid": 0,
+    "unsupported": 0,
+    "disabled": 0
+  },
+  "unsupported_keywords": {},
+  "files": [
+    {
+      "path": "TEST/BT3/case14_detection_event/input.rules",
+      "enabled": true,
+      "rule_lines": 1,
+      "comment_lines": 0,
+      "blank_lines": 0
+    }
+  ],
+  "rules": [
+    {
+      "file": "TEST/BT3/case14_detection_event/input.rules",
+      "line": 1,
+      "sid": 100001,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 100001,
+        "rev": 1,
+        "msg": "Directory traversal detected",
+        "classtype": "web-application-attack",
+        "priority": 1,
+        "contents": [
+          {
+            "content": "../",
+            "hex": "2e2e2f",
+            "negated": false,
+            "nocase": false,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": {
+          "direction": "to_server",
+          "state": "established"
+        }
+      }
+    }
+  ],
+  "engine": {
+    "rules_in_repository": 1,
+    "events_seen": 5,
+    "events_evaluated": 5,
+    "events_skipped": 0,
+    "candidate_rules": 4,
+    "content_checks": 3,
+    "matches": 2,
+    "rejected": {
+      "header": 0,
+      "flow": 1,
+      "packet": 0,
+      "content": 1
+    },
+    "errors": 0
+  }
+}

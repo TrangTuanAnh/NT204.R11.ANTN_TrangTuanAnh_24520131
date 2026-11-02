@@ -1,0 +1,47 @@
+{
+  "case": "case14_detection_event",
+  "requirement": "Có đủ sid/msg/flow/5-tuple/protocol/match info.",
+  "checks": {
+    "exit_code": 0,
+    "detection_count": 2,
+    "detections.0.timestamp": 1700000000.03,
+    "detections.0.packet_id": 4,
+    "detections.0.sid": 100001,
+    "detections.0.rev": 1,
+    "detections.0.msg": "Directory traversal detected",
+    "detections.0.priority": 1,
+    "detections.0.classtype": "web-application-attack",
+    "detections.0.src_ip": "10.0.0.5",
+    "detections.0.src_port": 52133,
+    "detections.0.dst_ip": "192.168.1.20",
+    "detections.0.dst_port": 80,
+    "detections.0.protocol": "TCP",
+    "detections.0.application_protocol": "HTTP",
+    "detections.0.match.buffer": "payload",
+    "detections.0.match.contents": [
+      {
+        "content": "../",
+        "position": 5,
+        "nocase": false,
+        "negated": false
+      }
+    ],
+    "detections.0.match.flow": {
+      "direction": "forward",
+      "state": "ESTABLISHED",
+      "established": true
+    },
+    "detections.1.packet_id": 5,
+    "detections.1.match.buffer": "application"
+  },
+  "equal_paths": [
+    [
+      "detections.0.flow_id",
+      "events.3.flow_id"
+    ],
+    [
+      "detections.1.flow_id",
+      "events.3.flow_id"
+    ]
+  ]
+}
