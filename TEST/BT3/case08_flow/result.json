@@ -1,0 +1,152 @@
+{
+  "case": "case08_flow",
+  "requirement": "Match đúng theo Flow Tracker.",
+  "run_at": "2026-11-02T21:50:39+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "c63224618609530dc1b01622c49ba6d06828aa30e801caca1a7bfadd7e055d16",
+  "command": "python main.py --pcap TEST/BT3/case08_flow/input.pcap --rules TEST/BT3/case08_flow/input.rules --config TEST/BT3/case08_flow/config.json --output output/case08_events.jsonl --flow-output output/case08_flows.jsonl --detection-output output/case08_detections.jsonl --rule-report output/case08_rule_report.json",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 16,
+  "total_checks": 16,
+  "event_count": 6,
+  "flow_count": 1,
+  "detection_count": 9,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "detection_count",
+      "expected": 9,
+      "actual": 9,
+      "passed": true
+    },
+    {
+      "field": "events.0.flow_state",
+      "expected": "NEW",
+      "actual": "NEW",
+      "passed": true
+    },
+    {
+      "field": "events.1.flow_state",
+      "expected": "HANDSHAKE",
+      "actual": "HANDSHAKE",
+      "passed": true
+    },
+    {
+      "field": "events.2.flow_state",
+      "expected": "ESTABLISHED",
+      "actual": "ESTABLISHED",
+      "passed": true
+    },
+    {
+      "field": "events.3.direction",
+      "expected": "forward",
+      "actual": "forward",
+      "passed": true
+    },
+    {
+      "field": "events.4.direction",
+      "expected": "backward",
+      "actual": "backward",
+      "passed": true
+    },
+    {
+      "field": "events.5.flow_state",
+      "expected": "CLOSING",
+      "actual": "CLOSING",
+      "passed": true
+    },
+    {
+      "field": "by_packet.1",
+      "expected": [
+        100803
+      ],
+      "actual": [
+        100803
+      ],
+      "passed": true
+    },
+    {
+      "field": "by_packet.2",
+      "expected": [
+        100803
+      ],
+      "actual": [
+        100803
+      ],
+      "passed": true
+    },
+    {
+      "field": "by_packet.3",
+      "expected": [
+        100804
+      ],
+      "actual": [
+        100804
+      ],
+      "passed": true
+    },
+    {
+      "field": "by_packet.4",
+      "expected": [
+        100801,
+        100804
+      ],
+      "actual": [
+        100801,
+        100804
+      ],
+      "passed": true
+    },
+    {
+      "field": "by_packet.5",
+      "expected": [
+        100802,
+        100804
+      ],
+      "actual": [
+        100802,
+        100804
+      ],
+      "passed": true
+    },
+    {
+      "field": "by_packet.6",
+      "expected": [
+        100801,
+        100804
+      ],
+      "actual": [
+        100801,
+        100804
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.engine.matches",
+      "expected": 9,
+      "actual": 9,
+      "passed": true
+    },
+    {
+      "field": "detections.3.match.flow",
+      "expected": {
+        "direction": "forward",
+        "state": "ESTABLISHED",
+        "established": true
+      },
+      "actual": {
+        "direction": "forward",
+        "state": "ESTABLISHED",
+        "established": true
+      },
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "case": "case08_flow",
+  "requirement": "Match đúng theo Flow Tracker.",
+  "checks": {
+    "exit_code": 0,
+    "detection_count": 9,
+    "events.0.flow_state": "NEW",
+    "events.1.flow_state": "HANDSHAKE",
+    "events.2.flow_state": "ESTABLISHED",
+    "events.3.direction": "forward",
+    "events.4.direction": "backward",
+    "events.5.flow_state": "CLOSING",
+    "by_packet.1": [
+      100803
+    ],
+    "by_packet.2": [
+      100803
+    ],
+    "by_packet.3": [
+      100804
+    ],
+    "by_packet.4": [
+      100801,
+      100804
+    ],
+    "by_packet.5": [
+      100802,
+      100804
+    ],
+    "by_packet.6": [
+      100801,
+      100804
+    ],
+    "report.engine.matches": 9,
+    "detections.3.match.flow": {
+      "direction": "forward",
+      "state": "ESTABLISHED",
+      "established": true
+    }
+  },
+  "equal_paths": []
+}

@@ -1,0 +1,4 @@
+alert tcp any any <> any 80 (msg:"Ca 08 - to_server,established"; flow:to_server,established; content:"secret"; sid:100801; rev:1;)
+alert tcp any any <> any 80 (msg:"Ca 08 - to_client,established"; flow:to_client,established; content:"secret"; sid:100802; rev:1;)
+alert tcp any any <> any 80 (msg:"Ca 08 - not_established"; flow:not_established; sid:100803; rev:1;)
+alert tcp any any <> any 80 (msg:"Ca 08 - established"; flow:established; sid:100804; rev:1;)
