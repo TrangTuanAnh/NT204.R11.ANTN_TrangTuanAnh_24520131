@@ -1,0 +1,171 @@
+{
+  "summary": {
+    "files": 2,
+    "disabled_files": 1,
+    "comment_lines": 3,
+    "blank_lines": 2,
+    "rule_lines": 3,
+    "valid": 2,
+    "invalid": 0,
+    "unsupported": 0,
+    "disabled": 1
+  },
+  "unsupported_keywords": {},
+  "files": [
+    {
+      "path": "TEST/BT3/case01_rule_loading/input.rules",
+      "enabled": true,
+      "rule_lines": 3,
+      "comment_lines": 3,
+      "blank_lines": 2
+    },
+    {
+      "path": "TEST/BT3/case01_rule_loading/disabled.rules",
+      "enabled": false,
+      "rule_lines": 0,
+      "comment_lines": 0,
+      "blank_lines": 0
+    }
+  ],
+  "rules": [
+    {
+      "file": "TEST/BT3/case01_rule_loading/input.rules",
+      "line": 4,
+      "sid": 100101,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 100101,
+        "rev": 1,
+        "msg": "Ca 01 - rule viet tren mot dong",
+        "classtype": null,
+        "priority": null,
+        "contents": [
+          {
+            "content": "GET",
+            "hex": "474554",
+            "negated": false,
+            "nocase": false,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case01_rule_loading/input.rules",
+      "line": 7,
+      "sid": 100103,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 100103,
+        "rev": 1,
+        "msg": "Ca 01 - rule viet tren hai dong",
+        "classtype": null,
+        "priority": null,
+        "contents": [
+          {
+            "content": "Host",
+            "hex": "486f7374",
+            "negated": false,
+            "nocase": false,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case01_rule_loading/input.rules",
+      "line": 9,
+      "sid": 100104,
+      "status": "disabled",
+      "reasons": [
+        "Rule bị tắt bằng disabled_sids"
+      ]
+    }
+  ],
+  "engine": {
+    "rules_in_repository": 2,
+    "events_seen": 1,
+    "events_evaluated": 1,
+    "events_skipped": 0,
+    "candidate_rules": 2,
+    "content_checks": 2,
+    "matches": 2,
+    "rejected": {
+      "header": 0,
+      "flow": 0,
+      "packet": 0,
+      "content": 0
+    },
+    "errors": 0
+  }
+}

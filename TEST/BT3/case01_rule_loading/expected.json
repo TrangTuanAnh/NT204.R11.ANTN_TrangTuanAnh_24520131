@@ -1,0 +1,31 @@
+{
+  "case": "case01_rule_loading",
+  "requirement": "Chỉ rule hợp lệ được đưa sang parser.",
+  "checks": {
+    "exit_code": 0,
+    "detection_count": 2,
+    "report.summary.files": 2,
+    "report.summary.disabled_files": 1,
+    "report.summary.comment_lines": 3,
+    "report.summary.blank_lines": 2,
+    "report.summary.rule_lines": 3,
+    "report.summary.valid": 2,
+    "report.summary.invalid": 0,
+    "report.summary.disabled": 1,
+    "report.files.1.enabled": false,
+    "report.rules.0.line": 4,
+    "report.rules.0.sid": 100101,
+    "report.rules.0.status": "valid",
+    "report.rules.1.line": 7,
+    "report.rules.1.sid": 100103,
+    "report.rules.1.status": "valid",
+    "report.rules.2.line": 9,
+    "report.rules.2.sid": 100104,
+    "report.rules.2.status": "disabled",
+    "by_packet.1": [
+      100101,
+      100103
+    ]
+  },
+  "equal_paths": []
+}

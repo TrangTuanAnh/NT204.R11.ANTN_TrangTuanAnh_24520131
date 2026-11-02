@@ -1,0 +1,9 @@
+# Ca 01: file có rule hợp lệ, comment và dòng trống
+
+   # comment thụt đầu dòng
+alert tcp any any -> any 80 (msg:"Ca 01 - rule viet tren mot dong"; content:"GET"; sid:100101; rev:1;)
+
+# alert tcp any any -> any 80 (msg:"Ca 01 - rule da bi comment"; content:"GET"; sid:100102; rev:1;)
+alert tcp any any -> any 80 ( \
+    msg:"Ca 01 - rule viet tren hai dong"; content:"Host"; sid:100103; rev:1;)
+alert tcp any any -> any 80 (msg:"Ca 01 - rule bi tat bang sid"; content:"GET"; sid:100104; rev:1;)

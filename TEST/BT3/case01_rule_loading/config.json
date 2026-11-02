@@ -1,0 +1,8 @@
+{
+  "disabled_rule_files": [
+    "disabled.rules"
+  ],
+  "disabled_sids": [
+    100104
+  ]
+}

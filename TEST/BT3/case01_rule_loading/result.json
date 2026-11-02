@@ -1,0 +1,150 @@
+{
+  "case": "case01_rule_loading",
+  "requirement": "Chỉ rule hợp lệ được đưa sang parser.",
+  "run_at": "2026-11-02T21:50:34+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "82ab3e7d16832562c0a9b9989353894d3f62bca9bb34d8a1e7b4b7d06ca34e65",
+  "command": "python main.py --pcap TEST/BT3/case01_rule_loading/input.pcap --rules TEST/BT3/case01_rule_loading/input.rules TEST/BT3/case01_rule_loading/disabled.rules --config TEST/BT3/case01_rule_loading/config.json --output output/case01_events.jsonl --flow-output output/case01_flows.jsonl --detection-output output/case01_detections.jsonl --rule-report output/case01_rule_report.json",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 21,
+  "total_checks": 21,
+  "event_count": 1,
+  "flow_count": 1,
+  "detection_count": 2,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "detection_count",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "report.summary.files",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "report.summary.disabled_files",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "report.summary.comment_lines",
+      "expected": 3,
+      "actual": 3,
+      "passed": true
+    },
+    {
+      "field": "report.summary.blank_lines",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "report.summary.rule_lines",
+      "expected": 3,
+      "actual": 3,
+      "passed": true
+    },
+    {
+      "field": "report.summary.valid",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "report.summary.invalid",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "report.summary.disabled",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "report.files.1.enabled",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "field": "report.rules.0.line",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "field": "report.rules.0.sid",
+      "expected": 100101,
+      "actual": 100101,
+      "passed": true
+    },
+    {
+      "field": "report.rules.0.status",
+      "expected": "valid",
+      "actual": "valid",
+      "passed": true
+    },
+    {
+      "field": "report.rules.1.line",
+      "expected": 7,
+      "actual": 7,
+      "passed": true
+    },
+    {
+      "field": "report.rules.1.sid",
+      "expected": 100103,
+      "actual": 100103,
+      "passed": true
+    },
+    {
+      "field": "report.rules.1.status",
+      "expected": "valid",
+      "actual": "valid",
+      "passed": true
+    },
+    {
+      "field": "report.rules.2.line",
+      "expected": 9,
+      "actual": 9,
+      "passed": true
+    },
+    {
+      "field": "report.rules.2.sid",
+      "expected": 100104,
+      "actual": 100104,
+      "passed": true
+    },
+    {
+      "field": "report.rules.2.status",
+      "expected": "disabled",
+      "actual": "disabled",
+      "passed": true
+    },
+    {
+      "field": "by_packet.1",
+      "expected": [
+        100101,
+        100103
+      ],
+      "actual": [
+        100101,
+        100103
+      ],
+      "passed": true
+    }
+  ]
+}

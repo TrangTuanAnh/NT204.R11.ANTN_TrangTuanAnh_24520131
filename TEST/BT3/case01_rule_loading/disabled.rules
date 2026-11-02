@@ -1,0 +1,1 @@
+alert tcp any any -> any 80 (msg:"Ca 01 - file bi tat"; content:"GET"; sid:100105; rev:1;)
