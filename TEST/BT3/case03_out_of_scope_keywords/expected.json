@@ -1,0 +1,46 @@
+{
+  "case": "case03_out_of_scope_keywords",
+  "requirement": "Đánh dấu unsupported; không crash.",
+  "checks": {
+    "exit_code": 0,
+    "detection_count": 1,
+    "report.summary.rule_lines": 8,
+    "report.summary.valid": 1,
+    "report.summary.unsupported": 7,
+    "report.summary.invalid": 0,
+    "report.engine.rules_in_repository": 1,
+    "report.rules.1.status": "unsupported",
+    "report.rules.1.reasons": [
+      "Keyword pcre ngoài phạm vi hỗ trợ"
+    ],
+    "report.rules.2.reasons": [
+      "Keyword byte_test ngoài phạm vi hỗ trợ"
+    ],
+    "report.rules.3.reasons": [
+      "Keyword http_uri ngoài phạm vi hỗ trợ"
+    ],
+    "report.rules.4.reasons": [
+      "Keyword metadata ngoài phạm vi hỗ trợ"
+    ],
+    "report.rules.5.reasons": [
+      "Hành động drop ngoài phạm vi hỗ trợ"
+    ],
+    "report.rules.6.reasons": [
+      "Giao thức icmp ngoài phạm vi hỗ trợ"
+    ],
+    "report.rules.7.reasons": [
+      "Giá trị flow from_client ngoài phạm vi hỗ trợ"
+    ],
+    "report.unsupported_keywords": {
+      "pcre": 1,
+      "byte_test": 1,
+      "http_uri": 1,
+      "metadata": 1,
+      "flow:from_client": 1
+    },
+    "by_packet.1": [
+      100301
+    ]
+  },
+  "equal_paths": []
+}

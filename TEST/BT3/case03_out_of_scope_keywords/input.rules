@@ -1,0 +1,8 @@
+alert tcp any any -> any 80 (msg:"Ca 03 - rule trong pham vi"; content:"GET"; sid:100301; rev:1;)
+alert tcp any any -> any 80 (msg:"Dung pcre"; pcre:"/GET/"; sid:100302; rev:1;)
+alert tcp any any -> any 80 (msg:"Dung byte_test"; content:"GET"; byte_test:1,>,0,0; sid:100303; rev:1;)
+alert tcp any any -> any 80 (msg:"Dung http_uri"; content:"GET"; http_uri; sid:100304; rev:1;)
+alert tcp any any -> any 80 (msg:"Dung metadata"; content:"GET"; metadata:service http; sid:100305; rev:1;)
+drop tcp any any -> any 80 (msg:"Hanh dong drop"; content:"GET"; sid:100306; rev:1;)
+alert icmp any any -> any any (msg:"Giao thuc icmp"; sid:100307; rev:1;)
+alert tcp any any -> any 80 (msg:"Flow from_client"; flow:from_client; content:"GET"; sid:100308; rev:1;)

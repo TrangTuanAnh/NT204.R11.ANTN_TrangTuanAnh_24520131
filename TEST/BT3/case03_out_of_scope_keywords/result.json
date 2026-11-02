@@ -1,0 +1,164 @@
+{
+  "case": "case03_out_of_scope_keywords",
+  "requirement": "Đánh dấu unsupported; không crash.",
+  "run_at": "2026-11-02T21:50:35+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "82ab3e7d16832562c0a9b9989353894d3f62bca9bb34d8a1e7b4b7d06ca34e65",
+  "command": "python main.py --pcap TEST/BT3/case03_out_of_scope_keywords/input.pcap --rules TEST/BT3/case03_out_of_scope_keywords/input.rules --config TEST/BT3/case03_out_of_scope_keywords/config.json --output output/case03_events.jsonl --flow-output output/case03_flows.jsonl --detection-output output/case03_detections.jsonl --rule-report output/case03_rule_report.json",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 17,
+  "total_checks": 17,
+  "event_count": 1,
+  "flow_count": 1,
+  "detection_count": 1,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "detection_count",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "report.summary.rule_lines",
+      "expected": 8,
+      "actual": 8,
+      "passed": true
+    },
+    {
+      "field": "report.summary.valid",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "report.summary.unsupported",
+      "expected": 7,
+      "actual": 7,
+      "passed": true
+    },
+    {
+      "field": "report.summary.invalid",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "report.engine.rules_in_repository",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "field": "report.rules.1.status",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "passed": true
+    },
+    {
+      "field": "report.rules.1.reasons",
+      "expected": [
+        "Keyword pcre ngoài phạm vi hỗ trợ"
+      ],
+      "actual": [
+        "Keyword pcre ngoài phạm vi hỗ trợ"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.2.reasons",
+      "expected": [
+        "Keyword byte_test ngoài phạm vi hỗ trợ"
+      ],
+      "actual": [
+        "Keyword byte_test ngoài phạm vi hỗ trợ"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.3.reasons",
+      "expected": [
+        "Keyword http_uri ngoài phạm vi hỗ trợ"
+      ],
+      "actual": [
+        "Keyword http_uri ngoài phạm vi hỗ trợ"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.4.reasons",
+      "expected": [
+        "Keyword metadata ngoài phạm vi hỗ trợ"
+      ],
+      "actual": [
+        "Keyword metadata ngoài phạm vi hỗ trợ"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.5.reasons",
+      "expected": [
+        "Hành động drop ngoài phạm vi hỗ trợ"
+      ],
+      "actual": [
+        "Hành động drop ngoài phạm vi hỗ trợ"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.6.reasons",
+      "expected": [
+        "Giao thức icmp ngoài phạm vi hỗ trợ"
+      ],
+      "actual": [
+        "Giao thức icmp ngoài phạm vi hỗ trợ"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.7.reasons",
+      "expected": [
+        "Giá trị flow from_client ngoài phạm vi hỗ trợ"
+      ],
+      "actual": [
+        "Giá trị flow from_client ngoài phạm vi hỗ trợ"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.unsupported_keywords",
+      "expected": {
+        "pcre": 1,
+        "byte_test": 1,
+        "http_uri": 1,
+        "metadata": 1,
+        "flow:from_client": 1
+      },
+      "actual": {
+        "pcre": 1,
+        "byte_test": 1,
+        "http_uri": 1,
+        "metadata": 1,
+        "flow:from_client": 1
+      },
+      "passed": true
+    },
+    {
+      "field": "by_packet.1",
+      "expected": [
+        100301
+      ],
+      "actual": [
+        100301
+      ],
+      "passed": true
+    }
+  ]
+}
