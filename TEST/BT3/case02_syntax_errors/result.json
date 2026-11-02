@@ -1,0 +1,204 @@
+{
+  "case": "case02_syntax_errors",
+  "requirement": "Đánh dấu invalid, có lý do; engine tiếp tục chạy.",
+  "run_at": "2026-11-02T21:50:34+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "82ab3e7d16832562c0a9b9989353894d3f62bca9bb34d8a1e7b4b7d06ca34e65",
+  "command": "python main.py --pcap TEST/BT3/case02_syntax_errors/input.pcap --rules TEST/BT3/case02_syntax_errors/input.rules --config TEST/BT3/case02_syntax_errors/config.json --output output/case02_events.jsonl --flow-output output/case02_flows.jsonl --detection-output output/case02_detections.jsonl --rule-report output/case02_rule_report.json",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 22,
+  "total_checks": 22,
+  "event_count": 1,
+  "flow_count": 1,
+  "detection_count": 2,
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "detection_count",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "report.summary.rule_lines",
+      "expected": 14,
+      "actual": 14,
+      "passed": true
+    },
+    {
+      "field": "report.summary.valid",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "report.summary.invalid",
+      "expected": 12,
+      "actual": 12,
+      "passed": true
+    },
+    {
+      "field": "report.engine.rules_in_repository",
+      "expected": 2,
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "field": "report.rules.0.status",
+      "expected": "valid",
+      "actual": "valid",
+      "passed": true
+    },
+    {
+      "field": "report.rules.1.status",
+      "expected": "invalid",
+      "actual": "invalid",
+      "passed": true
+    },
+    {
+      "field": "report.rules.1.reasons",
+      "expected": [
+        "Header phải có đủ 7 phần, đang có 6: 'alert tcp any any any 80'"
+      ],
+      "actual": [
+        "Header phải có đủ 7 phần, đang có 6: 'alert tcp any any any 80'"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.2.reasons",
+      "expected": [
+        "Chiều phải là -> hoặc <>, đang là '=>'"
+      ],
+      "actual": [
+        "Chiều phải là -> hoặc <>, đang là '=>'"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.3.reasons",
+      "expected": [
+        "IP nguồn không hợp lệ (999.1.1.1): '999.1.1.1' does not appear to be an IPv4 or IPv6 network"
+      ],
+      "actual": [
+        "IP nguồn không hợp lệ (999.1.1.1): '999.1.1.1' does not appear to be an IPv4 or IPv6 network"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.4.reasons",
+      "expected": [
+        "Port nguồn không hợp lệ (70000): port phải từ 0 đến 65535"
+      ],
+      "actual": [
+        "Port nguồn không hợp lệ (70000): port phải từ 0 đến 65535"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.5.reasons",
+      "expected": [
+        "Rule phải kết thúc bằng dấu \")\""
+      ],
+      "actual": [
+        "Rule phải kết thúc bằng dấu \")\""
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.6.reasons",
+      "expected": [
+        "Phần tùy chọn sai cú pháp: thiếu dấu \" đóng"
+      ],
+      "actual": [
+        "Phần tùy chọn sai cú pháp: thiếu dấu \" đóng"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.7.reasons",
+      "expected": [
+        "Rule thiếu keyword bắt buộc msg"
+      ],
+      "actual": [
+        "Rule thiếu keyword bắt buộc msg"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.8.reasons",
+      "expected": [
+        "Rule thiếu keyword bắt buộc sid"
+      ],
+      "actual": [
+        "Rule thiếu keyword bắt buộc sid"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.9.reasons",
+      "expected": [
+        "Keyword sid không hợp lệ (abc): phải là số nguyên"
+      ],
+      "actual": [
+        "Keyword sid không hợp lệ (abc): phải là số nguyên"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.10.reasons",
+      "expected": [
+        "Keyword nocase không hợp lệ (None): phải đứng sau một content"
+      ],
+      "actual": [
+        "Keyword nocase không hợp lệ (None): phải đứng sau một content"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.11.reasons",
+      "expected": [
+        "Keyword content không hợp lệ (\"|0|\"): phần hex phải gồm từng cặp chữ số hex"
+      ],
+      "actual": [
+        "Keyword content không hợp lệ (\"|0|\"): phần hex phải gồm từng cặp chữ số hex"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.12.reasons",
+      "expected": [
+        "sid 100201 đã được dùng cho rule khác"
+      ],
+      "actual": [
+        "sid 100201 đã được dùng cho rule khác"
+      ],
+      "passed": true
+    },
+    {
+      "field": "report.rules.13.status",
+      "expected": "valid",
+      "actual": "valid",
+      "passed": true
+    },
+    {
+      "field": "by_packet.1",
+      "expected": [
+        100201,
+        100214
+      ],
+      "actual": [
+        100201,
+        100214
+      ],
+      "passed": true
+    }
+  ]
+}

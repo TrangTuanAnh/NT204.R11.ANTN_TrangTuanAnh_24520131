@@ -1,0 +1,56 @@
+{
+  "case": "case02_syntax_errors",
+  "requirement": "Đánh dấu invalid, có lý do; engine tiếp tục chạy.",
+  "checks": {
+    "exit_code": 0,
+    "detection_count": 2,
+    "report.summary.rule_lines": 14,
+    "report.summary.valid": 2,
+    "report.summary.invalid": 12,
+    "report.engine.rules_in_repository": 2,
+    "report.rules.0.status": "valid",
+    "report.rules.1.status": "invalid",
+    "report.rules.1.reasons": [
+      "Header phải có đủ 7 phần, đang có 6: 'alert tcp any any any 80'"
+    ],
+    "report.rules.2.reasons": [
+      "Chiều phải là -> hoặc <>, đang là '=>'"
+    ],
+    "report.rules.3.reasons": [
+      "IP nguồn không hợp lệ (999.1.1.1): '999.1.1.1' does not appear to be an IPv4 or IPv6 network"
+    ],
+    "report.rules.4.reasons": [
+      "Port nguồn không hợp lệ (70000): port phải từ 0 đến 65535"
+    ],
+    "report.rules.5.reasons": [
+      "Rule phải kết thúc bằng dấu \")\""
+    ],
+    "report.rules.6.reasons": [
+      "Phần tùy chọn sai cú pháp: thiếu dấu \" đóng"
+    ],
+    "report.rules.7.reasons": [
+      "Rule thiếu keyword bắt buộc msg"
+    ],
+    "report.rules.8.reasons": [
+      "Rule thiếu keyword bắt buộc sid"
+    ],
+    "report.rules.9.reasons": [
+      "Keyword sid không hợp lệ (abc): phải là số nguyên"
+    ],
+    "report.rules.10.reasons": [
+      "Keyword nocase không hợp lệ (None): phải đứng sau một content"
+    ],
+    "report.rules.11.reasons": [
+      "Keyword content không hợp lệ (\"|0|\"): phần hex phải gồm từng cặp chữ số hex"
+    ],
+    "report.rules.12.reasons": [
+      "sid 100201 đã được dùng cho rule khác"
+    ],
+    "report.rules.13.status": "valid",
+    "by_packet.1": [
+      100201,
+      100214
+    ]
+  },
+  "equal_paths": []
+}

@@ -1,0 +1,263 @@
+{
+  "summary": {
+    "files": 1,
+    "disabled_files": 0,
+    "comment_lines": 0,
+    "blank_lines": 0,
+    "rule_lines": 14,
+    "valid": 2,
+    "invalid": 12,
+    "unsupported": 0,
+    "disabled": 0
+  },
+  "unsupported_keywords": {},
+  "files": [
+    {
+      "path": "TEST/BT3/case02_syntax_errors/input.rules",
+      "enabled": true,
+      "rule_lines": 14,
+      "comment_lines": 0,
+      "blank_lines": 0
+    }
+  ],
+  "rules": [
+    {
+      "file": "TEST/BT3/case02_syntax_errors/input.rules",
+      "line": 1,
+      "sid": 100201,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 100201,
+        "rev": 1,
+        "msg": "Ca 02 - rule hop le dau file",
+        "classtype": null,
+        "priority": null,
+        "contents": [
+          {
+            "content": "GET",
+            "hex": "474554",
+            "negated": false,
+            "nocase": false,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/BT3/case02_syntax_errors/input.rules",
+      "line": 2,
+      "sid": 100202,
+      "status": "invalid",
+      "reasons": [
+        "Header phải có đủ 7 phần, đang có 6: 'alert tcp any any any 80'"
+      ]
+    },
+    {
+      "file": "TEST/BT3/case02_syntax_errors/input.rules",
+      "line": 3,
+      "sid": 100203,
+      "status": "invalid",
+      "reasons": [
+        "Chiều phải là -> hoặc <>, đang là '=>'"
+      ]
+    },
+    {
+      "file": "TEST/BT3/case02_syntax_errors/input.rules",
+      "line": 4,
+      "sid": 100204,
+      "status": "invalid",
+      "reasons": [
+        "IP nguồn không hợp lệ (999.1.1.1): '999.1.1.1' does not appear to be an IPv4 or IPv6 network"
+      ]
+    },
+    {
+      "file": "TEST/BT3/case02_syntax_errors/input.rules",
+      "line": 5,
+      "sid": 100205,
+      "status": "invalid",
+      "reasons": [
+        "Port nguồn không hợp lệ (70000): port phải từ 0 đến 65535"
+      ]
+    },
+    {
+      "file": "TEST/BT3/case02_syntax_errors/input.rules",
+      "line": 6,
+      "sid": null,
+      "status": "invalid",
+      "reasons": [
+        "Rule phải kết thúc bằng dấu \")\""
+      ]
+    },
+    {
+      "file": "TEST/BT3/case02_syntax_errors/input.rules",
+      "line": 7,
+      "sid": null,
+      "status": "invalid",
+      "reasons": [
+        "Phần tùy chọn sai cú pháp: thiếu dấu \" đóng"
+      ]
+    },
+    {
+      "file": "TEST/BT3/case02_syntax_errors/input.rules",
+      "line": 8,
+      "sid": 100208,
+      "status": "invalid",
+      "reasons": [
+        "Rule thiếu keyword bắt buộc msg"
+      ]
+    },
+    {
+      "file": "TEST/BT3/case02_syntax_errors/input.rules",
+      "line": 9,
+      "sid": null,
+      "status": "invalid",
+      "reasons": [
+        "Rule thiếu keyword bắt buộc sid"
+      ]
+    },
+    {
+      "file": "TEST/BT3/case02_syntax_errors/input.rules",
+      "line": 10,
+      "sid": null,
+      "status": "invalid",
+      "reasons": [
+        "Keyword sid không hợp lệ (abc): phải là số nguyên"
+      ]
+    },
+    {
+      "file": "TEST/BT3/case02_syntax_errors/input.rules",
+      "line": 11,
+      "sid": 100211,
+      "status": "invalid",
+      "reasons": [
+        "Keyword nocase không hợp lệ (None): phải đứng sau một content"
+      ]
+    },
+    {
+      "file": "TEST/BT3/case02_syntax_errors/input.rules",
+      "line": 12,
+      "sid": 100212,
+      "status": "invalid",
+      "reasons": [
+        "Keyword content không hợp lệ (\"|0|\"): phần hex phải gồm từng cặp chữ số hex"
+      ]
+    },
+    {
+      "file": "TEST/BT3/case02_syntax_errors/input.rules",
+      "line": 13,
+      "sid": 100201,
+      "status": "invalid",
+      "reasons": [
+        "sid 100201 đã được dùng cho rule khác"
+      ]
+    },
+    {
+      "file": "TEST/BT3/case02_syntax_errors/input.rules",
+      "line": 14,
+      "sid": 100214,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 100214,
+        "rev": 1,
+        "msg": "Ca 02 - rule hop le cuoi file",
+        "classtype": null,
+        "priority": null,
+        "contents": [
+          {
+            "content": "GET",
+            "hex": "474554",
+            "negated": false,
+            "nocase": false,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    }
+  ],
+  "engine": {
+    "rules_in_repository": 2,
+    "events_seen": 1,
+    "events_evaluated": 1,
+    "events_skipped": 0,
+    "candidate_rules": 2,
+    "content_checks": 2,
+    "matches": 2,
+    "rejected": {
+      "header": 0,
+      "flow": 0,
+      "packet": 0,
+      "content": 0
+    },
+    "errors": 0
+  }
+}
