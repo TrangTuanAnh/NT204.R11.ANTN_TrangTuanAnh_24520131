@@ -1,0 +1,388 @@
+{
+  "summary": {
+    "files": 1,
+    "disabled_files": 0,
+    "comment_lines": 0,
+    "blank_lines": 0,
+    "rule_lines": 6,
+    "valid": 6,
+    "invalid": 0,
+    "unsupported": 0,
+    "disabled": 0
+  },
+  "unsupported_keywords": {},
+  "files": [
+    {
+      "path": "TEST/extra/mixed_traffic/office_day/input.rules",
+      "enabled": true,
+      "rule_lines": 6,
+      "comment_lines": 0,
+      "blank_lines": 0
+    }
+  ],
+  "rules": [
+    {
+      "file": "TEST/extra/mixed_traffic/office_day/input.rules",
+      "line": 1,
+      "sid": 3000001,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 3000001,
+        "rev": 1,
+        "msg": "Directory traversal",
+        "classtype": "web-application-attack",
+        "priority": 1,
+        "contents": [
+          {
+            "content": "../",
+            "hex": "2e2e2f",
+            "negated": false,
+            "nocase": false,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": {
+          "direction": "to_server",
+          "state": "established"
+        }
+      }
+    },
+    {
+      "file": "TEST/extra/mixed_traffic/office_day/input.rules",
+      "line": 2,
+      "sid": 3000002,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 3000002,
+        "rev": 1,
+        "msg": "SQL injection attempt",
+        "classtype": "web-application-attack",
+        "priority": 1,
+        "contents": [
+          {
+            "content": "' OR 1=1",
+            "hex": "27204f5220313d31",
+            "negated": false,
+            "nocase": true,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": {
+          "direction": "to_server",
+          "state": "established"
+        }
+      }
+    },
+    {
+      "file": "TEST/extra/mixed_traffic/office_day/input.rules",
+      "line": 3,
+      "sid": 3000003,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "udp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              53,
+              53
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 3000003,
+        "rev": 1,
+        "msg": "DNS query to suspicious domain",
+        "classtype": "trojan-activity",
+        "priority": 2,
+        "contents": [
+          {
+            "content": "c2-update",
+            "hex": "63322d757064617465",
+            "negated": false,
+            "nocase": true,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/extra/mixed_traffic/office_day/input.rules",
+      "line": 4,
+      "sid": 3000004,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              25,
+              25
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 3000004,
+        "rev": 1,
+        "msg": "Executable attachment in mail",
+        "classtype": "policy-violation",
+        "priority": 3,
+        "contents": [
+          {
+            "content": "invoice.exe",
+            "hex": "696e766f6963652e657865",
+            "negated": false,
+            "nocase": true,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": {
+          "direction": "to_server",
+          "state": "established"
+        }
+      }
+    },
+    {
+      "file": "TEST/extra/mixed_traffic/office_day/input.rules",
+      "line": 5,
+      "sid": 3000005,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              22,
+              22
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 3000005,
+        "rev": 1,
+        "msg": "SSH banner",
+        "classtype": null,
+        "priority": null,
+        "contents": [
+          {
+            "content": "SSH-",
+            "hex": "5353482d",
+            "negated": false,
+            "nocase": false,
+            "offset": 0,
+            "depth": 4,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": {
+          "direction": "to_server",
+          "state": "established"
+        }
+      }
+    },
+    {
+      "file": "TEST/extra/mixed_traffic/office_day/input.rules",
+      "line": 6,
+      "sid": 3000006,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "udp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              5000,
+              5000
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 3000006,
+        "rev": 1,
+        "msg": "Large game packet",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": null,
+        "dsize": {
+          "operator": ">",
+          "low": 150,
+          "high": null
+        },
+        "flow": null
+      }
+    }
+  ],
+  "engine": {
+    "rules_in_repository": 6,
+    "events_seen": 2130,
+    "events_evaluated": 2118,
+    "events_skipped": 12,
+    "candidate_rules": 1527,
+    "content_checks": 1327,
+    "matches": 53,
+    "rejected": {
+      "header": 0,
+      "flow": 156,
+      "packet": 21,
+      "content": 1297
+    },
+    "errors": 0
+  }
+}

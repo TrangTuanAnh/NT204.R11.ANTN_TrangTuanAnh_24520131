@@ -1,0 +1,4 @@
+{
+  "tcp_idle_timeout": 30,
+  "udp_idle_timeout": 10
+}

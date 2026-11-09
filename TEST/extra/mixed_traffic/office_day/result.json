@@ -1,0 +1,142 @@
+{
+  "scenario": "office_day",
+  "seed": 20261101,
+  "run_at": "2026-11-09T17:08:04+07:00",
+  "python": "3.10.11",
+  "scapy": "2.5.0",
+  "input_sha256": "40933fe889f143e3d839d8565c2fc9592cd8d9b3c6beb631eccb3d9bc21096b5",
+  "pcap_bytes": 337804,
+  "command": "python main.py --pcap TEST/extra/mixed_traffic/office_day/input.pcap --rules TEST/extra/mixed_traffic/office_day/input.rules --config TEST/extra/mixed_traffic/office_day/config.json --output output/office_day_events.jsonl --flow-output output/office_day_flows.jsonl --detection-output output/office_day_detections.jsonl --rule-report output/office_day_rule_report.json",
+  "exit_code": 0,
+  "passed": true,
+  "passed_checks": 18,
+  "total_checks": 18,
+  "packet_count": 2130,
+  "flow_count": 236,
+  "detection_count": 53,
+  "flow_differences": [],
+  "checks": [
+    {
+      "field": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "event_count",
+      "expected": 2130,
+      "actual": 2130,
+      "passed": true
+    },
+    {
+      "field": "skipped_events",
+      "expected": 38,
+      "actual": 38,
+      "passed": true
+    },
+    {
+      "field": "invalid_events",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "unexpected_errors",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "events_with_flow",
+      "expected": 2092,
+      "actual": 2092,
+      "passed": true
+    },
+    {
+      "field": "events_with_unknown_flow",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "packets_counted_in_flows",
+      "expected": 2092,
+      "actual": 2092,
+      "passed": true
+    },
+    {
+      "field": "flow_count",
+      "expected": 236,
+      "actual": 236,
+      "passed": true
+    },
+    {
+      "field": "flows_different_from_expected",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "detection_count",
+      "expected": 53,
+      "actual": 53,
+      "passed": true
+    },
+    {
+      "field": "detections_by_sid",
+      "expected": {
+        "3000001": 6,
+        "3000002": 4,
+        "3000003": 4,
+        "3000004": 3,
+        "3000005": 13,
+        "3000006": 23
+      },
+      "actual": {
+        "3000001": 6,
+        "3000002": 4,
+        "3000003": 4,
+        "3000004": 3,
+        "3000005": 13,
+        "3000006": 23
+      },
+      "passed": true
+    },
+    {
+      "field": "packets_with_different_detections",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "engine.rules_in_repository",
+      "expected": 6,
+      "actual": 6,
+      "passed": true
+    },
+    {
+      "field": "engine.events_seen",
+      "expected": 2130,
+      "actual": 2130,
+      "passed": true
+    },
+    {
+      "field": "engine.matches",
+      "expected": 53,
+      "actual": 53,
+      "passed": true
+    },
+    {
+      "field": "engine.errors",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "field": "index_skips_rules",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    }
+  ]
+}

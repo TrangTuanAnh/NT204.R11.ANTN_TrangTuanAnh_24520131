@@ -1,0 +1,6 @@
+alert tcp any any -> any 80 (msg:"Directory traversal"; flow:to_server,established; content:"../"; classtype:web-application-attack; priority:1; sid:3000001; rev:1;)
+alert tcp any any -> any 80 (msg:"SQL injection attempt"; flow:to_server,established; content:"' OR 1=1"; nocase; classtype:web-application-attack; priority:1; sid:3000002; rev:1;)
+alert udp any any -> any 53 (msg:"DNS query to suspicious domain"; content:"c2-update"; nocase; classtype:trojan-activity; priority:2; sid:3000003; rev:1;)
+alert tcp any any -> any 25 (msg:"Executable attachment in mail"; flow:to_server,established; content:"invoice.exe"; nocase; classtype:policy-violation; priority:3; sid:3000004; rev:1;)
+alert tcp any any -> any 22 (msg:"SSH banner"; flow:to_server,established; content:"SSH-"; offset:0; depth:4; sid:3000005; rev:1;)
+alert udp any any -> any 5000 (msg:"Large game packet"; dsize:>150; sid:3000006; rev:1;)

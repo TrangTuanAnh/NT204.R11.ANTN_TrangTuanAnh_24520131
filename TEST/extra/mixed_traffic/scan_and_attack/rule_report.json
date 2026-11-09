@@ -1,0 +1,321 @@
+{
+  "summary": {
+    "files": 1,
+    "disabled_files": 0,
+    "comment_lines": 0,
+    "blank_lines": 0,
+    "rule_lines": 5,
+    "valid": 5,
+    "invalid": 0,
+    "unsupported": 0,
+    "disabled": 0
+  },
+  "unsupported_keywords": {},
+  "files": [
+    {
+      "path": "TEST/extra/mixed_traffic/scan_and_attack/input.rules",
+      "enabled": true,
+      "rule_lines": 5,
+      "comment_lines": 0,
+      "blank_lines": 0
+    }
+  ],
+  "rules": [
+    {
+      "file": "TEST/extra/mixed_traffic/scan_and_attack/input.rules",
+      "line": 1,
+      "sid": 3100001,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              7000,
+              7100
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 3100001,
+        "rev": 1,
+        "msg": "SYN probe on service ports",
+        "classtype": "attempted-recon",
+        "priority": 2,
+        "contents": [],
+        "flags": {
+          "modifier": "",
+          "flags": "S",
+          "ignored": ""
+        },
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/extra/mixed_traffic/scan_and_attack/input.rules",
+      "line": 2,
+      "sid": 3100002,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 3100002,
+        "rev": 1,
+        "msg": "SYN to web server",
+        "classtype": null,
+        "priority": null,
+        "contents": [],
+        "flags": {
+          "modifier": "",
+          "flags": "S",
+          "ignored": ""
+        },
+        "dsize": null,
+        "flow": null
+      }
+    },
+    {
+      "file": "TEST/extra/mixed_traffic/scan_and_attack/input.rules",
+      "line": 3,
+      "sid": 3100003,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 3100003,
+        "rev": 1,
+        "msg": "Login attempt",
+        "classtype": null,
+        "priority": null,
+        "contents": [
+          {
+            "content": "POST /login",
+            "hex": "504f5354202f6c6f67696e",
+            "negated": false,
+            "nocase": false,
+            "offset": 0,
+            "depth": 11,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": {
+          "direction": "to_server",
+          "state": "established"
+        }
+      }
+    },
+    {
+      "file": "TEST/extra/mixed_traffic/scan_and_attack/input.rules",
+      "line": 4,
+      "sid": 3000001,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 3000001,
+        "rev": 1,
+        "msg": "Directory traversal",
+        "classtype": "web-application-attack",
+        "priority": 1,
+        "contents": [
+          {
+            "content": "../",
+            "hex": "2e2e2f",
+            "negated": false,
+            "nocase": false,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": {
+          "direction": "to_server",
+          "state": "established"
+        }
+      }
+    },
+    {
+      "file": "TEST/extra/mixed_traffic/scan_and_attack/input.rules",
+      "line": 5,
+      "sid": 3000002,
+      "status": "valid",
+      "reasons": [],
+      "rule": {
+        "action": "alert",
+        "protocol": "tcp",
+        "source": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "source_ports": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "direction": "->",
+        "destination": {
+          "any": true,
+          "include": [],
+          "exclude": []
+        },
+        "destination_ports": {
+          "any": false,
+          "include": [
+            [
+              80,
+              80
+            ]
+          ],
+          "exclude": []
+        },
+        "sid": 3000002,
+        "rev": 1,
+        "msg": "SQL injection attempt",
+        "classtype": "web-application-attack",
+        "priority": 1,
+        "contents": [
+          {
+            "content": "' OR 1=1",
+            "hex": "27204f5220313d31",
+            "negated": false,
+            "nocase": true,
+            "offset": null,
+            "depth": null,
+            "distance": null,
+            "within": null
+          }
+        ],
+        "flags": null,
+        "dsize": null,
+        "flow": {
+          "direction": "to_server",
+          "state": "established"
+        }
+      }
+    }
+  ],
+  "engine": {
+    "rules_in_repository": 5,
+    "events_seen": 2013,
+    "events_evaluated": 2013,
+    "events_skipped": 0,
+    "candidate_rules": 3671,
+    "content_checks": 1872,
+    "matches": 444,
+    "rejected": {
+      "header": 0,
+      "flow": 804,
+      "packet": 626,
+      "content": 1797
+    },
+    "errors": 0
+  }
+}

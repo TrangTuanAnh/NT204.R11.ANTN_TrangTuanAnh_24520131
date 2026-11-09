@@ -1,0 +1,5 @@
+alert tcp any any -> any 7000:7100 (msg:"SYN probe on service ports"; flags:S; classtype:attempted-recon; priority:2; sid:3100001; rev:1;)
+alert tcp any any -> any 80 (msg:"SYN to web server"; flags:S; sid:3100002; rev:1;)
+alert tcp any any -> any 80 (msg:"Login attempt"; flow:to_server,established; content:"POST /login"; offset:0; depth:11; sid:3100003; rev:1;)
+alert tcp any any -> any 80 (msg:"Directory traversal"; flow:to_server,established; content:"../"; classtype:web-application-attack; priority:1; sid:3000001; rev:1;)
+alert tcp any any -> any 80 (msg:"SQL injection attempt"; flow:to_server,established; content:"' OR 1=1"; nocase; classtype:web-application-attack; priority:1; sid:3000002; rev:1;)

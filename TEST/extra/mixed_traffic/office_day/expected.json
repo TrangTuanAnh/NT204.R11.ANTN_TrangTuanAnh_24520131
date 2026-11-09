@@ -1,0 +1,6824 @@
+{
+  "scenario": "office_day",
+  "seed": 20261101,
+  "composition": {
+    "dns": {
+      "sessions": 136,
+      "packets": 272
+    },
+    "http": {
+      "sessions": 58,
+      "packets": 832
+    },
+    "http_reset": {
+      "sessions": 6,
+      "packets": 50
+    },
+    "smtp": {
+      "sessions": 15,
+      "packets": 495
+    },
+    "ssh": {
+      "sessions": 13,
+      "packets": 355
+    },
+    "udp_game": {
+      "sessions": 8,
+      "packets": 88
+    },
+    "unsupported": {
+      "sessions": 0,
+      "packets": 38
+    }
+  },
+  "packets": 2130,
+  "skipped": 38,
+  "last_time": 1700000543.887,
+  "timeouts": {
+    "tcp_idle_timeout": 120.0,
+    "udp_idle_timeout": 30.0
+  },
+  "rules": 6,
+  "flows": [
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.10",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000184.362,
+      "last_seen": 1700000184.909,
+      "packet_count": 16,
+      "byte_count": 2819,
+      "forward_packet_count": 8,
+      "forward_byte_count": 625,
+      "backward_packet_count": 8,
+      "backward_byte_count": 2194,
+      "SYN_count": 2,
+      "ACK_count": 15,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "ssh",
+      "protocol": "TCP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.10",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.22",
+        "port": 22
+      },
+      "start_time": 1700000169.91,
+      "last_seen": 1700000172.476,
+      "packet_count": 19,
+      "byte_count": 2126,
+      "forward_packet_count": 10,
+      "forward_byte_count": 1099,
+      "backward_packet_count": 9,
+      "backward_byte_count": 1027,
+      "SYN_count": 2,
+      "ACK_count": 18,
+      "FIN_count": 0,
+      "RST_count": 0,
+      "state": "ESTABLISHED",
+      "handshake_observed": true,
+      "end_reason": "new_connection"
+    },
+    {
+      "kind": "ssh",
+      "protocol": "TCP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.10",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.22",
+        "port": 22
+      },
+      "start_time": 1700000175.492,
+      "last_seen": 1700000179.233,
+      "packet_count": 23,
+      "byte_count": 2611,
+      "forward_packet_count": 12,
+      "forward_byte_count": 1161,
+      "backward_packet_count": 11,
+      "backward_byte_count": 1450,
+      "SYN_count": 2,
+      "ACK_count": 22,
+      "FIN_count": 0,
+      "RST_count": 0,
+      "state": "ESTABLISHED",
+      "handshake_observed": true,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.11",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000120.747,
+      "last_seen": 1700000121.019,
+      "packet_count": 11,
+      "byte_count": 1367,
+      "forward_packet_count": 6,
+      "forward_byte_count": 404,
+      "backward_packet_count": 5,
+      "backward_byte_count": 963,
+      "SYN_count": 2,
+      "ACK_count": 10,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.12",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000423.626,
+      "last_seen": 1700000424.962,
+      "packet_count": 20,
+      "byte_count": 4888,
+      "forward_packet_count": 10,
+      "forward_byte_count": 805,
+      "backward_packet_count": 10,
+      "backward_byte_count": 4083,
+      "SYN_count": 2,
+      "ACK_count": 19,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.12",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000107.484,
+      "last_seen": 1700000107.879,
+      "packet_count": 12,
+      "byte_count": 2529,
+      "forward_packet_count": 6,
+      "forward_byte_count": 508,
+      "backward_packet_count": 6,
+      "backward_byte_count": 2021,
+      "SYN_count": 2,
+      "ACK_count": 11,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.12",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000233.21,
+      "last_seen": 1700000233.834,
+      "packet_count": 15,
+      "byte_count": 2267,
+      "forward_packet_count": 8,
+      "forward_byte_count": 619,
+      "backward_packet_count": 7,
+      "backward_byte_count": 1648,
+      "SYN_count": 2,
+      "ACK_count": 14,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "ssh",
+      "protocol": "TCP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.12",
+        "port": 32774
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.22",
+        "port": 22
+      },
+      "start_time": 1700000200.275,
+      "last_seen": 1700000202.647,
+      "packet_count": 19,
+      "byte_count": 2416,
+      "forward_packet_count": 10,
+      "forward_byte_count": 1090,
+      "backward_packet_count": 9,
+      "backward_byte_count": 1326,
+      "SYN_count": 2,
+      "ACK_count": 18,
+      "FIN_count": 0,
+      "RST_count": 0,
+      "state": "ESTABLISHED",
+      "handshake_observed": true,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.14",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000068.331,
+      "last_seen": 1700000068.942,
+      "packet_count": 12,
+      "byte_count": 2471,
+      "forward_packet_count": 6,
+      "forward_byte_count": 411,
+      "backward_packet_count": 6,
+      "backward_byte_count": 2060,
+      "SYN_count": 2,
+      "ACK_count": 11,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.15",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000452.615,
+      "last_seen": 1700000453.109,
+      "packet_count": 11,
+      "byte_count": 1250,
+      "forward_packet_count": 6,
+      "forward_byte_count": 414,
+      "backward_packet_count": 5,
+      "backward_byte_count": 836,
+      "SYN_count": 2,
+      "ACK_count": 10,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.15",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000160.662,
+      "last_seen": 1700000160.875,
+      "packet_count": 11,
+      "byte_count": 1103,
+      "forward_packet_count": 6,
+      "forward_byte_count": 429,
+      "backward_packet_count": 5,
+      "backward_byte_count": 674,
+      "SYN_count": 2,
+      "ACK_count": 10,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http_reset",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.18",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000471.974,
+      "last_seen": 1700000472.454,
+      "packet_count": 8,
+      "byte_count": 715,
+      "forward_packet_count": 4,
+      "forward_byte_count": 303,
+      "backward_packet_count": 4,
+      "backward_byte_count": 412,
+      "SYN_count": 2,
+      "ACK_count": 7,
+      "FIN_count": 0,
+      "RST_count": 1,
+      "state": "RESET",
+      "handshake_observed": true,
+      "end_reason": "tcp_reset"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.19",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000195.745,
+      "last_seen": 1700000196.203,
+      "packet_count": 11,
+      "byte_count": 943,
+      "forward_packet_count": 6,
+      "forward_byte_count": 404,
+      "backward_packet_count": 5,
+      "backward_byte_count": 539,
+      "SYN_count": 2,
+      "ACK_count": 10,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.20",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000370.419,
+      "last_seen": 1700000371.434,
+      "packet_count": 20,
+      "byte_count": 4051,
+      "forward_packet_count": 10,
+      "forward_byte_count": 889,
+      "backward_packet_count": 10,
+      "backward_byte_count": 3162,
+      "SYN_count": 2,
+      "ACK_count": 19,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.21",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000501.234,
+      "last_seen": 1700000501.953,
+      "packet_count": 22,
+      "byte_count": 5976,
+      "forward_packet_count": 10,
+      "forward_byte_count": 806,
+      "backward_packet_count": 12,
+      "backward_byte_count": 5170,
+      "SYN_count": 2,
+      "ACK_count": 21,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.21",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000292.667,
+      "last_seen": 1700000293.534,
+      "packet_count": 15,
+      "byte_count": 2749,
+      "forward_packet_count": 8,
+      "forward_byte_count": 605,
+      "backward_packet_count": 7,
+      "backward_byte_count": 2144,
+      "SYN_count": 2,
+      "ACK_count": 14,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.22",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000423.137,
+      "last_seen": 1700000423.585,
+      "packet_count": 11,
+      "byte_count": 1947,
+      "forward_packet_count": 6,
+      "forward_byte_count": 508,
+      "backward_packet_count": 5,
+      "backward_byte_count": 1439,
+      "SYN_count": 2,
+      "ACK_count": 10,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "ssh",
+      "protocol": "TCP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.22",
+        "port": 32773
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.22",
+        "port": 22
+      },
+      "start_time": 1700000400.007,
+      "last_seen": 1700000405.733,
+      "packet_count": 27,
+      "byte_count": 3347,
+      "forward_packet_count": 14,
+      "forward_byte_count": 1910,
+      "backward_packet_count": 13,
+      "backward_byte_count": 1437,
+      "SYN_count": 2,
+      "ACK_count": 26,
+      "FIN_count": 0,
+      "RST_count": 0,
+      "state": "ESTABLISHED",
+      "handshake_observed": true,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.23",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000485.743,
+      "last_seen": 1700000486.24,
+      "packet_count": 16,
+      "byte_count": 3636,
+      "forward_packet_count": 8,
+      "forward_byte_count": 607,
+      "backward_packet_count": 8,
+      "backward_byte_count": 3029,
+      "SYN_count": 2,
+      "ACK_count": 15,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.23",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000048.085,
+      "last_seen": 1700000049.079,
+      "packet_count": 15,
+      "byte_count": 3338,
+      "forward_packet_count": 8,
+      "forward_byte_count": 711,
+      "backward_packet_count": 7,
+      "backward_byte_count": 2627,
+      "SYN_count": 2,
+      "ACK_count": 14,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.26",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000310.637,
+      "last_seen": 1700000311.737,
+      "packet_count": 21,
+      "byte_count": 5617,
+      "forward_packet_count": 10,
+      "forward_byte_count": 901,
+      "backward_packet_count": 11,
+      "backward_byte_count": 4716,
+      "SYN_count": 2,
+      "ACK_count": 20,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.26",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000316.743,
+      "last_seen": 1700000317.197,
+      "packet_count": 12,
+      "byte_count": 2590,
+      "forward_packet_count": 6,
+      "forward_byte_count": 429,
+      "backward_packet_count": 6,
+      "backward_byte_count": 2161,
+      "SYN_count": 2,
+      "ACK_count": 11,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.26",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000095.331,
+      "last_seen": 1700000096.015,
+      "packet_count": 15,
+      "byte_count": 3486,
+      "forward_packet_count": 8,
+      "forward_byte_count": 630,
+      "backward_packet_count": 7,
+      "backward_byte_count": 2856,
+      "SYN_count": 2,
+      "ACK_count": 14,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.26",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000101.025,
+      "last_seen": 1700000102.08,
+      "packet_count": 21,
+      "byte_count": 6353,
+      "forward_packet_count": 10,
+      "forward_byte_count": 856,
+      "backward_packet_count": 11,
+      "backward_byte_count": 5497,
+      "SYN_count": 2,
+      "ACK_count": 20,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.27",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000349.74,
+      "last_seen": 1700000350.238,
+      "packet_count": 12,
+      "byte_count": 2366,
+      "forward_packet_count": 6,
+      "forward_byte_count": 409,
+      "backward_packet_count": 6,
+      "backward_byte_count": 1957,
+      "SYN_count": 2,
+      "ACK_count": 11,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.27",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000187.402,
+      "last_seen": 1700000188.561,
+      "packet_count": 19,
+      "byte_count": 4184,
+      "forward_packet_count": 10,
+      "forward_byte_count": 906,
+      "backward_packet_count": 9,
+      "backward_byte_count": 3278,
+      "SYN_count": 2,
+      "ACK_count": 18,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.27",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000131.637,
+      "last_seen": 1700000131.961,
+      "packet_count": 11,
+      "byte_count": 1896,
+      "forward_packet_count": 6,
+      "forward_byte_count": 417,
+      "backward_packet_count": 5,
+      "backward_byte_count": 1479,
+      "SYN_count": 2,
+      "ACK_count": 10,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.27",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000216.331,
+      "last_seen": 1700000217.25,
+      "packet_count": 19,
+      "byte_count": 3932,
+      "forward_packet_count": 10,
+      "forward_byte_count": 908,
+      "backward_packet_count": 9,
+      "backward_byte_count": 3024,
+      "SYN_count": 2,
+      "ACK_count": 18,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http_reset",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.27",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000066.809,
+      "last_seen": 1700000067.252,
+      "packet_count": 9,
+      "byte_count": 2330,
+      "forward_packet_count": 4,
+      "forward_byte_count": 306,
+      "backward_packet_count": 5,
+      "backward_byte_count": 2024,
+      "SYN_count": 2,
+      "ACK_count": 8,
+      "FIN_count": 0,
+      "RST_count": 1,
+      "state": "RESET",
+      "handshake_observed": true,
+      "end_reason": "tcp_reset"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.28",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000206.753,
+      "last_seen": 1700000206.99,
+      "packet_count": 12,
+      "byte_count": 2539,
+      "forward_packet_count": 6,
+      "forward_byte_count": 508,
+      "backward_packet_count": 6,
+      "backward_byte_count": 2031,
+      "SYN_count": 2,
+      "ACK_count": 11,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.29",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000140.312,
+      "last_seen": 1700000140.789,
+      "packet_count": 12,
+      "byte_count": 2344,
+      "forward_packet_count": 6,
+      "forward_byte_count": 430,
+      "backward_packet_count": 6,
+      "backward_byte_count": 1914,
+      "SYN_count": 2,
+      "ACK_count": 11,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "ssh",
+      "protocol": "TCP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.31",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.22",
+        "port": 22
+      },
+      "start_time": 1700000073.341,
+      "last_seen": 1700000075.91,
+      "packet_count": 27,
+      "byte_count": 3440,
+      "forward_packet_count": 14,
+      "forward_byte_count": 1827,
+      "backward_packet_count": 13,
+      "backward_byte_count": 1613,
+      "SYN_count": 2,
+      "ACK_count": 26,
+      "FIN_count": 0,
+      "RST_count": 0,
+      "state": "ESTABLISHED",
+      "handshake_observed": true,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.32",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000226.144,
+      "last_seen": 1700000227.205,
+      "packet_count": 16,
+      "byte_count": 4273,
+      "forward_packet_count": 8,
+      "forward_byte_count": 710,
+      "backward_packet_count": 8,
+      "backward_byte_count": 3563,
+      "SYN_count": 2,
+      "ACK_count": 15,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http_reset",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.33",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000328.16,
+      "last_seen": 1700000328.526,
+      "packet_count": 8,
+      "byte_count": 924,
+      "forward_packet_count": 4,
+      "forward_byte_count": 306,
+      "backward_packet_count": 4,
+      "backward_byte_count": 618,
+      "SYN_count": 2,
+      "ACK_count": 7,
+      "FIN_count": 0,
+      "RST_count": 1,
+      "state": "RESET",
+      "handshake_observed": true,
+      "end_reason": "tcp_reset"
+    },
+    {
+      "kind": "ssh",
+      "protocol": "TCP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.33",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.22",
+        "port": 22
+      },
+      "start_time": 1700000384.375,
+      "last_seen": 1700000387.477,
+      "packet_count": 19,
+      "byte_count": 2705,
+      "forward_packet_count": 10,
+      "forward_byte_count": 1161,
+      "backward_packet_count": 9,
+      "backward_byte_count": 1544,
+      "SYN_count": 2,
+      "ACK_count": 18,
+      "FIN_count": 0,
+      "RST_count": 0,
+      "state": "ESTABLISHED",
+      "handshake_observed": true,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "ssh",
+      "protocol": "TCP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.34",
+        "port": 32773
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.22",
+        "port": 22
+      },
+      "start_time": 1700000149.208,
+      "last_seen": 1700000156.085,
+      "packet_count": 31,
+      "byte_count": 4011,
+      "forward_packet_count": 16,
+      "forward_byte_count": 1995,
+      "backward_packet_count": 15,
+      "backward_byte_count": 2016,
+      "SYN_count": 2,
+      "ACK_count": 30,
+      "FIN_count": 0,
+      "RST_count": 0,
+      "state": "ESTABLISHED",
+      "handshake_observed": true,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "http_reset",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.36",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000401.85,
+      "last_seen": 1700000402.251,
+      "packet_count": 8,
+      "byte_count": 839,
+      "forward_packet_count": 4,
+      "forward_byte_count": 310,
+      "backward_packet_count": 4,
+      "backward_byte_count": 529,
+      "SYN_count": 2,
+      "ACK_count": 7,
+      "FIN_count": 0,
+      "RST_count": 1,
+      "state": "RESET",
+      "handshake_observed": true,
+      "end_reason": "tcp_reset"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.38",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000014.063,
+      "last_seen": 1700000014.982,
+      "packet_count": 15,
+      "byte_count": 2320,
+      "forward_packet_count": 8,
+      "forward_byte_count": 721,
+      "backward_packet_count": 7,
+      "backward_byte_count": 1599,
+      "SYN_count": 2,
+      "ACK_count": 14,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.38",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000536.579,
+      "last_seen": 1700000536.977,
+      "packet_count": 11,
+      "byte_count": 1764,
+      "forward_packet_count": 6,
+      "forward_byte_count": 508,
+      "backward_packet_count": 5,
+      "backward_byte_count": 1256,
+      "SYN_count": 2,
+      "ACK_count": 10,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.38",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000355.584,
+      "last_seen": 1700000356.337,
+      "packet_count": 15,
+      "byte_count": 2160,
+      "forward_packet_count": 8,
+      "forward_byte_count": 602,
+      "backward_packet_count": 7,
+      "backward_byte_count": 1558,
+      "SYN_count": 2,
+      "ACK_count": 14,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.39",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000370.699,
+      "last_seen": 1700000371.524,
+      "packet_count": 15,
+      "byte_count": 1863,
+      "forward_packet_count": 8,
+      "forward_byte_count": 624,
+      "backward_packet_count": 7,
+      "backward_byte_count": 1239,
+      "SYN_count": 2,
+      "ACK_count": 14,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.40",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000252.704,
+      "last_seen": 1700000253.119,
+      "packet_count": 15,
+      "byte_count": 2392,
+      "forward_packet_count": 8,
+      "forward_byte_count": 611,
+      "backward_packet_count": 7,
+      "backward_byte_count": 1781,
+      "SYN_count": 2,
+      "ACK_count": 14,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "ssh",
+      "protocol": "TCP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.40",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.22",
+        "port": 22
+      },
+      "start_time": 1700000021.7,
+      "last_seen": 1700000024.677,
+      "packet_count": 23,
+      "byte_count": 3292,
+      "forward_packet_count": 12,
+      "forward_byte_count": 1423,
+      "backward_packet_count": 11,
+      "backward_byte_count": 1869,
+      "SYN_count": 2,
+      "ACK_count": 22,
+      "FIN_count": 0,
+      "RST_count": 0,
+      "state": "ESTABLISHED",
+      "handshake_observed": true,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.43",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000326.775,
+      "last_seen": 1700000327.352,
+      "packet_count": 11,
+      "byte_count": 1610,
+      "forward_packet_count": 6,
+      "forward_byte_count": 419,
+      "backward_packet_count": 5,
+      "backward_byte_count": 1191,
+      "SYN_count": 2,
+      "ACK_count": 10,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "ssh",
+      "protocol": "TCP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.43",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.22",
+        "port": 22
+      },
+      "start_time": 1700000430.018,
+      "last_seen": 1700000434.888,
+      "packet_count": 27,
+      "byte_count": 3953,
+      "forward_packet_count": 14,
+      "forward_byte_count": 2140,
+      "backward_packet_count": 13,
+      "backward_byte_count": 1813,
+      "SYN_count": 2,
+      "ACK_count": 26,
+      "FIN_count": 0,
+      "RST_count": 0,
+      "state": "ESTABLISHED",
+      "handshake_observed": true,
+      "end_reason": "end_of_input"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.44",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000089.751,
+      "last_seen": 1700000091.052,
+      "packet_count": 19,
+      "byte_count": 3126,
+      "forward_packet_count": 10,
+      "forward_byte_count": 897,
+      "backward_packet_count": 9,
+      "backward_byte_count": 2229,
+      "SYN_count": 2,
+      "ACK_count": 18,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.44",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000182.232,
+      "last_seen": 1700000183.652,
+      "packet_count": 21,
+      "byte_count": 5743,
+      "forward_packet_count": 10,
+      "forward_byte_count": 923,
+      "backward_packet_count": 11,
+      "backward_byte_count": 4820,
+      "SYN_count": 2,
+      "ACK_count": 20,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "ssh",
+      "protocol": "TCP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.44",
+        "port": 32776
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.22",
+        "port": 22
+      },
+      "start_time": 1700000093.948,
+      "last_seen": 1700000100.154,
+      "packet_count": 39,
+      "byte_count": 5321,
+      "forward_packet_count": 20,
+      "forward_byte_count": 2624,
+      "backward_packet_count": 19,
+      "backward_byte_count": 2697,
+      "SYN_count": 2,
+      "ACK_count": 38,
+      "FIN_count": 0,
+      "RST_count": 0,
+      "state": "ESTABLISHED",
+      "handshake_observed": true,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.45",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000306.492,
+      "last_seen": 1700000307.376,
+      "packet_count": 20,
+      "byte_count": 4618,
+      "forward_packet_count": 10,
+      "forward_byte_count": 824,
+      "backward_packet_count": 10,
+      "backward_byte_count": 3794,
+      "SYN_count": 2,
+      "ACK_count": 19,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.45",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000490.731,
+      "last_seen": 1700000491.356,
+      "packet_count": 12,
+      "byte_count": 2312,
+      "forward_packet_count": 6,
+      "forward_byte_count": 411,
+      "backward_packet_count": 6,
+      "backward_byte_count": 1901,
+      "SYN_count": 2,
+      "ACK_count": 11,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.47",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000062.538,
+      "last_seen": 1700000063.672,
+      "packet_count": 15,
+      "byte_count": 2587,
+      "forward_packet_count": 8,
+      "forward_byte_count": 706,
+      "backward_packet_count": 7,
+      "backward_byte_count": 1881,
+      "SYN_count": 2,
+      "ACK_count": 14,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.47",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000233.013,
+      "last_seen": 1700000233.917,
+      "packet_count": 16,
+      "byte_count": 3688,
+      "forward_packet_count": 8,
+      "forward_byte_count": 597,
+      "backward_packet_count": 8,
+      "backward_byte_count": 3091,
+      "SYN_count": 2,
+      "ACK_count": 15,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.47",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000323.377,
+      "last_seen": 1700000324.142,
+      "packet_count": 15,
+      "byte_count": 2535,
+      "forward_packet_count": 8,
+      "forward_byte_count": 615,
+      "backward_packet_count": 7,
+      "backward_byte_count": 1920,
+      "SYN_count": 2,
+      "ACK_count": 14,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.48",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000314.916,
+      "last_seen": 1700000315.536,
+      "packet_count": 15,
+      "byte_count": 2350,
+      "forward_packet_count": 8,
+      "forward_byte_count": 622,
+      "backward_packet_count": 7,
+      "backward_byte_count": 1728,
+      "SYN_count": 2,
+      "ACK_count": 14,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.48",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000072.632,
+      "last_seen": 1700000073.164,
+      "packet_count": 15,
+      "byte_count": 3332,
+      "forward_packet_count": 8,
+      "forward_byte_count": 597,
+      "backward_packet_count": 7,
+      "backward_byte_count": 2735,
+      "SYN_count": 2,
+      "ACK_count": 14,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.49",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000362.706,
+      "last_seen": 1700000363.07,
+      "packet_count": 12,
+      "byte_count": 2439,
+      "forward_packet_count": 6,
+      "forward_byte_count": 430,
+      "backward_packet_count": 6,
+      "backward_byte_count": 2009,
+      "SYN_count": 2,
+      "ACK_count": 11,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "ssh",
+      "protocol": "TCP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.49",
+        "port": 32773
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.22",
+        "port": 22
+      },
+      "start_time": 1700000420.991,
+      "last_seen": 1700000429.607,
+      "packet_count": 39,
+      "byte_count": 5958,
+      "forward_packet_count": 20,
+      "forward_byte_count": 2880,
+      "backward_packet_count": 19,
+      "backward_byte_count": 3078,
+      "SYN_count": 2,
+      "ACK_count": 38,
+      "FIN_count": 0,
+      "RST_count": 0,
+      "state": "ESTABLISHED",
+      "handshake_observed": true,
+      "end_reason": "end_of_input"
+    },
+    {
+      "kind": "ssh",
+      "protocol": "TCP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.49",
+        "port": 32774
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.22",
+        "port": 22
+      },
+      "start_time": 1700000460.011,
+      "last_seen": 1700000466.475,
+      "packet_count": 35,
+      "byte_count": 5591,
+      "forward_packet_count": 18,
+      "forward_byte_count": 2739,
+      "backward_packet_count": 17,
+      "backward_byte_count": 2852,
+      "SYN_count": 2,
+      "ACK_count": 34,
+      "FIN_count": 0,
+      "RST_count": 0,
+      "state": "ESTABLISHED",
+      "handshake_observed": true,
+      "end_reason": "end_of_input"
+    },
+    {
+      "kind": "http_reset",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.53",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000001.865,
+      "last_seen": 1700000002.095,
+      "packet_count": 9,
+      "byte_count": 2066,
+      "forward_packet_count": 4,
+      "forward_byte_count": 301,
+      "backward_packet_count": 5,
+      "backward_byte_count": 1765,
+      "SYN_count": 2,
+      "ACK_count": 8,
+      "FIN_count": 0,
+      "RST_count": 1,
+      "state": "RESET",
+      "handshake_observed": true,
+      "end_reason": "tcp_reset"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.54",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000362.436,
+      "last_seen": 1700000363.135,
+      "packet_count": 15,
+      "byte_count": 2746,
+      "forward_packet_count": 8,
+      "forward_byte_count": 625,
+      "backward_packet_count": 7,
+      "backward_byte_count": 2121,
+      "SYN_count": 2,
+      "ACK_count": 14,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "ssh",
+      "protocol": "TCP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.56",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.22",
+        "port": 22
+      },
+      "start_time": 1700000539.064,
+      "last_seen": 1700000543.887,
+      "packet_count": 27,
+      "byte_count": 3753,
+      "forward_packet_count": 14,
+      "forward_byte_count": 2082,
+      "backward_packet_count": 13,
+      "backward_byte_count": 1671,
+      "SYN_count": 2,
+      "ACK_count": 26,
+      "FIN_count": 0,
+      "RST_count": 0,
+      "state": "ESTABLISHED",
+      "handshake_observed": true,
+      "end_reason": "end_of_input"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.57",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000538.166,
+      "last_seen": 1700000538.756,
+      "packet_count": 12,
+      "byte_count": 2575,
+      "forward_packet_count": 6,
+      "forward_byte_count": 411,
+      "backward_packet_count": 6,
+      "backward_byte_count": 2164,
+      "SYN_count": 2,
+      "ACK_count": 11,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http_reset",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.57",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000459.406,
+      "last_seen": 1700000459.806,
+      "packet_count": 8,
+      "byte_count": 1833,
+      "forward_packet_count": 4,
+      "forward_byte_count": 309,
+      "backward_packet_count": 4,
+      "backward_byte_count": 1524,
+      "SYN_count": 2,
+      "ACK_count": 7,
+      "FIN_count": 0,
+      "RST_count": 1,
+      "state": "RESET",
+      "handshake_observed": true,
+      "end_reason": "tcp_reset"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.58",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000303.665,
+      "last_seen": 1700000304.74,
+      "packet_count": 20,
+      "byte_count": 3950,
+      "forward_packet_count": 10,
+      "forward_byte_count": 897,
+      "backward_packet_count": 10,
+      "backward_byte_count": 3053,
+      "SYN_count": 2,
+      "ACK_count": 19,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.58",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000055.807,
+      "last_seen": 1700000056.392,
+      "packet_count": 15,
+      "byte_count": 2749,
+      "forward_packet_count": 8,
+      "forward_byte_count": 617,
+      "backward_packet_count": 7,
+      "backward_byte_count": 2132,
+      "SYN_count": 2,
+      "ACK_count": 14,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.59",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000105.869,
+      "last_seen": 1700000106.392,
+      "packet_count": 11,
+      "byte_count": 1460,
+      "forward_packet_count": 6,
+      "forward_byte_count": 419,
+      "backward_packet_count": 5,
+      "backward_byte_count": 1041,
+      "SYN_count": 2,
+      "ACK_count": 10,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "10.1.0.59",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000111.408,
+      "last_seen": 1700000112.466,
+      "packet_count": 15,
+      "byte_count": 2866,
+      "forward_packet_count": 8,
+      "forward_byte_count": 602,
+      "backward_packet_count": 7,
+      "backward_byte_count": 2264,
+      "SYN_count": 2,
+      "ACK_count": 14,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "smtp",
+      "protocol": "TCP",
+      "application_protocol": "SMTP",
+      "endpoint_a": {
+        "ip": "10.1.1.10",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "198.51.100.25",
+        "port": 25
+      },
+      "start_time": 1700000458.459,
+      "last_seen": 1700000459.109,
+      "packet_count": 33,
+      "byte_count": 2349,
+      "forward_packet_count": 17,
+      "forward_byte_count": 1353,
+      "backward_packet_count": 16,
+      "backward_byte_count": 996,
+      "SYN_count": 2,
+      "ACK_count": 32,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "smtp",
+      "protocol": "TCP",
+      "application_protocol": "SMTP",
+      "endpoint_a": {
+        "ip": "10.1.1.13",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "198.51.100.25",
+        "port": 25
+      },
+      "start_time": 1700000071.588,
+      "last_seen": 1700000072.122,
+      "packet_count": 33,
+      "byte_count": 2718,
+      "forward_packet_count": 17,
+      "forward_byte_count": 1722,
+      "backward_packet_count": 16,
+      "backward_byte_count": 996,
+      "SYN_count": 2,
+      "ACK_count": 32,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "smtp",
+      "protocol": "TCP",
+      "application_protocol": "SMTP",
+      "endpoint_a": {
+        "ip": "10.1.1.14",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "198.51.100.25",
+        "port": 25
+      },
+      "start_time": 1700000273.777,
+      "last_seen": 1700000274.263,
+      "packet_count": 33,
+      "byte_count": 2349,
+      "forward_packet_count": 17,
+      "forward_byte_count": 1353,
+      "backward_packet_count": 16,
+      "backward_byte_count": 996,
+      "SYN_count": 2,
+      "ACK_count": 32,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "smtp",
+      "protocol": "TCP",
+      "application_protocol": "SMTP",
+      "endpoint_a": {
+        "ip": "10.1.1.15",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "198.51.100.25",
+        "port": 25
+      },
+      "start_time": 1700000004.211,
+      "last_seen": 1700000004.691,
+      "packet_count": 33,
+      "byte_count": 2349,
+      "forward_packet_count": 17,
+      "forward_byte_count": 1353,
+      "backward_packet_count": 16,
+      "backward_byte_count": 996,
+      "SYN_count": 2,
+      "ACK_count": 32,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "smtp",
+      "protocol": "TCP",
+      "application_protocol": "SMTP",
+      "endpoint_a": {
+        "ip": "10.1.1.19",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "198.51.100.25",
+        "port": 25
+      },
+      "start_time": 1700000112.386,
+      "last_seen": 1700000113.0,
+      "packet_count": 33,
+      "byte_count": 2751,
+      "forward_packet_count": 17,
+      "forward_byte_count": 1755,
+      "backward_packet_count": 16,
+      "backward_byte_count": 996,
+      "SYN_count": 2,
+      "ACK_count": 32,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "smtp",
+      "protocol": "TCP",
+      "application_protocol": "SMTP",
+      "endpoint_a": {
+        "ip": "10.1.1.19",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "198.51.100.25",
+        "port": 25
+      },
+      "start_time": 1700000271.289,
+      "last_seen": 1700000271.828,
+      "packet_count": 33,
+      "byte_count": 2382,
+      "forward_packet_count": 17,
+      "forward_byte_count": 1386,
+      "backward_packet_count": 16,
+      "backward_byte_count": 996,
+      "SYN_count": 2,
+      "ACK_count": 32,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "smtp",
+      "protocol": "TCP",
+      "application_protocol": "SMTP",
+      "endpoint_a": {
+        "ip": "10.1.1.27",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "198.51.100.25",
+        "port": 25
+      },
+      "start_time": 1700000444.504,
+      "last_seen": 1700000445.065,
+      "packet_count": 33,
+      "byte_count": 2751,
+      "forward_packet_count": 17,
+      "forward_byte_count": 1755,
+      "backward_packet_count": 16,
+      "backward_byte_count": 996,
+      "SYN_count": 2,
+      "ACK_count": 32,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "smtp",
+      "protocol": "TCP",
+      "application_protocol": "SMTP",
+      "endpoint_a": {
+        "ip": "10.1.1.28",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "198.51.100.25",
+        "port": 25
+      },
+      "start_time": 1700000286.008,
+      "last_seen": 1700000286.554,
+      "packet_count": 33,
+      "byte_count": 2718,
+      "forward_packet_count": 17,
+      "forward_byte_count": 1722,
+      "backward_packet_count": 16,
+      "backward_byte_count": 996,
+      "SYN_count": 2,
+      "ACK_count": 32,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "smtp",
+      "protocol": "TCP",
+      "application_protocol": "SMTP",
+      "endpoint_a": {
+        "ip": "10.1.1.29",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "198.51.100.25",
+        "port": 25
+      },
+      "start_time": 1700000282.353,
+      "last_seen": 1700000283.025,
+      "packet_count": 33,
+      "byte_count": 2751,
+      "forward_packet_count": 17,
+      "forward_byte_count": 1755,
+      "backward_packet_count": 16,
+      "backward_byte_count": 996,
+      "SYN_count": 2,
+      "ACK_count": 32,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "smtp",
+      "protocol": "TCP",
+      "application_protocol": "SMTP",
+      "endpoint_a": {
+        "ip": "10.1.1.29",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "198.51.100.25",
+        "port": 25
+      },
+      "start_time": 1700000081.162,
+      "last_seen": 1700000081.734,
+      "packet_count": 33,
+      "byte_count": 2349,
+      "forward_packet_count": 17,
+      "forward_byte_count": 1353,
+      "backward_packet_count": 16,
+      "backward_byte_count": 996,
+      "SYN_count": 2,
+      "ACK_count": 32,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "smtp",
+      "protocol": "TCP",
+      "application_protocol": "SMTP",
+      "endpoint_a": {
+        "ip": "10.1.1.39",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "198.51.100.25",
+        "port": 25
+      },
+      "start_time": 1700000214.282,
+      "last_seen": 1700000214.951,
+      "packet_count": 33,
+      "byte_count": 2751,
+      "forward_packet_count": 17,
+      "forward_byte_count": 1755,
+      "backward_packet_count": 16,
+      "backward_byte_count": 996,
+      "SYN_count": 2,
+      "ACK_count": 32,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "smtp",
+      "protocol": "TCP",
+      "application_protocol": "SMTP",
+      "endpoint_a": {
+        "ip": "10.1.1.47",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "198.51.100.25",
+        "port": 25
+      },
+      "start_time": 1700000184.124,
+      "last_seen": 1700000184.607,
+      "packet_count": 33,
+      "byte_count": 2349,
+      "forward_packet_count": 17,
+      "forward_byte_count": 1353,
+      "backward_packet_count": 16,
+      "backward_byte_count": 996,
+      "SYN_count": 2,
+      "ACK_count": 32,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "smtp",
+      "protocol": "TCP",
+      "application_protocol": "SMTP",
+      "endpoint_a": {
+        "ip": "10.1.1.51",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "198.51.100.25",
+        "port": 25
+      },
+      "start_time": 1700000316.676,
+      "last_seen": 1700000317.274,
+      "packet_count": 33,
+      "byte_count": 2720,
+      "forward_packet_count": 17,
+      "forward_byte_count": 1724,
+      "backward_packet_count": 16,
+      "backward_byte_count": 996,
+      "SYN_count": 2,
+      "ACK_count": 32,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "smtp",
+      "protocol": "TCP",
+      "application_protocol": "SMTP",
+      "endpoint_a": {
+        "ip": "10.1.1.53",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "198.51.100.25",
+        "port": 25
+      },
+      "start_time": 1700000034.099,
+      "last_seen": 1700000034.689,
+      "packet_count": 33,
+      "byte_count": 2720,
+      "forward_packet_count": 17,
+      "forward_byte_count": 1724,
+      "backward_packet_count": 16,
+      "backward_byte_count": 996,
+      "SYN_count": 2,
+      "ACK_count": 32,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "smtp",
+      "protocol": "TCP",
+      "application_protocol": "SMTP",
+      "endpoint_a": {
+        "ip": "10.1.1.56",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "198.51.100.25",
+        "port": 25
+      },
+      "start_time": 1700000378.611,
+      "last_seen": 1700000379.16,
+      "packet_count": 33,
+      "byte_count": 2753,
+      "forward_packet_count": 17,
+      "forward_byte_count": 1757,
+      "backward_packet_count": 16,
+      "backward_byte_count": 996,
+      "SYN_count": 2,
+      "ACK_count": 32,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "203.0.113.50",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000166.397,
+      "last_seen": 1700000166.74,
+      "packet_count": 12,
+      "byte_count": 2658,
+      "forward_packet_count": 6,
+      "forward_byte_count": 435,
+      "backward_packet_count": 6,
+      "backward_byte_count": 2223,
+      "SYN_count": 2,
+      "ACK_count": 11,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "203.0.113.50",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000157.489,
+      "last_seen": 1700000157.739,
+      "packet_count": 12,
+      "byte_count": 2377,
+      "forward_packet_count": 6,
+      "forward_byte_count": 435,
+      "backward_packet_count": 6,
+      "backward_byte_count": 1942,
+      "SYN_count": 2,
+      "ACK_count": 11,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "203.0.113.50",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000061.717,
+      "last_seen": 1700000061.888,
+      "packet_count": 11,
+      "byte_count": 955,
+      "forward_packet_count": 6,
+      "forward_byte_count": 435,
+      "backward_packet_count": 5,
+      "backward_byte_count": 520,
+      "SYN_count": 2,
+      "ACK_count": 10,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "203.0.113.50",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000172.201,
+      "last_seen": 1700000172.783,
+      "packet_count": 12,
+      "byte_count": 2581,
+      "forward_packet_count": 6,
+      "forward_byte_count": 435,
+      "backward_packet_count": 6,
+      "backward_byte_count": 2146,
+      "SYN_count": 2,
+      "ACK_count": 11,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "203.0.113.50",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000145.207,
+      "last_seen": 1700000145.846,
+      "packet_count": 11,
+      "byte_count": 1600,
+      "forward_packet_count": 6,
+      "forward_byte_count": 435,
+      "backward_packet_count": 5,
+      "backward_byte_count": 1165,
+      "SYN_count": 2,
+      "ACK_count": 10,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "203.0.113.50",
+        "port": 32773
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000260.656,
+      "last_seen": 1700000261.217,
+      "packet_count": 11,
+      "byte_count": 1767,
+      "forward_packet_count": 6,
+      "forward_byte_count": 440,
+      "backward_packet_count": 5,
+      "backward_byte_count": 1327,
+      "SYN_count": 2,
+      "ACK_count": 10,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "203.0.113.50",
+        "port": 32774
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000342.172,
+      "last_seen": 1700000342.769,
+      "packet_count": 12,
+      "byte_count": 2582,
+      "forward_packet_count": 6,
+      "forward_byte_count": 435,
+      "backward_packet_count": 6,
+      "backward_byte_count": 2147,
+      "SYN_count": 2,
+      "ACK_count": 11,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "203.0.113.50",
+        "port": 32775
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000009.541,
+      "last_seen": 1700000009.984,
+      "packet_count": 11,
+      "byte_count": 2000,
+      "forward_packet_count": 6,
+      "forward_byte_count": 434,
+      "backward_packet_count": 5,
+      "backward_byte_count": 1566,
+      "SYN_count": 2,
+      "ACK_count": 10,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "203.0.113.50",
+        "port": 32776
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000388.644,
+      "last_seen": 1700000388.893,
+      "packet_count": 11,
+      "byte_count": 1082,
+      "forward_packet_count": 6,
+      "forward_byte_count": 434,
+      "backward_packet_count": 5,
+      "backward_byte_count": 648,
+      "SYN_count": 2,
+      "ACK_count": 10,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "http",
+      "protocol": "TCP",
+      "application_protocol": "HTTP",
+      "endpoint_a": {
+        "ip": "203.0.113.50",
+        "port": 32777
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.80",
+        "port": 80
+      },
+      "start_time": 1700000065.464,
+      "last_seen": 1700000066.015,
+      "packet_count": 11,
+      "byte_count": 1144,
+      "forward_packet_count": 6,
+      "forward_byte_count": 435,
+      "backward_packet_count": 5,
+      "backward_byte_count": 709,
+      "SYN_count": 2,
+      "ACK_count": 10,
+      "FIN_count": 2,
+      "RST_count": 0,
+      "state": "CLOSED",
+      "handshake_observed": true,
+      "end_reason": "tcp_closed"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.10",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000316.209,
+      "last_seen": 1700000316.25,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.10",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000261.431,
+      "last_seen": 1700000261.434,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.10",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000219.115,
+      "last_seen": 1700000219.147,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.11",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000199.821,
+      "last_seen": 1700000199.841,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.12",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000289.308,
+      "last_seen": 1700000289.311,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.12",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000047.394,
+      "last_seen": 1700000047.397,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.12",
+        "port": 32773
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000045.06,
+      "last_seen": 1700000045.085,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.13",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000078.27,
+      "last_seen": 1700000078.297,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.13",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000058.019,
+      "last_seen": 1700000058.023,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.13",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000290.526,
+      "last_seen": 1700000290.568,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.14",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000469.364,
+      "last_seen": 1700000469.372,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.14",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000497.085,
+      "last_seen": 1700000497.095,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.15",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000203.715,
+      "last_seen": 1700000203.722,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.16",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000026.671,
+      "last_seen": 1700000026.715,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.16",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000245.636,
+      "last_seen": 1700000245.67,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.17",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000310.798,
+      "last_seen": 1700000310.82,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.18",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000336.51,
+      "last_seen": 1700000336.525,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.19",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000371.059,
+      "last_seen": 1700000371.107,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.19",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000454.182,
+      "last_seen": 1700000454.215,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.19",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000378.081,
+      "last_seen": 1700000378.083,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.20",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000281.386,
+      "last_seen": 1700000281.394,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.20",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000064.974,
+      "last_seen": 1700000065.009,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.21",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000321.408,
+      "last_seen": 1700000321.424,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.21",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000378.293,
+      "last_seen": 1700000378.3,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.21",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000434.986,
+      "last_seen": 1700000434.989,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.22",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000219.81,
+      "last_seen": 1700000219.825,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.22",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000076.85,
+      "last_seen": 1700000076.861,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.22",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000402.08,
+      "last_seen": 1700000402.085,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.22",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000319.449,
+      "last_seen": 1700000319.488,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.23",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000057.314,
+      "last_seen": 1700000057.343,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.23",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000462.202,
+      "last_seen": 1700000462.206,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.23",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000404.816,
+      "last_seen": 1700000404.831,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.24",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000537.823,
+      "last_seen": 1700000537.833,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "end_of_input"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.24",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000505.07,
+      "last_seen": 1700000505.074,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.25",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000361.171,
+      "last_seen": 1700000361.212,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.25",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000352.061,
+      "last_seen": 1700000352.098,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.25",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000027.098,
+      "last_seen": 1700000027.116,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.26",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000290.575,
+      "last_seen": 1700000290.586,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.26",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000024.558,
+      "last_seen": 1700000024.576,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "udp_game",
+      "protocol": "UDP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.26",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.90",
+        "port": 5000
+      },
+      "start_time": 1700000380.776,
+      "last_seen": 1700000381.202,
+      "packet_count": 12,
+      "byte_count": 2096,
+      "forward_packet_count": 6,
+      "forward_byte_count": 1376,
+      "backward_packet_count": 6,
+      "backward_byte_count": 720,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.27",
+        "port": 32773
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000309.878,
+      "last_seen": 1700000309.91,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.28",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000104.16,
+      "last_seen": 1700000104.184,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.28",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000308.122,
+      "last_seen": 1700000308.149,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.28",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000277.71,
+      "last_seen": 1700000277.748,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.28",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000073.524,
+      "last_seen": 1700000073.536,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.28",
+        "port": 32773
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000508.481,
+      "last_seen": 1700000508.497,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.29",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000455.159,
+      "last_seen": 1700000455.191,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.29",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000514.439,
+      "last_seen": 1700000514.47,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "end_of_input"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.29",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000074.166,
+      "last_seen": 1700000074.184,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.29",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000119.184,
+      "last_seen": 1700000119.203,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.30",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000425.079,
+      "last_seen": 1700000425.097,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.30",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000479.382,
+      "last_seen": 1700000479.419,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.30",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000310.921,
+      "last_seen": 1700000310.949,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.30",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000376.781,
+      "last_seen": 1700000376.795,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "udp_game",
+      "protocol": "UDP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.30",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.90",
+        "port": 5000
+      },
+      "start_time": 1700000536.415,
+      "last_seen": 1700000536.874,
+      "packet_count": 12,
+      "byte_count": 1743,
+      "forward_packet_count": 6,
+      "forward_byte_count": 897,
+      "backward_packet_count": 6,
+      "backward_byte_count": 846,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "end_of_input"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.31",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000369.794,
+      "last_seen": 1700000369.807,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.31",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000079.761,
+      "last_seen": 1700000079.798,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.31",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000489.899,
+      "last_seen": 1700000489.926,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.31",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000499.969,
+      "last_seen": 1700000500.018,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.33",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000422.328,
+      "last_seen": 1700000422.341,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.33",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000058.499,
+      "last_seen": 1700000058.505,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.33",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000154.634,
+      "last_seen": 1700000154.648,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.34",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000151.022,
+      "last_seen": 1700000151.034,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.34",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000021.617,
+      "last_seen": 1700000021.664,
+      "packet_count": 2,
+      "byte_count": 158,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 79,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.34",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000017.279,
+      "last_seen": 1700000017.304,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.34",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000059.236,
+      "last_seen": 1700000059.265,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "udp_game",
+      "protocol": "UDP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.34",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.90",
+        "port": 5000
+      },
+      "start_time": 1700000270.344,
+      "last_seen": 1700000270.555,
+      "packet_count": 8,
+      "byte_count": 1038,
+      "forward_packet_count": 4,
+      "forward_byte_count": 610,
+      "backward_packet_count": 4,
+      "backward_byte_count": 428,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.35",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000273.937,
+      "last_seen": 1700000273.953,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.35",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000518.739,
+      "last_seen": 1700000518.78,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "end_of_input"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.35",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000021.915,
+      "last_seen": 1700000021.926,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.36",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000158.443,
+      "last_seen": 1700000158.467,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.37",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000498.178,
+      "last_seen": 1700000498.216,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.38",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000382.2,
+      "last_seen": 1700000382.25,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.38",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000432.522,
+      "last_seen": 1700000432.552,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.38",
+        "port": 32773
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000331.603,
+      "last_seen": 1700000331.622,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.38",
+        "port": 32774
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000414.908,
+      "last_seen": 1700000414.926,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.38",
+        "port": 32775
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000484.468,
+      "last_seen": 1700000484.488,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "udp_game",
+      "protocol": "UDP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.38",
+        "port": 32776
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.90",
+        "port": 5000
+      },
+      "start_time": 1700000203.749,
+      "last_seen": 1700000204.344,
+      "packet_count": 12,
+      "byte_count": 1821,
+      "forward_packet_count": 6,
+      "forward_byte_count": 1176,
+      "backward_packet_count": 6,
+      "backward_byte_count": 645,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.39",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000482.985,
+      "last_seen": 1700000483.021,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.40",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000165.687,
+      "last_seen": 1700000165.704,
+      "packet_count": 2,
+      "byte_count": 158,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 79,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.40",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000162.701,
+      "last_seen": 1700000162.734,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.40",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000217.63,
+      "last_seen": 1700000217.668,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.41",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000506.768,
+      "last_seen": 1700000506.772,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.41",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000100.051,
+      "last_seen": 1700000100.06,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.41",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000192.271,
+      "last_seen": 1700000192.32,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.41",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000013.088,
+      "last_seen": 1700000013.12,
+      "packet_count": 2,
+      "byte_count": 156,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 78,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.41",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000202.074,
+      "last_seen": 1700000202.122,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.42",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000291.713,
+      "last_seen": 1700000291.744,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.42",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000176.288,
+      "last_seen": 1700000176.336,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "udp_game",
+      "protocol": "UDP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.42",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.90",
+        "port": 5000
+      },
+      "start_time": 1700000285.973,
+      "last_seen": 1700000286.288,
+      "packet_count": 10,
+      "byte_count": 1446,
+      "forward_packet_count": 5,
+      "forward_byte_count": 924,
+      "backward_packet_count": 5,
+      "backward_byte_count": 522,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.43",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000312.001,
+      "last_seen": 1700000312.011,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.43",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000070.338,
+      "last_seen": 1700000070.364,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.44",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000403.425,
+      "last_seen": 1700000403.474,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.44",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000263.011,
+      "last_seen": 1700000263.045,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.44",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000387.61,
+      "last_seen": 1700000387.619,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.44",
+        "port": 32773
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000526.205,
+      "last_seen": 1700000526.236,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "end_of_input"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.44",
+        "port": 32774
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000470.292,
+      "last_seen": 1700000470.315,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.44",
+        "port": 32775
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000048.46,
+      "last_seen": 1700000048.481,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.44",
+        "port": 32775
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000093.481,
+      "last_seen": 1700000093.506,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.45",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000332.165,
+      "last_seen": 1700000332.202,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.46",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000353.077,
+      "last_seen": 1700000353.098,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.46",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000372.516,
+      "last_seen": 1700000372.536,
+      "packet_count": 2,
+      "byte_count": 158,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 79,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.46",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000039.723,
+      "last_seen": 1700000039.727,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.46",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000101.4,
+      "last_seen": 1700000101.424,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.46",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000254.822,
+      "last_seen": 1700000254.832,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.46",
+        "port": 32773
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000278.35,
+      "last_seen": 1700000278.388,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.47",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000214.031,
+      "last_seen": 1700000214.037,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.47",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000155.585,
+      "last_seen": 1700000155.625,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.48",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000262.911,
+      "last_seen": 1700000262.943,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.48",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000054.663,
+      "last_seen": 1700000054.681,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.49",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000109.401,
+      "last_seen": 1700000109.408,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.49",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000192.843,
+      "last_seen": 1700000192.873,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.49",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000088.022,
+      "last_seen": 1700000088.043,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.49",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000111.393,
+      "last_seen": 1700000111.398,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.49",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000156.398,
+      "last_seen": 1700000156.409,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.50",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000443.269,
+      "last_seen": 1700000443.289,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.50",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000173.229,
+      "last_seen": 1700000173.274,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.51",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000025.486,
+      "last_seen": 1700000025.497,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.51",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000204.504,
+      "last_seen": 1700000204.519,
+      "packet_count": 2,
+      "byte_count": 158,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 79,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.51",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000483.978,
+      "last_seen": 1700000483.996,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.51",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000522.448,
+      "last_seen": 1700000522.478,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "end_of_input"
+    },
+    {
+      "kind": "udp_game",
+      "protocol": "UDP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.52",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.90",
+        "port": 5000
+      },
+      "start_time": 1700000009.443,
+      "last_seen": 1700000010.007,
+      "packet_count": 12,
+      "byte_count": 1688,
+      "forward_packet_count": 6,
+      "forward_byte_count": 1064,
+      "backward_packet_count": 6,
+      "backward_byte_count": 624,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.53",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000381.944,
+      "last_seen": 1700000381.956,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.53",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000142.633,
+      "last_seen": 1700000142.663,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.54",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000434.553,
+      "last_seen": 1700000434.57,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.54",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000371.836,
+      "last_seen": 1700000371.847,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.55",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000535.572,
+      "last_seen": 1700000535.581,
+      "packet_count": 2,
+      "byte_count": 190,
+      "forward_packet_count": 1,
+      "forward_byte_count": 78,
+      "backward_packet_count": 1,
+      "backward_byte_count": 112,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "end_of_input"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.55",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000099.455,
+      "last_seen": 1700000099.48,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "udp_game",
+      "protocol": "UDP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.55",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.90",
+        "port": 5000
+      },
+      "start_time": 1700000485.141,
+      "last_seen": 1700000485.643,
+      "packet_count": 10,
+      "byte_count": 1574,
+      "forward_packet_count": 5,
+      "forward_byte_count": 961,
+      "backward_packet_count": 5,
+      "backward_byte_count": 613,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.56",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000121.73,
+      "last_seen": 1700000121.732,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.57",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000160.9,
+      "last_seen": 1700000160.938,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.57",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000417.496,
+      "last_seen": 1700000417.523,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.57",
+        "port": 32772
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000201.173,
+      "last_seen": 1700000201.219,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.57",
+        "port": 32773
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000404.914,
+      "last_seen": 1700000404.953,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "udp_game",
+      "protocol": "UDP",
+      "application_protocol": null,
+      "endpoint_a": {
+        "ip": "10.1.0.57",
+        "port": 32774
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.90",
+        "port": 5000
+      },
+      "start_time": 1700000156.438,
+      "last_seen": 1700000156.965,
+      "packet_count": 12,
+      "byte_count": 1832,
+      "forward_packet_count": 6,
+      "forward_byte_count": 1200,
+      "backward_packet_count": 6,
+      "backward_byte_count": 632,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.58",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000052.812,
+      "last_seen": 1700000052.829,
+      "packet_count": 2,
+      "byte_count": 193,
+      "forward_packet_count": 1,
+      "forward_byte_count": 79,
+      "backward_packet_count": 1,
+      "backward_byte_count": 114,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.58",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000067.766,
+      "last_seen": 1700000067.796,
+      "packet_count": 2,
+      "byte_count": 152,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 76,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.59",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000148.534,
+      "last_seen": 1700000148.572,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.59",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000051.743,
+      "last_seen": 1700000051.784,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.59",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000291.508,
+      "last_seen": 1700000291.513,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.60",
+        "port": 32768
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000457.675,
+      "last_seen": 1700000457.723,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.60",
+        "port": 32769
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000177.404,
+      "last_seen": 1700000177.451,
+      "packet_count": 2,
+      "byte_count": 152,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 76,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.60",
+        "port": 32770
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000381.748,
+      "last_seen": 1700000381.788,
+      "packet_count": 2,
+      "byte_count": 184,
+      "forward_packet_count": 1,
+      "forward_byte_count": 76,
+      "backward_packet_count": 1,
+      "backward_byte_count": 108,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    },
+    {
+      "kind": "dns",
+      "protocol": "UDP",
+      "application_protocol": "DNS",
+      "endpoint_a": {
+        "ip": "10.1.0.60",
+        "port": 32771
+      },
+      "endpoint_b": {
+        "ip": "192.0.2.53",
+        "port": 53
+      },
+      "start_time": 1700000310.991,
+      "last_seen": 1700000311.0,
+      "packet_count": 2,
+      "byte_count": 187,
+      "forward_packet_count": 1,
+      "forward_byte_count": 77,
+      "backward_packet_count": 1,
+      "backward_byte_count": 110,
+      "SYN_count": null,
+      "ACK_count": null,
+      "FIN_count": null,
+      "RST_count": null,
+      "state": null,
+      "handshake_observed": null,
+      "end_reason": "idle_timeout"
+    }
+  ],
+  "detections": {
+    "total": 53,
+    "by_sid": {
+      "3000001": 6,
+      "3000002": 4,
+      "3000003": 4,
+      "3000004": 3,
+      "3000005": 13,
+      "3000006": 23
+    },
+    "by_packet": {
+      "50": [
+        3000006
+      ],
+      "52": [
+        3000006
+      ],
+      "54": [
+        3000006
+      ],
+      "56": [
+        3000002
+      ],
+      "58": [
+        3000006
+      ],
+      "92": [
+        3000005
+      ],
+      "143": [
+        3000004
+      ],
+      "212": [
+        3000001
+      ],
+      "240": [
+        3000002
+      ],
+      "324": [
+        3000005
+      ],
+      "419": [
+        3000005
+      ],
+      "621": [
+        3000001
+      ],
+      "634": [
+        3000005
+      ],
+      "672": [
+        3000006
+      ],
+      "676": [
+        3000006
+      ],
+      "680": [
+        3000006
+      ],
+      "687": [
+        3000001
+      ],
+      "720": [
+        3000001
+      ],
+      "732": [
+        3000005
+      ],
+      "751": [
+        3000001
+      ],
+      "765": [
+        3000005
+      ],
+      "898": [
+        3000005
+      ],
+      "924": [
+        3000006
+      ],
+      "926": [
+        3000006
+      ],
+      "928": [
+        3000006
+      ],
+      "930": [
+        3000006
+      ],
+      "1081": [
+        3000001
+      ],
+      "1099": [
+        3000006
+      ],
+      "1214": [
+        3000006
+      ],
+      "1229": [
+        3000006
+      ],
+      "1370": [
+        3000003
+      ],
+      "1401": [
+        3000004
+      ],
+      "1467": [
+        3000002
+      ],
+      "1490": [
+        3000003
+      ],
+      "1608": [
+        3000004
+      ],
+      "1620": [
+        3000006
+      ],
+      "1622": [
+        3000006
+      ],
+      "1624": [
+        3000006
+      ],
+      "1630": [
+        3000006
+      ],
+      "1634": [
+        3000003
+      ],
+      "1641": [
+        3000005
+      ],
+      "1662": [
+        3000002
+      ],
+      "1675": [
+        3000005
+      ],
+      "1701": [
+        3000003
+      ],
+      "1724": [
+        3000005
+      ],
+      "1798": [
+        3000005
+      ],
+      "1927": [
+        3000005
+      ],
+      "1981": [
+        3000006
+      ],
+      "1987": [
+        3000006
+      ],
+      "1989": [
+        3000006
+      ],
+      "2074": [
+        3000006
+      ],
+      "2081": [
+        3000006
+      ],
+      "2107": [
+        3000005
+      ]
+    }
+  }
+}
