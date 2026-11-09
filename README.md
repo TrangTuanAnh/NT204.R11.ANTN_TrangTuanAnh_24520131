@@ -328,7 +328,7 @@ Kết quả các ca bắt buộc của mỗi bài tập nằm trong một thư m
 - **Bài tập 1 - 12 ca:** TCP handshake, TCP data, UDP, HTTP GET/POST/response, DNS query/response, SMTP command/response, giao thức không hỗ trợ và packet không hợp lệ. Cả 12 ca đều **ĐẠT**.
 - **Bài tập 2 - 14 ca T01–T14:** HTTP URL decode, HTML entity, SMTP Base64/QP, invalid bytes, normalization, missing field, TCP handshake, bidirectional flow, TCP close, UDP query/response, concurrent flows, idle timeout, statistics, malformed event. Cả 14 ca đều **ĐẠT**.
 - **Bài tập 3 - 14 ca:** nạp file rule, rule sai cú pháp, keyword ngoài phạm vi, parse header, direction, indexer, header không khớp, flow, nocase, offset/depth, distance/within, flags và dsize, nhiều rule cùng khớp, Detection Event. Cả 14 ca đều **ĐẠT**.
-- **Phần mở rộng ([TEST/extra](TEST/extra/README.md)):** bắt gói thật trên card Wi-Fi ([live_capture](TEST/extra/live_capture/README.md)); ca bổ sung chạy với bộ rule cộng đồng của Snort ([snort_community_rules](TEST/extra/snort_community_rules/README.md)); kiểm thử pytest từng module.
+- **Phần mở rộng ([TEST/extra](TEST/extra/README.md)):** bắt gói thật trên card Wi-Fi ([live_capture](TEST/extra/live_capture/README.md)); ca bổ sung chạy với bộ rule cộng đồng của Snort ([snort_community_rules](TEST/extra/snort_community_rules/README.md)); hai bộ traffic lớn khoảng 2.000 gói mỗi bộ với kết quả mong đợi tính độc lập với chương trình ([mixed_traffic](TEST/extra/mixed_traffic/README.md)); kiểm thử pytest từng module.
 
 Chạy toàn bộ kiểm thử tự động (chạy lại các ca bắt buộc của cả ba bài, kiểm tra kết quả đã lưu của mọi ca vẫn tái hiện được, và kiểm thử từng module):
 
@@ -366,7 +366,7 @@ src/
 rules/                      File rule: bộ rule cộng đồng của Snort (khác với mã trong src/rules/)
 TEST/
   BT1/ BT2/ BT3/            Kết quả và bài kiểm thử các ca bắt buộc của từng bài tập
-  extra/                    Kiểm thử mở rộng: bắt gói thật, bộ rule Snort, kiểm thử từng module
+  extra/                    Kiểm thử mở rộng: bắt gói thật, bộ rule Snort, traffic lớn, kiểm thử từng module
   support/                  Mã dùng chung của các bài kiểm thử
 requirements.txt            Thư viện cần cài
 data/                       Nơi đặt PCAP đầu vào của người dùng
@@ -435,4 +435,4 @@ gói Scapy → parser → decoder → preprocessor → flow tracker → so khớ
 
 - **Công cụ:** Claude Code (sonnet 5.5).
 - **Mục đích:**viết mã nguồn của Core Engine; viết kiểm thử; đối chiếu cú pháp rule với Snort manual; tải bộ rule cộng đồng của Snort và thống kê kết quả nạp.
-- **Phần mã nguồn có AI hỗ trợ:** các module `src/rules/`, `src/detection/`, phần bổ sung trong `main.py`, `src/config.py`, `config/default.json`, `src/pipeline.py`, `src/flow/`, các file kiểm thử mới trong `TEST/` (kể cả script `TEST/BT3/run_cases.py` và kết quả trong `TEST/BT3/`).
+- **Phần mã nguồn có AI hỗ trợ:** các module `src/rules/`, `src/detection/`, phần bổ sung trong `main.py`, `src/config.py`, `config/default.json`, `src/pipeline.py`, `src/flow/`, các file kiểm thử mới trong `TEST/` (kể cả script `TEST/BT3/run_cases.py` và kết quả trong `TEST/BT3/`) và các bộ traffic lớn trong `TEST/extra/mixed_traffic/` (mã sinh traffic, mã đối chiếu và README).

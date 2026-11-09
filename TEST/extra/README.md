@@ -6,6 +6,7 @@ Thư mục này chứa các kiểm thử **ngoài danh sách ca bắt buộc c�
 | --- | --- | --- |
 | [live_capture](live_capture/README.md) | Bắt gói thật trên card Wi-Fi qua Npcap, ghi event có `source` là `live`. Cần máy có card mạng, chạy tay, không nằm trong pytest. | 1 |
 | [snort_community_rules](snort_community_rules/README.md) | Nạp nguyên bộ rule cộng đồng của Snort (`rules/community.rules`) để kiểm tra chương trình không dừng khi gặp rule ngoài phạm vi. Ca bổ sung **B1** của Bài tập 3. | 3 |
+| [mixed_traffic](mixed_traffic/README.md) | Hai bộ traffic tổng hợp khoảng 2.000 gói mỗi bộ (nhiều phiên xen kẽ, quét port, SYN flood, tấn công web) để kiểm tra khi có khối lượng thật. Kết quả mong đợi tính độc lập với chương trình. | 1, 2, 3 |
 | [modules](modules) | Kiểm thử pytest từng module, mỗi thư mục con ứng với một thư mục trong `src/`. | 1, 2, 3 |
 
 ## Ca bổ sung B1 - bộ rule cộng đồng của Snort

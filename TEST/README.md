@@ -24,6 +24,7 @@ TEST/
   extra/                       Phần mở rộng
     live_capture/              Bắt gói trên card Wi-Fi thật (Bài tập 1)
     snort_community_rules/     Ca bổ sung B1 của Bài tập 3: bộ rule cộng đồng của Snort
+    mixed_traffic/             Hai bộ traffic lớn (khoảng 2.000 gói mỗi bộ) cùng script sinh và đối chiếu
     modules/                   Kiểm thử pytest từng module, bố cục theo src/
 ```
 
