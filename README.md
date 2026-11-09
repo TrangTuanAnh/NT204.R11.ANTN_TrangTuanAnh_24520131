@@ -21,9 +21,9 @@ flowchart LR
 
 | Bài tập | Nội dung | Module | Kiểm thử |
 | --- | --- | --- | --- |
-| 1 | Packet Capture & Parser | [capture](src/capture/README.md), [parser](src/parser/README.md), [output](src/output/README.md) | 12 ca bắt buộc + bắt gói thật trên Wi-Fi |
-| 2 | Decoder, Preprocessor & Flow/Connection Tracker | [decoder](src/decoder/README.md), [preprocessor](src/preprocessor/README.md), [flow](src/flow/README.md), [pipeline](src/pipeline.py), [config](src/config.py) | 14 ca bắt buộc T01–T14 + kiểm thử tự động từng module |
-| 3 | Core Engine và Snort rule matching | [rules](src/rules/README.md), [detection](src/detection/README.md), [bộ rule Snort](rules/README.md) | 14 ca bắt buộc trong [TEST/BT3](TEST/BT3/README.md) + kiểm thử tự động từng module |
+| 1 | Packet Capture & Parser | [capture](src/capture/README.md), [parser](src/parser/README.md), [output](src/output/README.md) | 12 ca bắt buộc trong [TEST/BT1](TEST/BT1/README.md); bắt gói thật trên Wi-Fi trong [TEST/extra](TEST/extra/README.md) |
+| 2 | Decoder, Preprocessor & Flow/Connection Tracker | [decoder](src/decoder/README.md), [preprocessor](src/preprocessor/README.md), [flow](src/flow/README.md), [pipeline](src/pipeline.py), [config](src/config.py) | 14 ca bắt buộc T01–T14 trong [TEST/BT2](TEST/BT2/README.md) |
+| 3 | Core Engine và Snort rule matching | [rules](src/rules/README.md), [detection](src/detection/README.md), [bộ rule Snort](rules/README.md) | 14 ca bắt buộc trong [TEST/BT3](TEST/BT3/README.md); bộ rule Snort và kiểm thử từng module trong [TEST/extra](TEST/extra/README.md) |
 
 Ví dụ: với một gói HTTP GET có URI `/search?q=%27%20OR%201%3D1`, chương trình cho biết IP/port, method, header như Bài tập 1, đồng thời giải mã URI thành `/search?q=' OR 1=1`, chuẩn hóa tên header, gắn gói vào đúng flow và cập nhật thống kê của flow đó. Nếu có rule tìm chuỗi `' OR 1=1`, chương trình sinh một Detection Event cho biết rule nào khớp, trên flow nào và chuỗi nằm ở đâu.
 
@@ -93,7 +93,7 @@ python -m pip install -r requirements.txt
 - Không cần bắt lưu lượng thật để thử. Ví dụ với phiên TCP đầy đủ của ca T13:
 
 ```powershell
-python main.py --pcap TEST/integration/required_cases/t13_flow_statistics/input.pcap --output output/demo_events.jsonl --flow-output output/demo_flows.jsonl
+python main.py --pcap TEST/BT2/t13_flow_statistics/input.pcap --output output/demo_events.jsonl --flow-output output/demo_flows.jsonl
 Get-Content output/demo_flows.jsonl | ConvertFrom-Json
 ```
 
@@ -102,7 +102,7 @@ Kết quả: `output/demo_events.jsonl` có 10 dòng (mỗi gói một event, c�
 Xem phần giải mã của ca T01 (URI có percent-encoding):
 
 ```powershell
-python main.py --pcap TEST/integration/required_cases/t01_http_url_decode/input.pcap --output output/t01_demo.jsonl --flow-output output/t01_demo_flows.jsonl
+python main.py --pcap TEST/BT2/t01_http_url_decode/input.pcap --output output/t01_demo.jsonl --flow-output output/t01_demo_flows.jsonl
 Get-Content output/t01_demo.jsonl | ForEach-Object { ($_ | ConvertFrom-Json).decoded.uri }
 ```
 
@@ -113,7 +113,7 @@ Kết quả cần thấy: `/search?q=' OR 1=1&lang=vi+en&next=%27` và `/login`.
 Dùng `--events` để đưa event có sẵn (mỗi dòng một event cùng cấu trúc với event của parser) qua Decoder, Preprocessor và Flow Tracker, ví dụ event thiếu hoặc sai trường:
 
 ```powershell
-python main.py --events TEST/integration/required_cases/t14_malformed_event/input.jsonl --output output/t14_demo.jsonl --flow-output output/t14_demo_flows.jsonl
+python main.py --events TEST/BT2/t14_malformed_event/input.jsonl --output output/t14_demo.jsonl --flow-output output/t14_demo_flows.jsonl
 ```
 
 Dòng hỏng (không phải JSON, sai kiểu dữ liệu...) không làm dừng chương trình; mỗi dòng vẫn có một event kèm `preprocess_status` và `reason`.
@@ -149,7 +149,7 @@ Bộ rule cộng đồng của Snort nằm ở `rules/community.rules` (nguồn 
 Thêm `--parse-only` để chỉ capture và parse, không giải mã, không chuẩn hóa, không theo dõi flow. Event có đúng cấu trúc của Bài tập 1 và không tạo file flow; các ca kiểm thử của Bài tập 1 dùng chế độ này để chạy lại.
 
 ```powershell
-python main.py --pcap TEST/integration/required_cases/http_get/input.pcap --output output/http_get_demo.jsonl --parse-only
+python main.py --pcap TEST/BT1/http_get/input.pcap --output output/http_get_demo.jsonl --parse-only
 ```
 
 Luồng xử lý ở chế độ này giữ nguyên như Bài tập 1:
@@ -323,24 +323,25 @@ File JSON `--rule-report` gồm:
 
 ## 4. Kiểm thử theo yêu cầu của task
 
-Thư mục [required_cases](TEST/integration/required_cases/README.md) lưu kết quả các ca bắt buộc, mỗi ca một thư mục gồm đầu vào, giá trị mong đợi, kết quả chương trình ghi ra, kết quả đối chiếu và README riêng:
+Kết quả các ca bắt buộc của mỗi bài tập nằm trong một thư mục riêng ([TEST/BT1](TEST/BT1/README.md), [TEST/BT2](TEST/BT2/README.md), [TEST/BT3](TEST/BT3/README.md)); mỗi ca một thư mục con gồm đầu vào, giá trị mong đợi, kết quả chương trình ghi ra, kết quả đối chiếu và README riêng. Các kiểm thử ngoài danh sách của đề nằm trong [TEST/extra](TEST/extra/README.md):
 
-- **Bài tập 1 - 12 ca:** TCP handshake, TCP data, UDP, HTTP GET/POST/response, DNS query/response, SMTP command/response, giao thức không hỗ trợ và packet không hợp lệ. Bắt gói thật trên Wi-Fi nằm trong [live_capture](TEST/integration/live_capture/README.md).
+- **Bài tập 1 - 12 ca:** TCP handshake, TCP data, UDP, HTTP GET/POST/response, DNS query/response, SMTP command/response, giao thức không hỗ trợ và packet không hợp lệ. Cả 12 ca đều **ĐẠT**.
 - **Bài tập 2 - 14 ca T01–T14:** HTTP URL decode, HTML entity, SMTP Base64/QP, invalid bytes, normalization, missing field, TCP handshake, bidirectional flow, TCP close, UDP query/response, concurrent flows, idle timeout, statistics, malformed event. Cả 14 ca đều **ĐẠT**.
-- **Bài tập 3 - 14 ca trong [TEST/BT3](TEST/BT3/README.md):** nạp file rule, rule sai cú pháp, keyword ngoài phạm vi, parse header, direction, indexer, header không khớp, flow, nocase, offset/depth, distance/within, flags và dsize, nhiều rule cùng khớp, Detection Event; thêm một ca bổ sung với bộ rule của Snort. Tất cả đều **ĐẠT**.
+- **Bài tập 3 - 14 ca:** nạp file rule, rule sai cú pháp, keyword ngoài phạm vi, parse header, direction, indexer, header không khớp, flow, nocase, offset/depth, distance/within, flags và dsize, nhiều rule cùng khớp, Detection Event. Cả 14 ca đều **ĐẠT**.
+- **Phần mở rộng ([TEST/extra](TEST/extra/README.md)):** bắt gói thật trên card Wi-Fi ([live_capture](TEST/extra/live_capture/README.md)); ca bổ sung chạy với bộ rule cộng đồng của Snort ([snort_community_rules](TEST/extra/snort_community_rules/README.md)); kiểm thử pytest từng module.
 
-Chạy toàn bộ kiểm thử tự động (kiểm tra từng module, chạy lại các ca của Bài tập 2 và Bài tập 3, và kiểm tra kết quả đã lưu của mọi ca vẫn tái hiện được):
+Chạy toàn bộ kiểm thử tự động (chạy lại các ca bắt buộc của cả ba bài, kiểm tra kết quả đã lưu của mọi ca vẫn tái hiện được, và kiểm thử từng module):
 
 ```powershell
 python -m pytest
 ```
 
-Tạo lại kết quả một ca của Bài tập 2, ví dụ T07: `python TEST/integration/run_required_cases.py --case T07 --overwrite`; của Bài tập 3, ví dụ ca 07: `python TEST/integration/run_detection_cases.py --case 07 --overwrite`. Bố cục thư mục kiểm thử và cách dùng script xem [TEST/README.md](TEST/README.md).
+Chạy riêng từng phần: `python -m pytest TEST/BT2`, `python -m pytest TEST/extra`. Tạo lại kết quả một ca của Bài tập 2, ví dụ T07: `python TEST/BT2/run_cases.py --case T07 --overwrite`; của Bài tập 3, ví dụ ca 07: `python TEST/BT3/run_cases.py --case 07 --overwrite`. Bố cục thư mục kiểm thử và cách dùng script xem [TEST/README.md](TEST/README.md).
 
 Có thể chạy lại từng ca bằng `main.py` theo lệnh ghi trong README của ca đó, ví dụ ca idle timeout dùng cấu hình riêng:
 
 ```powershell
-python main.py --pcap TEST/integration/required_cases/t12_flow_idle_timeout/input.pcap --config TEST/integration/required_cases/t12_flow_idle_timeout/config.json --output output/t12_events.jsonl --flow-output output/t12_flows.jsonl
+python main.py --pcap TEST/BT2/t12_flow_idle_timeout/input.pcap --config TEST/BT2/t12_flow_idle_timeout/config.json --output output/t12_events.jsonl --flow-output output/t12_flows.jsonl
 ```
 
 ## 5. Tổ chức mã nguồn
@@ -363,7 +364,10 @@ src/
   detection/                Đánh giá event theo rule, so khớp, tạo Detection Event
   output/                   Ghi JSON Lines
 rules/                      File rule: bộ rule cộng đồng của Snort (khác với mã trong src/rules/)
-TEST/                       Kiểm thử theo module và kết quả các ca bắt buộc
+TEST/
+  BT1/ BT2/ BT3/            Kết quả và bài kiểm thử các ca bắt buộc của từng bài tập
+  extra/                    Kiểm thử mở rộng: bắt gói thật, bộ rule Snort, kiểm thử từng module
+  support/                  Mã dùng chung của các bài kiểm thử
 requirements.txt            Thư viện cần cài
 data/                       Nơi đặt PCAP đầu vào của người dùng
 output/                     Nơi lưu kết quả chạy
@@ -431,4 +435,4 @@ gói Scapy → parser → decoder → preprocessor → flow tracker → so khớ
 
 - **Công cụ:** Claude Code (sonnet 5.5).
 - **Mục đích:**viết mã nguồn của Core Engine; viết kiểm thử; đối chiếu cú pháp rule với Snort manual; tải bộ rule cộng đồng của Snort và thống kê kết quả nạp.
-- **Phần mã nguồn có AI hỗ trợ:** các module `src/rules/`, `src/detection/`, phần bổ sung trong `main.py`, `src/config.py`, `config/default.json`, `src/pipeline.py`, `src/flow/`, các file kiểm thử mới trong `TEST/` (kể cả script `TEST/integration/run_detection_cases.py` và kết quả trong `TEST/BT3/`).
+- **Phần mã nguồn có AI hỗ trợ:** các module `src/rules/`, `src/detection/`, phần bổ sung trong `main.py`, `src/config.py`, `config/default.json`, `src/pipeline.py`, `src/flow/`, các file kiểm thử mới trong `TEST/` (kể cả script `TEST/BT3/run_cases.py` và kết quả trong `TEST/BT3/`).

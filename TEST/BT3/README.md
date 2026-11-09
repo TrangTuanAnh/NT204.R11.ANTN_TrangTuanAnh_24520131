@@ -1,9 +1,9 @@
 # Kết quả kiểm thử Bài tập 3 - Core Engine
 
-Thư mục này lưu kết quả 14 ca kiểm thử bắt buộc của Bài tập 3 và một ca bổ sung với bộ rule của Snort. Mỗi ca một thư mục gồm gói tin đầu vào, file rule, giá trị mong đợi, kết quả chương trình ghi ra, kết quả đối chiếu và README riêng.
+Thư mục này lưu kết quả 14 ca kiểm thử bắt buộc của Bài tập 3. Ca bổ sung chạy với bộ rule của Snort nằm ở phần mở rộng: [extra/snort_community_rules](../extra/snort_community_rules/README.md). Mỗi ca một thư mục gồm gói tin đầu vào, file rule, giá trị mong đợi, kết quả chương trình ghi ra, kết quả đối chiếu và README riêng.
 
 - Gói tin là dữ liệu tổng hợp dựng bằng Scapy rồi lưu ra PCAP, đọc offline, không gửi ra mạng.
-- Các giá trị mong đợi được khai báo riêng trong [detection_cases.py](../integration/detection_cases.py), theo đề bài, Snort manual và các quy tắc ghi trong README của module [rules](../../src/rules/README.md) và [detection](../../src/detection/README.md).
+- Các giá trị mong đợi được khai báo riêng trong [cases.py](cases.py), theo đề bài, Snort manual và các quy tắc ghi trong README của module [rules](../../src/rules/README.md) và [detection](../../src/detection/README.md).
 - `candidates` lấy trực tiếp từ Repository. Các số `rejected`, `content_checks`, `candidate_rules` nằm trong mục `engine` của `rule_report.json`.
 
 | Ca | Nội dung xác nhận | Kết quả quan sát | Đối chiếu |
@@ -22,16 +22,15 @@ Thư mục này lưu kết quả 14 ca kiểm thử bắt buộc của Bài tậ
 | [12 flags và dsize](case12_flags_dsize/README.md) | Khớp và không khớp theo event. | Đúng với mọi dạng `flags` (`+`, `*`, `!`, `0`, cờ bỏ qua) và `dsize` (bằng, `>`, `<`, khoảng tính cả hai đầu). | ĐẠT (11/11) |
 | [13 Nhiều rule](case13_several_rules/README.md) | Một event khớp từ 2 rule trở lên. | Gói GET sinh đủ 4 Detection Event; rule không khớp không sinh kết quả. | ĐẠT (12/12) |
 | [14 Detection Event](case14_detection_event/README.md) | Có đủ sid, msg, flow, 5-tuple, protocol, thông tin khớp. | Đủ mọi trường; `../` ở byte 5; bản mã hóa `..%2f` được phát hiện trong vùng `application`. | ĐẠT (22/22) |
-| [15 Bộ rule Snort (bổ sung)](case15_snort_community_rules/README.md) | Nạp `rules/community.rules`; không dừng chương trình. | 568 rule đều đúng cú pháp nhưng đều có keyword ngoài phạm vi nên đều `unsupported`, không có Detection Event; thoát với mã 0. | ĐẠT (10/10) |
 
 ## Chạy lại
 
 Từ thư mục gốc repo:
 
 ```powershell
-python TEST/integration/run_detection_cases.py --case 07 --overwrite   # một ca
-python TEST/integration/run_detection_cases.py --overwrite             # tất cả các ca
-python -m pytest TEST/integration/test_detection_cases.py              # đối chiếu, không ghi đè kết quả đã lưu
+python TEST/BT3/run_cases.py --case 07 --overwrite   # một ca
+python TEST/BT3/run_cases.py --overwrite             # tất cả các ca (cả ca bổ sung trong TEST/extra)
+python -m pytest TEST/BT3                            # đối chiếu, không ghi đè kết quả đã lưu
 ```
 
 Không có `--overwrite` thì script từ chối ghi đè kết quả đã có. Trường thay đổi giữa các lần chạy là `run_at` trong `result.json`.

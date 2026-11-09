@@ -17,7 +17,7 @@ Thư mục này chứa bộ rule cộng đồng (Community Rules) của Snort, d
 ## Kết quả khi nạp vào engine
 
 ```powershell
-python main.py --pcap TEST/BT3/case15_snort_community_rules/input.pcap --rules rules/community.rules --output output/snort_events.jsonl --flow-output output/snort_flows.jsonl --detection-output output/snort_detections.jsonl --rule-report output/snort_rule_report.json
+python main.py --pcap TEST/extra/snort_community_rules/input.pcap --rules rules/community.rules --output output/snort_events.jsonl --flow-output output/snort_flows.jsonl --detection-output output/snort_detections.jsonl --rule-report output/snort_rule_report.json
 ```
 
 File có 4.038 dòng: 568 rule đang bật, còn lại là comment (phần lớn là rule đã bị Snort tắt sẵn bằng dấu `#`).
@@ -39,7 +39,7 @@ Cả 568 rule đều đúng cú pháp. Chúng bị bỏ vì quy tắc của bài
 | `flowbits` | 199 |
 | `pcre` | 185 |
 
-Thống kê đầy đủ nằm trong trường `unsupported_keywords` của file báo cáo, xem [kết quả đã lưu](../TEST/BT3/case15_snort_community_rules/README.md).
+Thống kê đầy đủ nằm trong trường `unsupported_keywords` của file báo cáo, xem [kết quả đã lưu](../TEST/extra/snort_community_rules/README.md).
 
 Rule viết bằng cú pháp Snort trong phạm vi đề bài vẫn chạy bình thường qua `--rules`, ví dụ các file `input.rules` trong [TEST/BT3](../TEST/BT3/README.md).
 

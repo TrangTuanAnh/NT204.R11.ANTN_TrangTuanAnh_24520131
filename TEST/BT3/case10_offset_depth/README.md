@@ -19,7 +19,7 @@ python main.py --pcap TEST/BT3/case10_offset_depth/input.pcap --rules TEST/BT3/c
 Tạo lại toàn bộ đầu vào, chạy và đối chiếu ca này bằng script:
 
 ```powershell
-python TEST/integration/run_detection_cases.py --case 10 --overwrite
+python TEST/BT3/run_cases.py --case 10 --overwrite
 ```
 
 ## Kết quả đã chạy
