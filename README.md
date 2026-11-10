@@ -401,6 +401,38 @@ gói Scapy → parser → decoder → preprocessor → flow tracker → so khớ
 
 `main.py` nhận kết quả của pipeline và ghi: event vào `--output` (mỗi gói một dòng, ghi ngay), bản tổng kết flow vào `--flow-output` (mỗi flow một dòng, ghi khi flow kết thúc), Detection Event vào `--detection-output` (mỗi lần rule khớp một dòng, ghi ngay). Event có `processing_action` là `skip` vẫn được ghi nhưng không vào flow tracker; `drop` thì không được ghi.
 
+### Đường đi của một gói tin
+
+Bảng dưới đi theo một gói từ lúc vào máy đến lúc thành dòng trong file, cho biết dữ liệu mỗi bước trả ra có kiểu gì và nằm ở hàm nào trong code.
+
+| # | Bước | Dữ liệu ra | Chỗ trong code |
+| --- | --- | --- | --- |
+| 0 | Gói vào máy | Các byte của frame mạng. Với card mạng, Npcap chuyển cho Scapy; với file thì đọc từ file PCAP. | `sniff` trong [capture/live.py](src/capture/live.py), `iter_pcap` trong [capture/pcap.py](src/capture/pcap.py) |
+| 1 | Capture | Tuple `(Packet của Scapy, timestamp kiểu float)`, từng gói một và không lưu lại. Nguồn `--events` trả thẳng `dict` event. | `capture_live`, `iter_pcap`, `iter_events` trong [src/capture/](src/capture/README.md) |
+| 2 | Đánh số gói | `main.py` thêm `packet_id` kiểu `int` rồi gọi pipeline. | `process_packet` bên trong `_run_pipeline` ở [main.py](main.py) |
+| 3 | Parser | Một `dict` event gồm `packet_id`, `timestamp`, `source`, `captured_length`, `network`, `transport`, `application`, `status`, `errors`. Payload thô là `bytes`, đi cạnh event chứ không nằm trong event. | `parse_packet`, `extract_payload` trong [parser/packet.py](src/parser/packet.py) |
+| 4 | Decoder | Không trả gì mà sửa thẳng event, thêm `decoded` (dict), `decode_status` (chuỗi), `decode_errors` (list). | `decode_event` trong [decoder/event.py](src/decoder/event.py); khung của `decoded` là `empty_decoded` |
+| 5 | Preprocessor | Sửa thẳng event, thêm `preprocess_status`, `processing_action` (`process`, `skip` hoặc `drop`) và `reason` (list). | `preprocess_event` trong [preprocessor/event.py](src/preprocessor/event.py) |
+| 6 | Flow tracker | Gắn `flow_id`, `direction`, `flow_state` vào event. Trả `list[dict]` tổng kết các flow vừa kết thúc. Thông tin flow của gói này (dict) được giữ lại cho bước so khớp rule. | `FlowTracker.track` trong [flow/tracker.py](src/flow/tracker.py); `Flow.summary` và `Flow.context` trong [flow/model.py](src/flow/model.py) |
+| 7 | So khớp rule | `list[(Rule, MatchResult)]` gồm mỗi rule khớp, rồi đổi thành Detection Event (dict). | `RuleEvaluator.evaluate` trong [detection/evaluator.py](src/detection/evaluator.py), `match_rule` trong [detection/matcher.py](src/detection/matcher.py), `build_detection_event` trong [detection/generator.py](src/detection/generator.py) |
+| 8 | Kết quả pipeline | `(event hoặc None, danh sách flow kết thúc)`; Detection Event lấy riêng bằng `take_detections()`. | `Pipeline.process_event`, `Pipeline.take_detections` trong [pipeline.py](src/pipeline.py) |
+| 9 | Ghi file | Mỗi `dict` thành một dòng JSON, ghi nối tiếp và flush ngay. | `save` bên trong `_run_pipeline` ở [main.py](main.py); `JsonLinesWriter.write` trong [output/jsonl.py](src/output/jsonl.py) |
+
+Cùng một `dict` event lớn dần qua các bước:
+
+```text
+parser          → packet_id, timestamp, source, captured_length, network, transport, application, status, errors
++ decoder       → decoded, decode_status, decode_errors
++ preprocessor  → preprocess_status, processing_action, reason
++ flow tracker  → flow_id, direction, flow_state
+```
+
+Ba điểm cần lưu ý:
+
+- **Payload thô là `bytes` và không được ghi ra file.** Nó chỉ đi từ parser đến bước so khớp rule qua tham số hàm, không nằm trong event. Vì vậy event đọc từ `--events` không có payload thô, và bước so khớp dùng dữ liệu đã giải mã thay thế. Detection Event cũng là một `dict` riêng, không thêm vào event, nên file event giữ nguyên dạng như các bài trước.
+- **Rule không đi theo từng gói.** Rule được nạp một lần trước khi có gói nào: dòng trong file thành `RuleLine`, rồi `ParsedRule`, rồi `Rule` ([src/rules/](src/rules/README.md)) và được cất vào `RuleRepository`. Mỗi gói chỉ tra kho này ở bước 7.
+- **Tổng kết flow không ra theo từng gói.** Nó ra khi flow kết thúc vì đóng bằng FIN hoặc RST, quá hạn, hoặc hết dữ liệu (`Pipeline.finish`). Event có `processing_action` là `drop` thì không được ghi vào file event.
+
 ## 6. Giới hạn hiện tại
 
 - Phân tích từng gói riêng lẻ, chưa ghép TCP stream hoặc tái lắp IPv4 phân mảnh. HTTP hoặc thư trải trên nhiều gói chỉ được đọc và giải mã phần nằm trong từng gói; gói IPv4 phân mảnh không được theo dõi flow.
