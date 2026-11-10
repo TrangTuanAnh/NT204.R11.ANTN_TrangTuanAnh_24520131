@@ -35,4 +35,40 @@ python -m pytest TEST/BT3                            # đối chiếu, không gh
 
 Không có `--overwrite` thì script từ chối ghi đè kết quả đã có. Trường thay đổi giữa các lần chạy là `run_at` trong `result.json`.
 
+## Chạy thử bằng `main.py`
+
+Mỗi ca có sẵn lệnh chạy trong README của ca. Ba ví dụ dưới đây là ba tình huống chính: phát hiện được tấn công, rule sai không làm dừng chương trình, và nạp bộ rule Snort thật. Chạy tại thư mục gốc repo.
+
+Chương trình **ghi nối tiếp** vào file kết quả, nên chạy lại cùng tên file sẽ làm các dòng bị lặp. Xóa kết quả cũ trước khi chạy lại: `Remove-Item output\demo_* -ErrorAction SilentlyContinue`.
+
+### Phát hiện Directory traversal ([ca 14](case14_detection_event/README.md))
+
+```powershell
+python main.py --pcap TEST/BT3/case14_detection_event/input.pcap --rules TEST/BT3/case14_detection_event/input.rules --output output/demo_events.jsonl --flow-output output/demo_flows.jsonl --detection-output output/demo_detections.jsonl --rule-report output/demo_rule_report.json
+Get-Content output/demo_detections.jsonl | ForEach-Object { ($_ | ConvertFrom-Json) | Select-Object packet_id, sid, msg, src_ip, dst_ip, flow_id }
+```
+
+- Màn hình in `Nap rule: 1 hop le, 0 sai cu phap, 0 ngoai pham vi (da bo), 0 bi tat`.
+- Có 2 Detection Event của rule `100001` ("Directory traversal detected"), ở gói 4 và gói 5, cùng luồng `10.0.0.5:52133 → 192.168.1.20:80` (TCP, HTTP) và cùng `flow_id`.
+- Gói 4 khớp `../` ở byte 5 của payload thô (`buffer` là `payload`). Gói 5 viết `..%2f` nên không có `../` trong byte gốc, nhưng vẫn khớp nhờ URI đã giải mã (`buffer` là `application`).
+- Cả hai gói có `flow_state` là `ESTABLISHED`, đúng với `flow:to_server,established` của rule.
+
+### Rule sai cú pháp không làm dừng chương trình ([ca 02](case02_syntax_errors/README.md))
+
+```powershell
+python main.py --pcap TEST/BT3/case02_syntax_errors/input.pcap --rules TEST/BT3/case02_syntax_errors/input.rules --config TEST/BT3/case02_syntax_errors/config.json --output output/demo_e2.jsonl --flow-output output/demo_f2.jsonl --detection-output output/demo_d2.jsonl --rule-report output/demo_r2.json
+```
+
+- Màn hình in `2 hop le, 12 sai cu phap`, tiếp theo là 12 dòng `Canh bao` có số dòng, `sid` và lý do cụ thể, ví dụ `Chiều phải là -> hoặc <>, đang là '=>'`.
+- Chương trình thoát với mã `0`; hai rule hợp lệ (đứng đầu và cuối file) vẫn được nạp và vẫn khớp gói tin.
+
+### Bộ rule cộng đồng của Snort ([ca bổ sung B1](../extra/snort_community_rules/README.md))
+
+```powershell
+python main.py --pcap TEST/extra/snort_community_rules/input.pcap --rules rules/community.rules --output output/demo_e3.jsonl --flow-output output/demo_f3.jsonl --detection-output output/demo_d3.jsonl --rule-report output/demo_r3.json
+```
+
+- Màn hình in `0 hop le, 0 sai cu phap, 568 ngoai pham vi (da bo)`, kèm cảnh báo từng rule và các keyword làm rule bị bỏ (`fast_pattern`, `http_uri`, `pcre`, `flowbits`, `metadata`, `reference`).
+- Chương trình thoát với mã `0` và `output/demo_d3.jsonl` rỗng: cả 568 rule đang bật đều có keyword ngoài phạm vi đề bài nên không rule nào được dùng. Đây là hạn chế đã nêu ở [README chính](../../README.md#6-giới-hạn-hiện-tại).
+
 [Về README phần kiểm thử](../README.md)
